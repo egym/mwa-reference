@@ -1,14 +1,29 @@
 import SwiftUI
 
-struct ContentView: View {
+struct InitialView: View {
   var body: some View {
-    Text("Hello, world!")
-      .padding()
+    contentView
+      .navigationTitle("Native")
+  }
+  
+  var contentView: some View {
+    VStack {
+      Text("Hello, gym user!")
+        .padding()
+      
+      NavigationLink(destination: ClassesView()) {
+        Text("Open Classes")
+          .padding()
+          .foregroundColor(.primary)
+          .background(Color.accentColor.opacity(0.4))
+          .cornerRadius(8)
+      }
+    }
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct InitialView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    InitialView()
   }
 }
