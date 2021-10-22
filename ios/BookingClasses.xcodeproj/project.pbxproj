@@ -13,6 +13,9 @@
 		913E217C2722ACFE000615AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217B2722ACFE000615AA /* Assets.xcassets */; };
 		913E217F2722ACFE000615AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217E2722ACFE000615AA /* Preview Assets.xcassets */; };
 		913E218D2722BFEA000615AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E218C2722BFEA000615AA /* AppDelegate.swift */; };
+		913E21922722C9FE000615AA /* PortalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21912722C9FE000615AA /* PortalView.swift */; };
+		913E21952722D81D000615AA /* ClassesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21942722D81D000615AA /* ClassesView.swift */; };
+		913E21972722D827000615AA /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21962722D827000615AA /* ConfirmationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		913E217B2722ACFE000615AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913E217E2722ACFE000615AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		913E218C2722BFEA000615AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		913E21912722C9FE000615AA /* PortalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalView.swift; sourceTree = "<group>"; };
+		913E21942722D81D000615AA /* ClassesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesView.swift; sourceTree = "<group>"; };
+		913E21962722D827000615AA /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		BA0F511ED7EFB570375A22B5 /* Pods-BookingClasses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.debug.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +105,7 @@
 			children = (
 				913E21772722ACFC000615AA /* BookingClassesApp.swift */,
 				913E218B2722BFD8000615AA /* AppDelegate */,
+				913E218F2722C9DA000615AA /* Common */,
 				913E21882722BF8E000615AA /* Screens */,
 			);
 			path = SourceCode;
@@ -123,6 +130,7 @@
 		913E21882722BF8E000615AA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				913E21932722D80C000615AA /* Classes */,
 				913E218A2722BFA1000615AA /* Confirmation */,
 				913E21892722BF94000615AA /* Initial */,
 			);
@@ -140,6 +148,7 @@
 		913E218A2722BFA1000615AA /* Confirmation */ = {
 			isa = PBXGroup;
 			children = (
+				913E21962722D827000615AA /* ConfirmationView.swift */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";
@@ -150,6 +159,30 @@
 				913E218C2722BFEA000615AA /* AppDelegate.swift */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		913E218F2722C9DA000615AA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				913E21902722C9E8000615AA /* UIViewRepresentables */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		913E21902722C9E8000615AA /* UIViewRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				913E21912722C9FE000615AA /* PortalView.swift */,
+			);
+			path = UIViewRepresentables;
+			sourceTree = "<group>";
+		};
+		913E21932722D80C000615AA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				913E21942722D81D000615AA /* ClassesView.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +197,7 @@
 				913E21712722ACFC000615AA /* Frameworks */,
 				913E21722722ACFC000615AA /* Resources */,
 				2C2DE0B2E9298C3C48E77599 /* [CP] Embed Pods Frameworks */,
+				913E218E2722C70B000615AA /* Copy Web Bundle */,
 			);
 			buildRules = (
 			);
@@ -259,6 +293,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		913E218E2722C70B000615AA /* Copy Web Bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Web Bundle";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert # Type a script or drag a script file from your workspace to insert its path.\nAPP_NAME=\"classes\"\nEMBEDDED_DIR=\"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app/portals\"\nEMBEDDED_APP=\"${SRCROOT}/../web/build\"\nZIP_FILE=\"${APP_NAME}.zip\"\n\nmkdir \"${EMBEDDED_DIR}\"\n\nif [ -d \"${EMBEDDED_DIR}/${APP_NAME}\" ]\nthen\n    cd \"${EMBEDDED_DIR}\"\n    rm -r \"${APP_NAME}\"\nfi\n\nmkdir \"${EMBEDDED_DIR}/${APP_NAME}\"\n\nif [ -d \"${EMBEDDED_APP}\" ] \nthen\n    cd \"${EMBEDDED_APP}\"\n    zip -vr \"${ZIP_FILE}\" * -x \"*.DS_Store\"\n    unzip \"${ZIP_FILE}\" -d \"${EMBEDDED_DIR}/${APP_NAME}\"\n    rm \"${ZIP_FILE}\"\nelse\n    echo \"App ${APP_NAME} has not been built!\"\n    exit 1\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,8 +319,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				913E218D2722BFEA000615AA /* AppDelegate.swift in Sources */,
+				913E21972722D827000615AA /* ConfirmationView.swift in Sources */,
+				913E21922722C9FE000615AA /* PortalView.swift in Sources */,
 				913E217A2722ACFC000615AA /* InitialView.swift in Sources */,
 				913E21782722ACFC000615AA /* BookingClassesApp.swift in Sources */,
+				913E21952722D81D000615AA /* ClassesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
