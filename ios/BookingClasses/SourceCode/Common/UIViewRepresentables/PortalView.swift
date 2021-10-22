@@ -5,16 +5,16 @@ import IonicPortals
 
 struct PortalView: UIViewRepresentable {
   struct Options {
-    var subscription: String
     var route: String
     var content: [String: String] = [:]
+    var subscriptionKey: String
   }
   
   var portal: String
   var options: Options
   var size: CGSize
   
-  var onReceiveContent: (Any) -> Void = { _ in }
+  var onContentReceived: (Any) -> Void = { _ in }
   
   func makeCoordinator() -> PortalView.Coordinator {
     Coordinator(self)
@@ -60,24 +60,24 @@ extension PortalView {
     init(_ parent: PortalView) {
       self.parent = parent
       self.contentReference = PortalsPlugin.subscribe(
-        parent.options.subscription,
+        parent.options.subscriptionKey,
         contentReceived
       )
     }
     
     deinit {
       PortalsPlugin.unsubscribe(
-        options.subscription,
+        options.subscriptionKey,
         contentReference
       )
     }
 
     private func contentReceived(result: SubscriptionResult) {
-      guard result.topic == options.subscription else {
+      guard result.topic == options.subscriptionKey else {
         return
       }
-      
-      parent.onReceiveContent(result.data)
+
+      parent.onContentReceived(result.data)
     }
   }
 }
