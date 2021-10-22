@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CC3DAFCA9134AF4E5F4C151 /* Pods_BookingClasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */; };
 		913E21782722ACFC000615AA /* BookingClassesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21772722ACFC000615AA /* BookingClassesApp.swift */; };
 		913E217A2722ACFC000615AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21792722ACFC000615AA /* ContentView.swift */; };
 		913E217C2722ACFE000615AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217B2722ACFE000615AA /* Assets.xcassets */; };
@@ -14,11 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03F4E33A32A0B3EBC1E38889 /* Pods-BookingClasses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.release.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.release.xcconfig"; sourceTree = "<group>"; };
+		7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookingClasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21742722ACFC000615AA /* BookingClasses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingClasses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21772722ACFC000615AA /* BookingClassesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingClassesApp.swift; sourceTree = "<group>"; };
 		913E21792722ACFC000615AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		913E217B2722ACFE000615AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913E217E2722ACFE000615AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA0F511ED7EFB570375A22B5 /* Pods-BookingClasses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.debug.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +30,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC3DAFCA9134AF4E5F4C151 /* Pods_BookingClasses.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089DA0BB70B7797D8F93C854 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA0F511ED7EFB570375A22B5 /* Pods-BookingClasses.debug.xcconfig */,
+				03F4E33A32A0B3EBC1E38889 /* Pods-BookingClasses.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		249200CE2FE00525E8C82B06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		913E216B2722ACFC000615AA = {
 			isa = PBXGroup;
 			children = (
 				913E21762722ACFC000615AA /* BookingClasses */,
 				913E21752722ACFC000615AA /* Products */,
+				089DA0BB70B7797D8F93C854 /* Pods */,
+				249200CE2FE00525E8C82B06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 913E21822722ACFE000615AA /* Build configuration list for PBXNativeTarget "BookingClasses" */;
 			buildPhases = (
+				66D8704B9F9A35C6900643C0 /* [CP] Check Pods Manifest.lock */,
 				913E21702722ACFC000615AA /* Sources */,
 				913E21712722ACFC000615AA /* Frameworks */,
 				913E21722722ACFC000615AA /* Resources */,
+				2C2DE0B2E9298C3C48E77599 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C2DE0B2E9298C3C48E77599 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookingClasses/Pods-BookingClasses-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookingClasses/Pods-BookingClasses-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BookingClasses/Pods-BookingClasses-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66D8704B9F9A35C6900643C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookingClasses-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		913E21702722ACFC000615AA /* Sources */ = {
@@ -263,6 +332,7 @@
 		};
 		913E21832722ACFE000615AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA0F511ED7EFB570375A22B5 /* Pods-BookingClasses.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,6 +362,7 @@
 		};
 		913E21842722ACFE000615AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03F4E33A32A0B3EBC1E38889 /* Pods-BookingClasses.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1,0 +1,24 @@
+PODS:
+  - Capacitor (3.2.5):
+    - CapacitorCordova
+  - CapacitorCordova (3.2.5)
+  - IonicPortals (0.2.2):
+    - Capacitor
+
+DEPENDENCIES:
+  - IonicPortals (~> 0.2.2)
+
+SPEC REPOS:
+  trunk:
+    - Capacitor
+    - CapacitorCordova
+    - IonicPortals
+
+SPEC CHECKSUMS:
+  Capacitor: 6b6ae309ee51924ef9d753c8862c98aed8dec8b3
+  CapacitorCordova: c66963e932eaef87aeef083c3e55224eea5e8c87
+  IonicPortals: 1ae3391c4144135fd330a84097503be9031aa754
+
+PODFILE CHECKSUM: aacd494e36cbcc0c151298629c48901d24c760f2
+
+COCOAPODS: 1.11.2
