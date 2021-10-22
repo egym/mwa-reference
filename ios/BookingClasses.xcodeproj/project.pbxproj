@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		8CC3DAFCA9134AF4E5F4C151 /* Pods_BookingClasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */; };
 		913E21782722ACFC000615AA /* BookingClassesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21772722ACFC000615AA /* BookingClassesApp.swift */; };
-		913E217A2722ACFC000615AA /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21792722ACFC000615AA /* InitialView.swift */; };
 		913E217C2722ACFE000615AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217B2722ACFE000615AA /* Assets.xcassets */; };
 		913E217F2722ACFE000615AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217E2722ACFE000615AA /* Preview Assets.xcassets */; };
 		913E218D2722BFEA000615AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E218C2722BFEA000615AA /* AppDelegate.swift */; };
 		913E21922722C9FE000615AA /* PortalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21912722C9FE000615AA /* PortalView.swift */; };
-		913E21952722D81D000615AA /* ClassesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21942722D81D000615AA /* ClassesView.swift */; };
-		913E21972722D827000615AA /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21962722D827000615AA /* ConfirmationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +20,10 @@
 		7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookingClasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21742722ACFC000615AA /* BookingClasses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingClasses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21772722ACFC000615AA /* BookingClassesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingClassesApp.swift; sourceTree = "<group>"; };
-		913E21792722ACFC000615AA /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		913E217B2722ACFE000615AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913E217E2722ACFE000615AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		913E218C2722BFEA000615AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		913E21912722C9FE000615AA /* PortalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalView.swift; sourceTree = "<group>"; };
-		913E21942722D81D000615AA /* ClassesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesView.swift; sourceTree = "<group>"; };
-		913E21962722D827000615AA /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		BA0F511ED7EFB570375A22B5 /* Pods-BookingClasses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.debug.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,27 +124,13 @@
 		913E21882722BF8E000615AA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				913E21932722D80C000615AA /* Classes */,
-				913E218A2722BFA1000615AA /* Confirmation */,
-				913E21892722BF94000615AA /* Initial */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		913E21892722BF94000615AA /* Initial */ = {
 			isa = PBXGroup;
 			children = (
-				913E21792722ACFC000615AA /* InitialView.swift */,
 			);
-			path = Initial;
-			sourceTree = "<group>";
-		};
-		913E218A2722BFA1000615AA /* Confirmation */ = {
-			isa = PBXGroup;
-			children = (
-				913E21962722D827000615AA /* ConfirmationView.swift */,
-			);
-			path = Confirmation;
 			sourceTree = "<group>";
 		};
 		913E218B2722BFD8000615AA /* AppDelegate */ = {
@@ -177,12 +157,9 @@
 			path = UIViewRepresentables;
 			sourceTree = "<group>";
 		};
-		913E21932722D80C000615AA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				913E21942722D81D000615AA /* ClassesView.swift */,
 			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,11 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				913E218D2722BFEA000615AA /* AppDelegate.swift in Sources */,
-				913E21972722D827000615AA /* ConfirmationView.swift in Sources */,
 				913E21922722C9FE000615AA /* PortalView.swift in Sources */,
-				913E217A2722ACFC000615AA /* InitialView.swift in Sources */,
 				913E21782722ACFC000615AA /* BookingClassesApp.swift in Sources */,
-				913E21952722D81D000615AA /* ClassesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
