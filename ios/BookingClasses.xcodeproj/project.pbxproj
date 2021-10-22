@@ -8,22 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		8CC3DAFCA9134AF4E5F4C151 /* Pods_BookingClasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */; };
+		9119564B2722F88F0091823E /* BookingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9119564A2722F88F0091823E /* BookingManager.swift */; };
 		913E21782722ACFC000615AA /* BookingClassesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21772722ACFC000615AA /* BookingClassesApp.swift */; };
+		913E217A2722ACFC000615AA /* BookingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21792722ACFC000615AA /* BookingListView.swift */; };
 		913E217C2722ACFE000615AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217B2722ACFE000615AA /* Assets.xcassets */; };
 		913E217F2722ACFE000615AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913E217E2722ACFE000615AA /* Preview Assets.xcassets */; };
 		913E218D2722BFEA000615AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E218C2722BFEA000615AA /* AppDelegate.swift */; };
 		913E21922722C9FE000615AA /* PortalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E21912722C9FE000615AA /* PortalView.swift */; };
+		9155FEB62723078700CBFB5E /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEB52723078700CBFB5E /* Booking.swift */; };
+		9155FEB9272308E800CBFB5E /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEB8272308E800CBFB5E /* String+MD5.swift */; };
+		9155FEBB2723098C00CBFB5E /* Date+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEBA2723098C00CBFB5E /* Date+Current.swift */; };
+		9155FEBD27230D0200CBFB5E /* BookingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEBC27230D0200CBFB5E /* BookingRowView.swift */; };
+		9155FEBF2723249400CBFB5E /* Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEBE2723249400CBFB5E /* Gym.swift */; };
+		9155FEC427232D8100CBFB5E /* Sequence+Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEC327232D8100CBFB5E /* Sequence+Booking.swift */; };
+		9155FEC7272336D600CBFB5E /* ClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEC6272336D600CBFB5E /* ClassView.swift */; };
+		9155FEC927233A1000CBFB5E /* ClassView+Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9155FEC827233A1000CBFB5E /* ClassView+Screen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03F4E33A32A0B3EBC1E38889 /* Pods-BookingClasses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.release.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.release.xcconfig"; sourceTree = "<group>"; };
 		7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookingClasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9119564A2722F88F0091823E /* BookingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingManager.swift; sourceTree = "<group>"; };
 		913E21742722ACFC000615AA /* BookingClasses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingClasses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21772722ACFC000615AA /* BookingClassesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingClassesApp.swift; sourceTree = "<group>"; };
+		913E21792722ACFC000615AA /* BookingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingListView.swift; sourceTree = "<group>"; };
 		913E217B2722ACFE000615AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913E217E2722ACFE000615AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		913E218C2722BFEA000615AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		913E21912722C9FE000615AA /* PortalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalView.swift; sourceTree = "<group>"; };
+		9155FEB52723078700CBFB5E /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		9155FEB8272308E800CBFB5E /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		9155FEBA2723098C00CBFB5E /* Date+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Current.swift"; sourceTree = "<group>"; };
+		9155FEBC27230D0200CBFB5E /* BookingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRowView.swift; sourceTree = "<group>"; };
+		9155FEBE2723249400CBFB5E /* Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gym.swift; sourceTree = "<group>"; };
+		9155FEC327232D8100CBFB5E /* Sequence+Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Booking.swift"; sourceTree = "<group>"; };
+		9155FEC6272336D600CBFB5E /* ClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassView.swift; sourceTree = "<group>"; };
+		9155FEC827233A1000CBFB5E /* ClassView+Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassView+Screen.swift"; sourceTree = "<group>"; };
 		BA0F511ED7EFB570375A22B5 /* Pods-BookingClasses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.debug.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +74,14 @@
 				7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		911956492722F8830091823E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9119564A2722F88F0091823E /* BookingManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		913E216B2722ACFC000615AA = {
@@ -100,6 +128,8 @@
 				913E21772722ACFC000615AA /* BookingClassesApp.swift */,
 				913E218B2722BFD8000615AA /* AppDelegate */,
 				913E218F2722C9DA000615AA /* Common */,
+				911956492722F8830091823E /* Managers */,
+				9155FEB42723077700CBFB5E /* Models */,
 				913E21882722BF8E000615AA /* Screens */,
 			);
 			path = SourceCode;
@@ -124,13 +154,19 @@
 		913E21882722BF8E000615AA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				913E21892722BF94000615AA /* BookingListView */,
+				9155FEC5272336C300CBFB5E /* ClassView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		913E21892722BF94000615AA /* BookingListView */ = {
 			isa = PBXGroup;
 			children = (
+				913E21792722ACFC000615AA /* BookingListView.swift */,
+				9155FEBC27230D0200CBFB5E /* BookingRowView.swift */,
 			);
+			path = BookingListView;
 			sourceTree = "<group>";
 		};
 		913E218B2722BFD8000615AA /* AppDelegate */ = {
@@ -144,6 +180,7 @@
 		913E218F2722C9DA000615AA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9155FEB7272308D700CBFB5E /* Extensions */,
 				913E21902722C9E8000615AA /* UIViewRepresentables */,
 			);
 			path = Common;
@@ -157,9 +194,32 @@
 			path = UIViewRepresentables;
 			sourceTree = "<group>";
 		};
+		9155FEB42723077700CBFB5E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9155FEB52723078700CBFB5E /* Booking.swift */,
+				9155FEBE2723249400CBFB5E /* Gym.swift */,
 			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9155FEB7272308D700CBFB5E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9155FEB8272308E800CBFB5E /* String+MD5.swift */,
+				9155FEBA2723098C00CBFB5E /* Date+Current.swift */,
+				9155FEC327232D8100CBFB5E /* Sequence+Booking.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9155FEC5272336C300CBFB5E /* ClassView */ = {
+			isa = PBXGroup;
+			children = (
+				9155FEC6272336D600CBFB5E /* ClassView.swift */,
+				9155FEC827233A1000CBFB5E /* ClassView+Screen.swift */,
+			);
+			path = ClassView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,9 +355,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9155FEBF2723249400CBFB5E /* Gym.swift in Sources */,
+				9119564B2722F88F0091823E /* BookingManager.swift in Sources */,
+				9155FEC7272336D600CBFB5E /* ClassView.swift in Sources */,
+				9155FEBD27230D0200CBFB5E /* BookingRowView.swift in Sources */,
 				913E218D2722BFEA000615AA /* AppDelegate.swift in Sources */,
+				9155FEB62723078700CBFB5E /* Booking.swift in Sources */,
+				9155FEC927233A1000CBFB5E /* ClassView+Screen.swift in Sources */,
+				9155FEB9272308E800CBFB5E /* String+MD5.swift in Sources */,
+				9155FEBB2723098C00CBFB5E /* Date+Current.swift in Sources */,
 				913E21922722C9FE000615AA /* PortalView.swift in Sources */,
+				913E217A2722ACFC000615AA /* BookingListView.swift in Sources */,
 				913E21782722ACFC000615AA /* BookingClassesApp.swift in Sources */,
+				9155FEC427232D8100CBFB5E /* Sequence+Booking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +506,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +536,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
