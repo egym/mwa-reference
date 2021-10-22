@@ -82,8 +82,8 @@ struct ClassView_Previews: PreviewProvider {
     bookingManager.add(.init(identifier: "01", name: "Class One"))
     bookingManager.add(.init(identifier: "02", name: "Class Two"))
     
-    return ClassListView(
-      gym: gym,
+    return ClassView(
+      screen: .list(gym: gym),
       bookingManager: bookingManager
     )
   }
