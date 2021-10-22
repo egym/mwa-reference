@@ -29,7 +29,7 @@
 		03F4E33A32A0B3EBC1E38889 /* Pods-BookingClasses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.release.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.release.xcconfig"; sourceTree = "<group>"; };
 		7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookingClasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9119564A2722F88F0091823E /* BookingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingManager.swift; sourceTree = "<group>"; };
-		913E21742722ACFC000615AA /* BookingClasses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingClasses.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		913E21742722ACFC000615AA /* Booking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Booking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21772722ACFC000615AA /* BookingClassesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingClassesApp.swift; sourceTree = "<group>"; };
 		913E21792722ACFC000615AA /* BookingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingListView.swift; sourceTree = "<group>"; };
 		913E217B2722ACFE000615AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		913E21752722ACFC000615AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				913E21742722ACFC000615AA /* BookingClasses.app */,
+				913E21742722ACFC000615AA /* Booking.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			);
 			name = BookingClasses;
 			productName = BookingClasses;
-			productReference = 913E21742722ACFC000615AA /* BookingClasses.app */;
+			productReference = 913E21742722ACFC000615AA /* Booking.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -499,6 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookingClasses/Preview Content\"";
+				DEVELOPMENT_TEAM = 56DQ8B5T2R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -513,7 +514,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egym.BookingClasses;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Booking;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -529,6 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookingClasses/Preview Content\"";
+				DEVELOPMENT_TEAM = 56DQ8B5T2R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -543,7 +545,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egym.BookingClasses;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Booking;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
