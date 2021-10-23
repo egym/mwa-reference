@@ -2,29 +2,53 @@ import SwiftUI
 
 final class BookingManager: ObservableObject {
   @Published
-  private(set) var bookingList: Bookings
+  private(set) var bookins: Bookings
  
   var isNotEmpty: Bool {
-    bookingList.isEmpty == false
+    bookins.isEmpty == false
   }
   
   init() {
-    bookingList = []
+    bookins = []
   }
   
   func isClassBooked(with booking: Booking) -> Bool {
-    bookingList.contains(booking)
+    bookins.contains(booking)
   }
   
   func isClassBooked(for identifier: String) -> Bool {
-    bookingList.contains(identifier)
+    bookins.contains(identifier)
+  }
+  
+  func booking(at index: Int) -> Booking? {
+    guard index >= 0 && index < bookins.count else {
+      return nil
+    }
+
+    return bookins[index]
   }
   
   func add(_ booking: Booking) {
-    guard bookingList.contains(booking) == false else {
+    guard bookins.contains(booking) == false else {
       return
     }
     
-    bookingList.insert(booking, at: 0)
+    bookins.insert(booking, at: 0)
+  }
+  
+  func delete(_ booking: Booking) {
+    guard bookins.contains(booking) else {
+      return
+    }
+    
+    guard let index = bookins.firstIndex(of: booking) else {
+      return
+    }
+
+    bookins.remove(at: index)
+  }
+  
+  func delete(at offsets: IndexSet) {
+    bookins.remove(atOffsets: offsets)
   }
 }
