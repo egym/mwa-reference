@@ -29,13 +29,16 @@ struct BookingListView: View {
   var bookingsListView: some View {
     List {
       Section("Your bookings") {
-        ForEach(bookingManager.bookingList) { booking in
+        ForEach(bookingManager.bookins) { booking in
           NavigationLink(destination: classDetailView(for: booking)) {
             BookingRowView(
               booking: booking
             )
           }
         }
+        .onDelete(
+          perform: deleteBooking
+        )
       }
     }
   }
@@ -57,6 +60,10 @@ struct BookingListView: View {
       ),
       bookingManager: bookingManager
     )
+  }
+  
+  func deleteBooking(at offsets: IndexSet) {
+    bookingManager.delete(at: offsets)
   }
   
 }
