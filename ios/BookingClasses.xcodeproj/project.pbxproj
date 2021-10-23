@@ -29,7 +29,7 @@
 		03F4E33A32A0B3EBC1E38889 /* Pods-BookingClasses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookingClasses.release.xcconfig"; path = "Target Support Files/Pods-BookingClasses/Pods-BookingClasses.release.xcconfig"; sourceTree = "<group>"; };
 		7561C3262CAC67A114BDFA2C /* Pods_BookingClasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookingClasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9119564A2722F88F0091823E /* BookingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingManager.swift; sourceTree = "<group>"; };
-		913E21742722ACFC000615AA /* Booking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Booking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		913E21742722ACFC000615AA /* Bookings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913E21772722ACFC000615AA /* BookingClassesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingClassesApp.swift; sourceTree = "<group>"; };
 		913E21792722ACFC000615AA /* BookingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingListView.swift; sourceTree = "<group>"; };
 		913E217B2722ACFE000615AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		913E21752722ACFC000615AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				913E21742722ACFC000615AA /* Booking.app */,
+				913E21742722ACFC000615AA /* Bookings.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,24 +225,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		913E21732722ACFC000615AA /* BookingClasses */ = {
+		913E21732722ACFC000615AA /* Bookings */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 913E21822722ACFE000615AA /* Build configuration list for PBXNativeTarget "BookingClasses" */;
+			buildConfigurationList = 913E21822722ACFE000615AA /* Build configuration list for PBXNativeTarget "Bookings" */;
 			buildPhases = (
+				913E218E2722C70B000615AA /* Copy Web Bundle */,
 				66D8704B9F9A35C6900643C0 /* [CP] Check Pods Manifest.lock */,
 				913E21702722ACFC000615AA /* Sources */,
 				913E21712722ACFC000615AA /* Frameworks */,
 				913E21722722ACFC000615AA /* Resources */,
 				2C2DE0B2E9298C3C48E77599 /* [CP] Embed Pods Frameworks */,
-				913E218E2722C70B000615AA /* Copy Web Bundle */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BookingClasses;
+			name = Bookings;
 			productName = BookingClasses;
-			productReference = 913E21742722ACFC000615AA /* Booking.app */;
+			productReference = 913E21742722ACFC000615AA /* Bookings.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -273,7 +273,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				913E21732722ACFC000615AA /* BookingClasses */,
+				913E21732722ACFC000615AA /* Bookings */,
 			);
 		};
 /* End PBXProject section */
@@ -514,7 +514,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egym.BookingClasses;
-				PRODUCT_NAME = Booking;
+				PRODUCT_NAME = "${TARGET_NAME}";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,7 +545,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egym.BookingClasses;
-				PRODUCT_NAME = Booking;
+				PRODUCT_NAME = "${TARGET_NAME}";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -564,7 +564,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		913E21822722ACFE000615AA /* Build configuration list for PBXNativeTarget "BookingClasses" */ = {
+		913E21822722ACFE000615AA /* Build configuration list for PBXNativeTarget "Bookings" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				913E21832722ACFE000615AA /* Debug */,
