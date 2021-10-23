@@ -3,9 +3,10 @@ import SwiftUI
 struct ClassView: View {
   @Environment(\.presentationMode) private var presentationMode
   
+  @State private var isBookingInProgress = false
   @State private var isPresentingAlert = false
-  @State private var message: String = ""
   @State private var shouldPopNavigation = false
+  @State private var message: String = ""
   
   @ObservedObject
   private var bookingManager: BookingManager
@@ -14,10 +15,20 @@ struct ClassView: View {
   var body: some View {
     contentView
       .navigationTitle(screen.title)
+      .navigationBarTitleDisplayMode(.inline)
       .alert(message, isPresented: $isPresentingAlert) {
         Button("OK", role: .cancel) {
           if shouldPopNavigation {
             presentationMode.wrappedValue.dismiss()
+          }
+          
+          isBookingInProgress = false
+        }
+      }
+      .toolbar {
+        if case .detail = screen {
+          Button(action: deleteBooking) {
+            Text("Delete Booking")
           }
         }
       }
@@ -40,15 +51,20 @@ struct ClassView: View {
   }
   
   func content(_ data: Any) {
+    guard isBookingInProgress == false else {
+      return
+    }
+    
     if
       let dictionary = data as? [String: String],
       let name = dictionary["className"],
       let identifier = dictionary["id"]
     {
+      isBookingInProgress = true
       let isBooked = bookingManager.isClassBooked(for: identifier)
       
       if isBooked {
-        message = message(using: name, isBooked)
+        message = message(for: name, isBooked)
       }
       else {
         let booking = Booking(
@@ -57,7 +73,7 @@ struct ClassView: View {
         )
         
         bookingManager.add(booking)
-        message = message(using: name, isBooked)
+        message = message(for: name, isBooked)
         shouldPopNavigation = true
       }
       
@@ -65,12 +81,22 @@ struct ClassView: View {
     }
   }
   
-  func message(using className: String, _ booked: Bool) -> String {
+  func message(for className: String, _ booked: Bool = false) -> String {
     if booked {
       return "You have a previous booking for the class '\(className)'."
     }
     
     return "Class '\(className)' was booked for you!"
+  }
+  
+  func deleteBooking() {
+    if let booking = screen.booking {
+      bookingManager.delete(booking)
+      
+      message = "You booking for class '\(booking.name)' was removed"
+      shouldPopNavigation = true
+      isPresentingAlert = true
+    }
   }
 }
 
