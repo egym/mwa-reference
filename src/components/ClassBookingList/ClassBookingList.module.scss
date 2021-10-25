@@ -1,0 +1,66 @@
+.header {
+  margin-bottom: 10px;
+}
+
+.list {
+  margin-bottom: 30px;
+}
+
+.card {
+  width: 100%;
+  margin: 8px 0;
+  z-index: 100;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.cardContent {
+  padding-bottom: 10px;
+}
+
+.cardTitle {
+  font-size: 16px;
+}
+
+.cardSubtitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chip {
+  border-radius: 4px;
+}
+
+.weekDaysWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.weekDayItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+.weekDayItemCurrent {
+  background: var(--ion-color-medium);
+  color: var(--ion-color-medium-contrast);
+}
+
+.weekDayItemCurrentDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ion-color-primary);
+  margin-top: 1px;
+}
