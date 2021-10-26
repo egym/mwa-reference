@@ -26,7 +26,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 setupConfig({
-  mode: window.MobileNativeInteractor?.mode || 'md'
+  mode: window.AndroidInteractor?.mode || 'md'
 });
 
 const App: FC = () => {
@@ -39,7 +39,7 @@ const App: FC = () => {
             <ClassBookingListPage />
           </Route>
           <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
-          <Redirect exact from='/' to={window.MobileNativeInteractor?.initialRoute || '/home'}/>
+          <Redirect exact from='/' to={window.AndroidInteractor?.initialRoute || '/home'}/>
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

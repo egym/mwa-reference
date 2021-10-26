@@ -1,7 +1,7 @@
 export {};
 declare global {
   interface Window {
-    MobileNativeInteractor?: {
+    AndroidInteractor?: {
       mode: 'md' | 'ios';
       initialRoute: string;
       gymName: string

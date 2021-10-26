@@ -9,8 +9,8 @@ const useClassDetails = (classId?: string) => {
     if (classDetails) {
       console.log('onClassBookedClick', classDetails);
 
-      if (window.MobileNativeInteractor) {
-        window.MobileNativeInteractor?.onClassBookedClick(classDetails.name)
+      if (window.AndroidInteractor) {
+        window.AndroidInteractor?.onClassBookedClick(classDetails.name)
         presentToast({
           header: 'WEBVIEW TOAST',
           message: `Sending class name - "${classDetails.name}" message to Android`,
