@@ -30,14 +30,13 @@ import { weekDays } from './data';
 
 
 type Props = {
-  variant: 'portals' | 'plain-webview' | 'web';
   context?: {
     startingRoute: string;
     gymName?: string
   };
 };
 
-const ClassBookingList: React.FC<Props> = ({ variant, context }) => {
+const ClassBookingList: React.FC<Props> = ({ context }) => {
   return (
     <>
       {/*<IonHeader translucent>*/}
@@ -96,7 +95,7 @@ const ClassBookingList: React.FC<Props> = ({ variant, context }) => {
           return <IonList lines="none" key={classesDate} className={styles.list}>
             <IonListHeader>{classesDate}</IonListHeader>
             {groupedClasses[classesDate].map(currentClass => {
-              return <IonItem key={currentClass.id} detail={false} routerLink={`/${variant}/classes/${currentClass.id}`}>
+              return <IonItem key={currentClass.id} detail={false} routerLink={`/classes/${currentClass.id}`}>
                 <IonCard className={styles.card}>
                   <IonCardHeader className={styles.cardHeader}>
                     <IonCardSubtitle className={styles.cardSubtitle}>

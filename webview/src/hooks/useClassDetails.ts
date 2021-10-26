@@ -1,4 +1,3 @@
-import Portals from '@ionic/portals';
 import { useIonToast } from '@ionic/react';
 import { getClassDetailsById } from '../utils/data';
 
@@ -10,24 +9,13 @@ const useClassDetails = (classId?: string) => {
     if (classDetails) {
       console.log('onClassBookedClick', classDetails);
 
-      if (window.AndroidInteractor) {
-        window.AndroidInteractor?.onClassBookedClick(classDetails.name)
+      if (window.MobileNativeInteractor) {
+        window.MobileNativeInteractor?.onClassBookedClick(classDetails.name)
         presentToast({
           header: 'WEBVIEW TOAST',
           message: `Sending class name - "${classDetails.name}" message to Android`,
           duration: 5000
         })
-      } else {
-        Portals.publish({
-          topic: 'book-class', data: {
-            className: classDetails.name
-          }
-        });
-        presentToast({
-          header: 'WEBVIEW TOAST',
-          message: `Sending "bookClass" topic via Portals`,
-          duration: 5000
-        });
       }
     }
   }

@@ -1,13 +1,11 @@
 export {};
 declare global {
   interface Window {
-    AndroidInteractor?: {
+    MobileNativeInteractor?: {
+      mode: 'md' | 'ios';
       initialRoute: string;
       gymName: string
       onClassBookedClick: (className: string) => void;
     };
-    portalInitialContext: {
-      value: { startingRoute: string; gymName?: string },
-    }
   }
 }
