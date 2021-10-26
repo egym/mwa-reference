@@ -1,15 +1,14 @@
 import React from 'react';
 import { IonPage } from '@ionic/react';
 import ClassBookingList from '../../components/ClassBookingList';
+import useClassList from '../../hooks/useClassList';
 
-type Props = {
+const ClassBookingListPage: React.FC = () => {
+  const { onClassItemClick, gymName } = useClassList();
 
-};
-
-const ClassBookingListPage: React.FC<Props> = props => {
  return (
    <IonPage>
-    <ClassBookingList />
+    <ClassBookingList onClassItemClick={onClassItemClick} gymName={gymName} />
    </IonPage>
  );
 };

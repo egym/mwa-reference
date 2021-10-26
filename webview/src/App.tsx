@@ -26,7 +26,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 setupConfig({
-  mode: window.AndroidInteractor?.mode || 'md'
+  mode: window.AndroidInteractor ? 'md' : 'ios',
 });
 
 const App: FC = () => {
