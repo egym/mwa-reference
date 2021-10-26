@@ -7,5 +7,8 @@ declare global {
       onClassBookedClick: (classId: number, className: string) => void;
       onClassItemClick: (classId: number) => void;
     };
+    IOSInteractor?: {
+      initialRoute: string;
+    }
   }
 }

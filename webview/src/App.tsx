@@ -39,7 +39,7 @@ const App: FC = () => {
             <ClassBookingListPage />
           </Route>
           <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
-          <Redirect exact from='/' to={window.AndroidInteractor?.initialRoute || '/home'}/>
+          <Redirect exact from='/' to={window.AndroidInteractor?.initialRoute || window.IOSInteractor?.initialRoute || '/home'}/>
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
