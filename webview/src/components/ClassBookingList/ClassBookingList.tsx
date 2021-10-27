@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
   IonChip,
   IonCol,
   IonContent,
@@ -17,8 +16,8 @@ import { format } from 'date-fns';
 import { filter } from 'ionicons/icons';
 import { ClassItem, groupedClasses } from '../../utils/data';
 import styles from './ClassBookingList.module.scss';
-import SpotsLeft from '../SpotsLeft';
 import { weekDays } from './data';
+import ClassBookingItem from '../ClassBookingItem';
 
 type Props = {
   onClassItemClick: (classDetails: ClassItem) => void;
@@ -75,20 +74,8 @@ const ClassBookingList: React.FC<Props> = ({ onClassItemClick, gymName }) => {
         return <IonList lines="none" key={classesDate} className={styles.list}>
           <IonListHeader>{classesDate}</IonListHeader>
           {groupedClasses[classesDate].map(currentClass => {
-            return <IonItem key={currentClass.id} detail={false} onClick={() => onClassItemClick(currentClass)}>
-              <IonCard className={styles.card}>
-                <IonCardHeader className={styles.cardHeader}>
-                  <IonCardSubtitle className={styles.cardSubtitle}>
-                    {currentClass.time}
-                    <SpotsLeft/>
-                  </IonCardSubtitle>
-                  <IonCardTitle className={styles.cardTitle}>{currentClass.name}</IonCardTitle>
-                </IonCardHeader>
-                <IonCardContent className={styles.cardContent}>
-                  <p>{currentClass.trainer}</p>
-                  <p>{currentClass.gymName}</p>
-                </IonCardContent>
-              </IonCard>
+            return <IonItem key={currentClass.id} detail={false}>
+              <ClassBookingItem currentClass={currentClass} onClick={onClassItemClick} />
             </IonItem>
           })}
 

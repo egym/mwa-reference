@@ -6,33 +6,6 @@
   margin-bottom: 30px;
 }
 
-.card {
-  width: 100%;
-  margin: 8px 0;
-  z-index: 100;
-  position: relative;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-}
-
-.cardHeader {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.cardContent {
-  padding-bottom: 10px;
-}
-
-.cardTitle {
-  font-size: 16px;
-}
-
-.cardSubtitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .chip {
   border-radius: 4px;
 }

@@ -12,7 +12,7 @@ const useClassList = () => {
     }
   }
 
-  const gymName = window.AndroidInteractor?.gymName;
+  const gymName = window.AndroidInteractor?.gymName || window.IOSInteractor?.gymName;
 
   return {
     onClassItemClick,

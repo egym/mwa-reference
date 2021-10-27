@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -24,12 +24,18 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import ClassBookingWidgetPage from './pages/ClassBookingWidgetPage';
 
 setupConfig({
   mode: window.AndroidInteractor ? 'md' : 'ios',
 });
 
 const App: FC = () => {
+
+  useEffect(() => {
+    alert(JSON.stringify(window.IOSInteractor));
+  }, []);
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -39,6 +45,10 @@ const App: FC = () => {
             <ClassBookingListPage />
           </Route>
           <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
+          <Route exact path="/classes-widget">
+            <ClassBookingWidgetPage />
+          </Route>
+
           <Redirect exact from='/' to={window.AndroidInteractor?.initialRoute || window.IOSInteractor?.initialRoute || '/home'}/>
         </IonRouterOutlet>
       </IonReactRouter>

@@ -6,6 +6,16 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 console.log('Capacitor.getPlatform() - ', Capacitor?.getPlatform());
 
+function initIOSContext(initialRoute: string, gymName: string) {
+  window.IOSInteractor = {
+    initialRoute, gymName
+  }
+  alert(`${Capacitor?.getPlatform()} - initIOSContext - ${JSON.stringify(window.IOSInteractor)}`);
+}
+
+// @ts-ignore
+window.initIOSContext = initIOSContext;
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
