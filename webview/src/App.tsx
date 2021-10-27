@@ -23,19 +23,17 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/variables.scss';
 import ClassBookingWidgetPage from './pages/ClassBookingWidgetPage';
+
+// @ts-ignore
+// document.querySelector(':root')?.style.setProperty('--ion-color-primary', '#c75300');
 
 setupConfig({
   mode: window.AndroidInteractor ? 'md' : 'ios',
 });
 
 const App: FC = () => {
-
-  useEffect(() => {
-    alert(JSON.stringify(window.IOSInteractor));
-  }, []);
-
   return (
     <IonApp>
       <IonReactRouter>
@@ -49,7 +47,7 @@ const App: FC = () => {
             <ClassBookingWidgetPage />
           </Route>
 
-          <Redirect exact from='/' to={window.AndroidInteractor?.initialRoute || window.IOSInteractor?.initialRoute || '/home'}/>
+          <Redirect exact from='/' to="/home" />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

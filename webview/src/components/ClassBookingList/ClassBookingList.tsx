@@ -20,11 +20,11 @@ import { weekDays } from './data';
 import ClassBookingItem from '../ClassBookingItem';
 
 type Props = {
-  onClassItemClick: (classDetails: ClassItem) => void;
   gymName?: string
+  queryString?: string
 };
 
-const ClassBookingList: React.FC<Props> = ({ onClassItemClick, gymName }) => {
+const ClassBookingList: React.FC<Props> = ({ gymName, queryString }) => {
   return (
     <IonContent fullscreen>
       <IonGrid>
@@ -74,8 +74,8 @@ const ClassBookingList: React.FC<Props> = ({ onClassItemClick, gymName }) => {
         return <IonList lines="none" key={classesDate} className={styles.list}>
           <IonListHeader>{classesDate}</IonListHeader>
           {groupedClasses[classesDate].map(currentClass => {
-            return <IonItem key={currentClass.id} detail={false}>
-              <ClassBookingItem currentClass={currentClass} onClick={onClassItemClick} />
+            return <IonItem key={currentClass.id} detail={false} routerLink={`/classes/${currentClass.id}${queryString ? '?' + queryString : ''}`}>
+              <ClassBookingItem currentClass={currentClass} />
             </IonItem>
           })}
 

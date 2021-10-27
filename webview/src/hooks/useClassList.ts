@@ -1,22 +1,11 @@
-import { ClassItem } from '../utils/data';
-
 const useClassList = () => {
+  const gymName = new URLSearchParams(window.location.search).get('gymName') || undefined;
 
-  const onClassItemClick = (classDetails: ClassItem) => {
-    console.log('class item click', classDetails);
-    if (window.AndroidInteractor?.onClassItemClick) {
-      window.AndroidInteractor?.onClassItemClick(classDetails.id);
-    }
-    if (window.IOSInteractor) {
-      window.webkit.messageHandlers.onClassItemClick.postMessage({ classId: classDetails.id });
-    }
-  }
-
-  const gymName = window.AndroidInteractor?.gymName || window.IOSInteractor?.gymName;
+  const queryString = new URLSearchParams(window.location.search).toString();
 
   return {
-    onClassItemClick,
-    gymName
+    gymName,
+    queryString
   }
 };
 

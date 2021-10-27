@@ -11,24 +11,24 @@ enum ClassType {
 type Props = {
   upcomingClasses: ClassItem[];
   bookedClasses: ClassItem[];
-  onClassItemClick: (classDetails: ClassItem) => void;
+  handleClassItemClick: (classDetails: ClassItem) => void;
 }
 
-const ClassBookingWidget: React.FC<Props> = ({ upcomingClasses, bookedClasses, onClassItemClick }) => {
+const ClassBookingWidget: React.FC<Props> = ({ upcomingClasses, bookedClasses, handleClassItemClick }) => {
   const [selectedSegment, setSelectedSegment] = useState<ClassType>(ClassType.Upcoming);
 
  return (
   <IonContent>
-    <IonSegment color="primary" onIonChange={e => setSelectedSegment(e.detail.value as ClassType)} value={selectedSegment}>
-      <IonSegmentButton color="primary" value={ClassType.Upcoming}>
+    <IonSegment onIonChange={e => setSelectedSegment(e.detail.value as ClassType)} value={selectedSegment}>
+      <IonSegmentButton value={ClassType.Upcoming}>
         <IonLabel>Upcoming</IonLabel>
       </IonSegmentButton>
-      <IonSegmentButton color="primary" value={ClassType.Booked}>
+      <IonSegmentButton value={ClassType.Booked}>
         <IonLabel>Booked</IonLabel>
       </IonSegmentButton>
     </IonSegment>
     {(selectedSegment === ClassType.Upcoming ? upcomingClasses : bookedClasses).map((classItem) => {
-      return <ClassBookingItem key={classItem.id} currentClass={classItem} onClick={onClassItemClick} />
+      return <ClassBookingItem key={classItem.id} currentClass={classItem} onClick={handleClassItemClick} />
     })}
   </IonContent>
  );

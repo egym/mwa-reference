@@ -6,13 +6,19 @@ import { ClassItem } from '../../utils/data';
 
 type Props = {
   currentClass: ClassItem;
-  onClick: (classDetails: ClassItem) => void;
+  onClick?: (classDetails: ClassItem) => void;
 };
 
 const ClassBookingItem: React.FC<Props> = ({ currentClass, onClick }) => {
 
+  const handleClick = () => {
+    if (!onClick) return;
+
+    onClick(currentClass);
+  }
+
  return (
-   <IonCard className={styles.card} onClick={() => onClick(currentClass)}>
+   <IonCard className={styles.card} onClick={handleClick}>
      <IonCardHeader className={styles.cardHeader}>
        <IonCardSubtitle className={styles.cardSubtitle}>
          {currentClass.time}

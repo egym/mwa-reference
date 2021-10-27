@@ -4,11 +4,11 @@ import ClassBookingList from '../../components/ClassBookingList';
 import useClassList from '../../hooks/useClassList';
 
 const ClassBookingListPage: React.FC = () => {
-  const { onClassItemClick, gymName } = useClassList();
+  const { gymName, queryString } = useClassList();
 
  return (
    <IonPage>
-    <ClassBookingList onClassItemClick={onClassItemClick} gymName={gymName} />
+    <ClassBookingList gymName={gymName} queryString={queryString} />
    </IonPage>
  );
 };

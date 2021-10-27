@@ -1,15 +1,11 @@
 import { useCallback, useMemo } from 'react';
 import { ClassItem, getBookedClasses, getUpcomingClasses } from '../utils/data';
+import { onClassItemClick } from '../utils/nativeHandlers';
 
 const useClassBookingWidget = () => {
-  const onClassItemClick = useCallback((classDetails: ClassItem) => {
+  const handleClassItemClick = useCallback((classDetails: ClassItem) => {
     console.log('useClassBookingWidget classDetails', classDetails);
-    if (window.AndroidInteractor?.onClassItemClick) {
-      window.AndroidInteractor?.onClassItemClick(classDetails.id);
-    }
-    if (window.IOSInteractor) {
-      window.webkit.messageHandlers.onClassItemClick.postMessage({ classId: classDetails.id });
-    }
+    onClassItemClick(classDetails);
   }, []);
 
   const upcomingClasses = useMemo(() => {
@@ -25,7 +21,7 @@ const useClassBookingWidget = () => {
   }, []);
 
   return {
-    onClassItemClick,
+    handleClassItemClick,
     upcomingClasses,
     bookedClasses,
   }
