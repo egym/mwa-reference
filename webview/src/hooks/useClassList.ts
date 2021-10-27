@@ -7,6 +7,9 @@ const useClassList = () => {
     if (window.AndroidInteractor?.onClassItemClick) {
       window.AndroidInteractor?.onClassItemClick(classDetails.id);
     }
+    if (window.IOSInteractor) {
+      window.webkit.messageHandlers.onClassItemClick.postMessage({ classId: classDetails.id });
+    }
   }
 
   const gymName = window.AndroidInteractor?.gymName;

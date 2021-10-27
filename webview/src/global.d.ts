@@ -9,6 +9,17 @@ declare global {
     };
     IOSInteractor?: {
       initialRoute: string;
+      gymName: string;
+    };
+    webkit: {
+      messageHandlers: {
+        onClassBookedClick: {
+          postMessage: (body: { classId: number, className: string }) => void;
+        }
+        onClassItemClick: {
+          postMessage: (body: { classId: number }) => void;
+        }
+      }
     }
   }
 }

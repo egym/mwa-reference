@@ -10,12 +10,21 @@ const useClassDetails = (classId?: string) => {
       console.log('onClassBookedClick', classDetails);
 
       if (window.AndroidInteractor) {
-        window.AndroidInteractor?.onClassBookedClick(Number(classId), classDetails.name);
         presentToast({
           header: 'WEBVIEW TOAST',
-          message: `Sending class name - "${classDetails.name}" message to Android`,
+          message: `Sending class details to Android`,
           duration: 5000
         });
+        window.AndroidInteractor?.onClassBookedClick(Number(classId), classDetails.name);
+      }
+
+      if (window.IOSInteractor) {
+        presentToast({
+          header: 'WEBVIEW TOAST',
+          message: `Sending class details to IOS`,
+          duration: 5000
+        });
+        window.webkit.messageHandlers.onClassBookedClick.postMessage({ classId: Number(classId), className: classDetails.name });
       }
     }
   }
