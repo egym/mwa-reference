@@ -30,7 +30,7 @@ import ClassBookingWidgetPage from './pages/ClassBookingWidgetPage';
 // document.querySelector(':root')?.style.setProperty('--ion-color-primary', '#c75300');
 
 setupConfig({
-  mode: window.AndroidInteractor ? 'md' : 'ios',
+  mode: 'md',
 });
 
 const App: FC = () => {

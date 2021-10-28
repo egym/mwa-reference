@@ -19,7 +19,7 @@ const ClassBookingWidget: React.FC<Props> = ({ upcomingClasses, bookedClasses, h
 
  return (
   <IonContent>
-    <IonSegment onIonChange={e => setSelectedSegment(e.detail.value as ClassType)} value={selectedSegment}>
+    <IonSegment mode="ios" onIonChange={e => setSelectedSegment(e.detail.value as ClassType)} value={selectedSegment}>
       <IonSegmentButton value={ClassType.Upcoming}>
         <IonLabel>Upcoming</IonLabel>
       </IonSegmentButton>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonRippleEffect } from '@ionic/react';
 import styles from './ClassBookingItem.module.scss';
 import SpotsLeft from '../SpotsLeft';
 import { ClassItem } from '../../utils/data';
@@ -18,7 +18,7 @@ const ClassBookingItem: React.FC<Props> = ({ currentClass, onClick }) => {
   }
 
  return (
-   <IonCard className={styles.card} onClick={handleClick}>
+   <IonCard className={styles.card} button onClick={handleClick}>
      <IonCardHeader className={styles.cardHeader}>
        <IonCardSubtitle className={styles.cardSubtitle}>
          {currentClass.time}
@@ -30,6 +30,7 @@ const ClassBookingItem: React.FC<Props> = ({ currentClass, onClick }) => {
        <p>{currentClass.trainer}</p>
        <p>{currentClass.gymName}</p>
      </IonCardContent>
+     <IonRippleEffect type="bounded" />
    </IonCard>
  );
 };
