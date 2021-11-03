@@ -2,6 +2,7 @@ import { IonContent, IonLabel, IonSegment, IonSegmentButton } from '@ionic/react
 import React, { useState } from 'react';
 import { ClassItem } from '../../utils/data';
 import ClassBookingItem from '../ClassBookingItem';
+import styles from './ClassBookingWidget.module.scss';
 
 enum ClassType {
   Upcoming = 'upcoming',
@@ -18,7 +19,7 @@ const ClassBookingWidget: React.FC<Props> = ({ upcomingClasses, bookedClasses, h
   const [selectedSegment, setSelectedSegment] = useState<ClassType>(ClassType.Upcoming);
 
  return (
-  <IonContent>
+  <IonContent className={styles.content}>
     <IonSegment mode="ios" onIonChange={e => setSelectedSegment(e.detail.value as ClassType)} value={selectedSegment}>
       <IonSegmentButton value={ClassType.Upcoming}>
         <IonLabel>Upcoming</IonLabel>
