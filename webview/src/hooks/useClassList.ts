@@ -1,11 +1,10 @@
-const useClassList = () => {
-  const gymName = new URLSearchParams(window.location.search).get('gymName') || undefined;
+import { usePortalsContext } from './usePortalsContext';
 
-  const queryString = new URLSearchParams(window.location.search).toString();
+const useClassList = () => {
+  const { state } = usePortalsContext();
 
   return {
-    gymName,
-    queryString
+    gymName: state?.gymName,
   }
 };
 

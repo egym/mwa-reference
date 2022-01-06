@@ -1,4 +1,4 @@
-import { addBusinessDays, format, getDay } from 'date-fns'
+import { addBusinessDays, format } from 'date-fns'
 
 const today = new Date();
 

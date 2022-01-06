@@ -1,20 +1,20 @@
+import Portals from '@ionic/portals';
 import { ClassItem } from './data';
 
-export const onClassItemClick = (classDetails: ClassItem) => {
-  if (window.AndroidInteractor?.onClassItemClick) {
-    window.AndroidInteractor?.onClassItemClick(classDetails.id);
-  }
-  if (window.webkit?.messageHandlers.onClassItemClick) {
-    window.webkit?.messageHandlers.onClassItemClick.postMessage({ classId: classDetails.id });
-  }
+export const onClassItemClick = async (classDetails: ClassItem) => {
+  console.log('send message to the native side - onClassItemClick');
+  return Portals.publish({
+    topic: 'class-item-click', data: {
+      className: classDetails.name
+    }
+  });
 }
 
-export const onClassBookedClick = (classDetails: ClassItem) => {
-  if (window.AndroidInteractor) {
-    window.AndroidInteractor?.onClassBookedClick(Number(classDetails.id), classDetails.name);
-  }
-
-  if (window.webkit?.messageHandlers.onClassBookedClick) {
-    window.webkit?.messageHandlers.onClassBookedClick.postMessage({ classId: Number(classDetails.id), className: classDetails.name });
-  }
+export const onClassBookedClick = async (classDetails: ClassItem) => {
+  console.log('send message to the native side - onClassBookedClick');
+  return Portals.publish({
+    topic: 'book-class', data: {
+      className: classDetails.name
+    }
+  });
 }

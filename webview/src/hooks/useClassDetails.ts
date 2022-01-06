@@ -4,11 +4,9 @@ import { onClassBookedClick } from '../utils/nativeHandlers';
 const useClassDetails = (classId?: string) => {
   const classDetails = classId ? getClassDetailsById(classId) : undefined;
 
-  const onBookClassClick = () => {
+  const onBookClassClick = async () => {
     if (classDetails) {
-      console.log('onClassBookedClick', classDetails);
-
-      onClassBookedClick(classDetails)
+      await onClassBookedClick(classDetails);
     }
   }
 

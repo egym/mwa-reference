@@ -17,11 +17,10 @@ import { weekDays } from './data';
 import ClassBookingItem from '../ClassBookingItem';
 
 type Props = {
-  gymName?: string
-  queryString?: string
+  gymName?: string // gymName is used here only for demo purpose to demonstrate that it's possible to pass data from native to web via portals
 };
 
-const ClassBookingList: React.FC<Props> = ({ gymName , queryString }) => {
+const ClassBookingList: React.FC<Props> = ({ gymName  }) => {
   return (
     <IonContent fullscreen>
       <div className={styles.flex}>
@@ -68,7 +67,7 @@ const ClassBookingList: React.FC<Props> = ({ gymName , queryString }) => {
                 className={styles.listItem}
                 key={currentClass.id}
                 detail={false}
-                routerLink={`/classes/${currentClass.id}${queryString ? '?' + queryString : ''}`}
+                routerLink={`/classes/${currentClass.id}`}
               >
                 <ClassBookingItem currentClass={currentClass} />
               </IonItem>

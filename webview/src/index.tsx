@@ -1,14 +1,27 @@
+import { Capacitor } from '@capacitor/core';
 import React from 'react';
+import Portals from '@ionic/portals';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+if (!Capacitor?.isNativePlatform()) {
+  // useful to mock portals initial context when testing app locally in browser
+  window.portalInitialContext = {
+    value: { startingRoute: '/home', gymName: 'test' },
+  };
+}
+
+Portals.getInitialContext<typeof window.portalInitialContext.value>().then((context) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App context={context.value} />
+    </React.StrictMode>,
+    document.getElementById('root'),
+  );
+})
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

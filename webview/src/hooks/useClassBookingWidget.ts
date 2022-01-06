@@ -3,9 +3,9 @@ import { ClassItem, getBookedClasses, getUpcomingClasses } from '../utils/data';
 import { onClassItemClick } from '../utils/nativeHandlers';
 
 const useClassBookingWidget = () => {
-  const handleClassItemClick = useCallback((classDetails: ClassItem) => {
-    console.log('useClassBookingWidget classDetails', classDetails);
-    onClassItemClick(classDetails);
+  const handleClassItemClick = useCallback(async (classDetails: ClassItem) => {
+    // here native side should redirect to the class details page
+    await onClassItemClick(classDetails);
   }, []);
 
   const upcomingClasses = useMemo(() => {

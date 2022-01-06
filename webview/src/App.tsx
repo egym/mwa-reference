@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -25,31 +25,42 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.scss';
 import ClassBookingWidgetPage from './pages/ClassBookingWidgetPage';
+import { PortalsProvider } from './hooks/usePortalsContext';
 
 // @ts-ignore
 // document.querySelector(':root')?.style.setProperty('--ion-color-primary', '#c75300');
 
 setupConfig({
-  mode: window.AndroidInteractor ? 'md' : 'ios',
+  mode: 'ios',
 });
 
-const App: FC = () => {
+type AppProps = {
+  context: {
+    startingRoute: string;
+    gymName?: string
+  };
+}
+
+const App: FC<AppProps> = ({ context }) => {
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route exact path="/home" component={Home}/>
-          <Route exact path="/classes">
-            <ClassBookingListPage />
-          </Route>
-          <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
-          <Route exact path="/classes-widget">
-            <ClassBookingWidgetPage />
-          </Route>
+      <PortalsProvider initialContext={context}>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route exact path="/home" component={Home}/>
+            <Route exact path="/classes">
+              <ClassBookingListPage />
+            </Route>
+            <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
+            <Route exact path="/classes-widget">
+              <ClassBookingWidgetPage />
+            </Route>
 
-          <Redirect exact from='/' to="/home" />
-        </IonRouterOutlet>
-      </IonReactRouter>
+            <Redirect exact from='/' to={context.startingRoute || '/home'}/>
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </PortalsProvider>
+
     </IonApp>
   );
 };
