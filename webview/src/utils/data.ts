@@ -10,6 +10,7 @@ export type ClassItem = {
   time: string;
   date: Date;
   image: string;
+  booked: boolean;
 }
 
 export const classes: ClassItem[] = [
@@ -21,6 +22,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 1),
     image: '/assets/training_template_1.png',
+    booked: false,
   },
   {
     id: 2,
@@ -30,6 +32,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 1),
     image: '/assets/training_template_2.png',
+    booked: true,
   },
   {
     id: 3,
@@ -39,6 +42,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 1),
     image: '/assets/training_template_3.png',
+    booked: false,
   },
   {
     id: 4,
@@ -48,6 +52,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 1),
     image: '/assets/training_template_24.png',
+    booked: true,
   },
   {
     id: 5,
@@ -57,6 +62,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 2),
     image: '/assets/training_template_25.png',
+    booked: false,
   },
   {
     id: 6,
@@ -66,6 +72,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 2),
     image: '/assets/training_template_26.png',
+    booked: true,
   },
   {
     id: 7,
@@ -75,6 +82,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 3),
     image: '/assets/training_template_29.png',
+    booked: true,
   },
   {
     id: 8,
@@ -84,6 +92,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 2),
     image: '/assets/training_template_1.png',
+    booked: false,
   },
   {
     id: 9,
@@ -93,6 +102,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 2),
     image: '/assets/training_template_2.png',
+    booked: true,
   },
   {
     id: 10,
@@ -102,6 +112,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 3),
     image: '/assets/training_template_3.png',
+    booked: false,
   },
   {
     id: 11,
@@ -111,6 +122,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 3),
     image: '/assets/training_template_24.png',
+    booked: true,
   },
   {
     id: 12,
@@ -120,6 +132,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 2),
     image: '/assets/training_template_25.png',
+    booked: false,
   },
   {
     id: 13,
@@ -129,6 +142,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 3),
     image: '/assets/training_template_26.png',
+    booked: true,
   },
   {
     id: 14,
@@ -138,6 +152,7 @@ export const classes: ClassItem[] = [
     time: '8:30 AM - 45 min',
     date: addBusinessDays(today, 1),
     image: '/assets/training_template_29.png',
+    booked: false,
   },
 ];
 
@@ -156,4 +171,12 @@ export const groupedClasses: Record<string, ClassItem[]> = classes.reduce((acc, 
 
 export const getClassDetailsById = (id: string) => {
   return classes.find(classItem => String(classItem.id) === id)
+}
+
+export const getUpcomingClasses = () => {
+  return classes.filter(classItem => !classItem.booked);
+}
+
+export const getBookedClasses = () => {
+  return classes.filter(classItem => classItem.booked);
 }

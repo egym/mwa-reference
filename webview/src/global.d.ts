@@ -2,12 +2,18 @@ export {};
 declare global {
   interface Window {
     AndroidInteractor?: {
-      initialRoute: string;
-      gymName: string
-      onClassBookedClick: (className: string) => void;
+      onClassBookedClick: (classId: number, className: string) => void;
+      onClassItemClick: (classId: number) => void;
     };
-    portalInitialContext: {
-      value: { startingRoute: string; gymName?: string },
+    webkit: {
+      messageHandlers: {
+        onClassBookedClick: {
+          postMessage: (body: { classId: number, className: string }) => void;
+        }
+        onClassItemClick: {
+          postMessage: (body: { classId: number }) => void;
+        }
+      }
     }
   }
 }

@@ -1,14 +1,10 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-import PlainWebviewClassBookingDetails from './pages/PlainWebview/PlainWebviewClassBookingDetails';
-import PlainWebviewClassBookingList from './pages/PlainWebview/PlainWebviewClassBookingList';
-import PortalsClassBookingList from './pages/Portals/PortalsClassBookingList';
-import PortalsClassBookingDetails from './pages/Portals/PortalsClassBookingDetails';
-import WebClassBookingList from './pages/Web/WebClassBookingList';
-import WebClassBookingDetails from './pages/Web/WebClassBookingDetails';
+import ClassBookingListPage from './pages/ClassBookingListPage';
+import ClassBookingDetailsPage from './pages/ClassBookingDetailsPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,38 +23,31 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import './theme/variables.scss';
+import ClassBookingWidgetPage from './pages/ClassBookingWidgetPage';
+
+// @ts-ignore
+// document.querySelector(':root')?.style.setProperty('--ion-color-primary', '#c75300');
 
 setupConfig({
-  mode: 'ios'
+  mode: window.AndroidInteractor ? 'md' : 'ios',
 });
 
-type AppProps = {
-  context: {
-    startingRoute: string;
-    gymName?: string
-  };
-}
-
-const App: FC<AppProps> = ({ context }) => {
+const App: FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
           <Route exact path="/home" component={Home}/>
-          <Route exact path="/portals/classes">
-            <PortalsClassBookingList context={context} />
+          <Route exact path="/classes">
+            <ClassBookingListPage />
           </Route>
-          <Route exact path="/portals/classes/:id" component={PortalsClassBookingDetails}/>
-          <Route exact path="/plain-webview/classes">
-            <PlainWebviewClassBookingList />
+          <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
+          <Route exact path="/classes-widget">
+            <ClassBookingWidgetPage />
           </Route>
-          <Route exact path="/plain-webview/classes/:id" component={PlainWebviewClassBookingDetails}/>
-          <Route exact path="/web/classes">
-            <WebClassBookingList />
-          </Route>
-          <Route exact path="/web/classes/:id" component={WebClassBookingDetails}/>
-          <Redirect exact from='/' to={window.AndroidInteractor?.initialRoute || context.startingRoute}/>
+
+          <Redirect exact from='/' to="/home" />
         </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>

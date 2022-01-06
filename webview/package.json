@@ -1,15 +1,10 @@
 {
+  "homepage": "./",
   "name": "plain",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@capacitor/app": "1.0.5",
-    "@capacitor/core": "3.2.5",
-    "@capacitor/haptics": "1.1.2",
-    "@capacitor/ios": "3.2.5",
-    "@capacitor/keyboard": "1.1.2",
-    "@capacitor/status-bar": "1.0.5",
-    "@ionic/portals": "^0.2.2",
+    "@capacitor/core": "^3.2.5",
     "@ionic/react": "^5.5.0",
     "@ionic/react-router": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -45,7 +40,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && echo '/* /index.html 200' | cat > build/_redirects",
+    "build": "react-scripts build && cp build/index.html build/200.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -69,7 +64,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.2.5",
-    "node-sass": "^6.0.1"
+    "sass": "^1.43.4"
   },
   "description": "An Ionic project"
 }
