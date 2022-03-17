@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupConfig } from '@ionic/react';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import ClassBookingListPage from './pages/ClassBookingListPage';
@@ -30,15 +30,12 @@ import { PortalsProvider } from './hooks/usePortalsContext';
 // @ts-ignore
 // document.querySelector(':root')?.style.setProperty('--ion-color-primary', '#c75300');
 
-setupConfig({
+setupIonicReact({
   mode: 'ios',
 });
 
 type AppProps = {
-  context: {
-    startingRoute: string;
-    gymName?: string
-  };
+  context: typeof window.portalInitialContext.value
 }
 
 const App: FC<AppProps> = ({ context }) => {

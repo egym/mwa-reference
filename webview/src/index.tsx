@@ -8,7 +8,12 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 if (!Capacitor?.isNativePlatform()) {
   // useful to mock portals initial context when testing app locally in browser
   window.portalInitialContext = {
-    value: { startingRoute: '/home', gymName: 'test' },
+    value: {
+      startingRoute: '/home',
+      gymName: 'test',
+      token: null,
+      exerciserInfo: null,
+    },
   };
 }
 

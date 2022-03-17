@@ -1,8 +1,11 @@
-import React, { FC, useContext, useReducer } from "react";
+import React, {FC, useContext, useEffect, useReducer} from "react";
+import {getAuthTokenSubscription, getExerciserInfoSubscription} from "../utils/nativeHandlers";
+import Portals from "@ionic/portals";
+import {PortalSubscription} from "@ionic/portals/types/definitions";
 
 type PortalsContext = typeof window.portalInitialContext.value;
 
-const initialState: PortalsContext = { startingRoute: '/home', gymName: '' };
+const initialState: Partial<PortalsContext> = { };
 
 const types = {
   SET_PORTALS_CONTEXT: 'SET_PORTALS_CONTEXT',
@@ -35,12 +38,53 @@ type ProviderProps = {
 type ContextType = {
   state: Partial<PortalsContext>;
   setPortalsState: (context: Partial<PortalsContext>) => void;
+  token?: string | null;
+  exerciserInfo?: Exerciser | null;
 }
 
 const PortalsStateContext = React.createContext<Partial<ContextType>>({});
 
 export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext }) => {
   const [state, dispatch] = useReducer(reducer, initialContext || initialState);
+
+  useEffect(() => {
+    let subscription: PortalSubscription;
+
+    (async () => {
+      subscription = await getAuthTokenSubscription(({ data: token }) => {
+        localStorage.setItem('mwa::authToken', token)
+        dispatch({
+          type: types.SET_PORTALS_CONTEXT,
+          payload: {
+            token
+          }
+        });
+      });
+    })();
+
+    return () => {
+      Portals.unsubscribe(subscription)
+    }
+  }, []);
+
+  useEffect(() => {
+    let subscription: PortalSubscription;
+
+    (async () => {
+      subscription = await getExerciserInfoSubscription(({ data: exerciserInfo }) => {
+        dispatch({
+          type: types.SET_PORTALS_CONTEXT,
+          payload: {
+            exerciserInfo
+          }
+        });
+      });
+    })();
+
+    return () => {
+      Portals.unsubscribe(subscription)
+    }
+  }, [])
 
   const setPortalsState = (context: Partial<PortalsContext>) => {
     dispatch({
@@ -49,7 +93,13 @@ export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext })
     })
   }
 
-  return <PortalsStateContext.Provider value={{ state, setPortalsState }}>
+  return <PortalsStateContext.Provider
+    value={{
+      state,
+      token: state.token,
+      exerciserInfo: state.exerciserInfo,
+      setPortalsState
+  }}>
     {children}
   </PortalsStateContext.Provider>
 }
