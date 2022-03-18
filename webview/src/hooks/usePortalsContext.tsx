@@ -52,7 +52,7 @@ export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext })
 
     (async () => {
       subscription = await getAuthTokenSubscription(({ data: token }) => {
-        localStorage.setItem('mwa::authToken', token)
+        localStorage.setItem('mwa::authToken', token);
         dispatch({
           type: types.SET_PORTALS_CONTEXT,
           payload: {
