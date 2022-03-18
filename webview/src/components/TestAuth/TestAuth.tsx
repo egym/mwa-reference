@@ -38,7 +38,7 @@ const TestAuth: FC = () => {
           Request exerciser info
         </IonButton>
         <IonText>
-          Current exerciser info - {exerciserInfo?.email}
+          Current exerciser info - {JSON.stringify(exerciserInfo)}
         </IonText>
       </IonCardContent>
     </IonCard>
