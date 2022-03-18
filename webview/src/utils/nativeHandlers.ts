@@ -32,7 +32,10 @@ export const requestAuthToken = async () => {
   await Portals.publish({
     topic: NativeRequestTopic.Subscription,
     data: {
-      type: NativeRequestType.provideAuthToken
+      type: NativeRequestType.provideAuthToken,
+      data: {
+        message: 'Hallo'
+      }
     }
   })
 }
