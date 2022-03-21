@@ -6,23 +6,6 @@ import {usePortalsContext} from "../../hooks/usePortalsContext";
 const TestAuth: FC = () => {
   const { token, exerciserInfo } = usePortalsContext();
 
-  const exerciserObjectEmail = useMemo(() => {
-    try {
-      return exerciserInfo?.email || 'undefined email or exerciser object';
-    } catch (e) {
-      return String(e);
-    }
-  }, [exerciserInfo])
-
-  const exerciserEmail = useMemo(() => {
-    try {
-      const parsedExerciser = exerciserInfo ? JSON.parse(JSON.stringify(exerciserInfo)) : {};
-      return parsedExerciser.email;
-    } catch (e) {
-      return `Parse error: ${String(e)}`;
-    }
-  }, [exerciserInfo]);
-
   const exerciserStringified = useMemo(() => {
     try {
       return JSON.stringify(exerciserInfo);
@@ -63,15 +46,7 @@ const TestAuth: FC = () => {
           Request exerciser info
         </IonButton>
         <IonText>
-          Email from plain object - {exerciserObjectEmail}
-        </IonText>
-        <br/>
-        <IonText>
           Current exerciser info stringified - {exerciserStringified}
-        </IonText>
-        <br/>
-        <IonText>
-          Current exerciser email - {exerciserEmail}
         </IonText>
       </IonCardContent>
     </IonCard>
