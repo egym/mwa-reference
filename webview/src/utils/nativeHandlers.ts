@@ -24,7 +24,12 @@ export const onClassBookedClick = async (classDetails: ClassItem) => {
 
 export const publishDismiss = async () => {
   logIonicPublish('dismiss');
-  await Portals.publish({ topic: NativeRequestTopic.Dismiss, data: 'cancel' });
+  await Portals.publish({
+    topic: NativeRequestTopic.Subscription,
+    data: {
+      type: NativeRequestType.dismiss,
+    }
+  });
 }
 
 export const requestAuthToken = async () => {
