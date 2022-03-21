@@ -1,10 +1,19 @@
-import React, {FC} from 'react';
+import React, {FC, useMemo} from 'react';
 import {IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonItemDivider, IonText} from "@ionic/react";
 import {requestAuthToken, requestExerciserInfo} from "../../utils/nativeHandlers";
 import {usePortalsContext} from "../../hooks/usePortalsContext";
 
 const TestAuth: FC = () => {
   const { token, exerciserInfo } = usePortalsContext();
+
+  const exerciserEmail = useMemo(() => {
+    try {
+      const parsedExerciser = exerciserInfo ? JSON.parse(JSON.stringify(exerciserInfo)) : {};
+      return parsedExerciser.email;
+    } catch {
+      return "Parse error";
+    }
+  }, [exerciserInfo])
 
   return (
     <IonCard>
@@ -38,7 +47,15 @@ const TestAuth: FC = () => {
           Request exerciser info
         </IonButton>
         <IonText>
-          Current exerciser info - {JSON.stringify(exerciserInfo)}
+          Current exerciser info as is - {exerciserInfo}
+        </IonText>
+        <br/>
+        <IonText>
+          Current exerciser info stringified - {JSON.stringify(exerciserInfo)}
+        </IonText>
+        <br/>
+        <IonText>
+          Current exerciser email - {exerciserEmail}
         </IonText>
       </IonCardContent>
     </IonCard>
