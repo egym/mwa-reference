@@ -9,6 +9,6 @@ export enum NativeRequestType {
 }
 
 export enum SubscribeTopic {
-  token = 'token',
+  authToken = 'authToken',
   exerciserInfo = 'exerciserInfo'
 }

@@ -56,7 +56,7 @@ export const requestExerciserInfo = async () => {
 }
 
 export const getAuthTokenSubscription = async (callback: SubscriptionCallback<string>) => {
-  return Portals.subscribe<string>({ topic: SubscribeTopic.token }, callback);
+  return Portals.subscribe<string>({ topic: SubscribeTopic.authToken }, callback);
 }
 
 export const getExerciserInfoSubscription = async (callback: SubscriptionCallback<Exerciser>) => {
