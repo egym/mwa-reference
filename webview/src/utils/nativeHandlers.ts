@@ -4,15 +4,6 @@ import { ClassItem } from './data';
 import {NativeRequestTopic, NativeRequestType, SubscribeTopic} from "./constants";
 import {logIonicPublish} from "./helpers";
 
-export const onClassItemClick = async (classDetails: ClassItem) => {
-  logIonicPublish('onClassItemClick');
-  return Portals.publish({
-    topic: 'class-item-click', data: {
-      className: classDetails.name
-    }
-  });
-}
-
 export const onClassBookedClick = async (classDetails: ClassItem) => {
   logIonicPublish('onClassBookedClick');
   return Portals.publish({
@@ -51,6 +42,17 @@ export const requestExerciserInfo = async () => {
     topic: NativeRequestTopic.Subscription,
     data: {
       type: NativeRequestType.provideExerciserInfo
+    }
+  })
+}
+
+export const requestOpenFeature = async (data: { startingRoute: string }) => {
+  logIonicPublish('requestOpenFeature', '::', JSON.stringify(data));
+  await Portals.publish({
+    topic: NativeRequestTopic.Subscription,
+    data: {
+      type: NativeRequestType.openFeature,
+      data
     }
   })
 }

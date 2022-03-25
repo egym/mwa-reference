@@ -1,3 +1,3 @@
 export const logIonicPublish = (...messages: any[]) => {
-  console.log('Portals.publish :: ', ...messages);
+  console.log('Portals.publish ::', ...messages);
 }

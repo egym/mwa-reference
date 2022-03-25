@@ -5,7 +5,8 @@ export enum NativeRequestTopic {
 export enum NativeRequestType {
   provideAuthToken = 'provideAuthToken',
   provideExerciserInfo = 'provideExerciserInfo',
-  dismiss = 'dismiss'
+  dismiss = 'dismiss',
+  openFeature = 'openFeature'
 }
 
 export enum SubscribeTopic {

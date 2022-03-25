@@ -1,11 +1,12 @@
 import { useCallback, useMemo } from 'react';
 import { ClassItem, getBookedClasses, getUpcomingClasses } from '../utils/data';
-import { onClassItemClick } from '../utils/nativeHandlers';
+import { requestOpenFeature } from '../utils/nativeHandlers';
 
 const useClassBookingWidget = () => {
   const handleClassItemClick = useCallback(async (classDetails: ClassItem) => {
-    // here native side should redirect to the class details page
-    await onClassItemClick(classDetails);
+    await requestOpenFeature({
+      startingRoute: `/classes/${classDetails.id}`
+    })
   }, []);
 
   const upcomingClasses = useMemo(() => {
