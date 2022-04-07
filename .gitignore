@@ -20,6 +20,8 @@
 .env.production.local
 .vscode
 .idea
+/build
+/www
 
 npm-debug.log*
 yarn-debug.log*
