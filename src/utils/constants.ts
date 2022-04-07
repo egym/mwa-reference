@@ -3,8 +3,8 @@ export enum NativeRequestTopic {
 }
 
 export enum NativeRequestType {
-  provideAuthToken = 'provideAuthToken',
-  provideExerciserInfo = 'provideExerciserInfo',
+  authToken = 'authToken',
+  exerciserInfo = 'exerciserInfo',
   dismiss = 'dismiss',
   openFeature = 'openFeature'
 }

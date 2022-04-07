@@ -28,7 +28,7 @@ export const requestAuthToken = async () => {
   await Portals.publish({
     topic: NativeRequestTopic.Subscription,
     data: {
-      type: NativeRequestType.provideAuthToken,
+      type: NativeRequestType.authToken,
       data: {
         message: 'Hallo'
       }
@@ -41,7 +41,7 @@ export const requestExerciserInfo = async () => {
   await Portals.publish({
     topic: NativeRequestTopic.Subscription,
     data: {
-      type: NativeRequestType.provideExerciserInfo
+      type: NativeRequestType.exerciserInfo
     }
   })
 }
