@@ -1,5 +1,7 @@
 {
   "name": "egym-webview-reference",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
