@@ -2,8 +2,6 @@
 
 Local start up:
 ```
-cd ./webview
-
 npm install
 npm run build
 
