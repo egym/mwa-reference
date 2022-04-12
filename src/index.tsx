@@ -10,7 +10,6 @@ if (!Capacitor?.isNativePlatform()) {
   window.portalInitialContext = {
     value: {
       startingRoute: '/home',
-      gymName: 'test',
       token: null,
       exerciserInfo: null,
     },

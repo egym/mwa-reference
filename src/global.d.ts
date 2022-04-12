@@ -20,7 +20,6 @@ declare global {
     portalInitialContext: {
       value: {
         startingRoute: string;
-        gymName?: string;
         token: string | null;
         exerciserInfo: Exerciser | null;
       },

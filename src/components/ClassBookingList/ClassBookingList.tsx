@@ -16,11 +16,7 @@ import styles from './ClassBookingList.module.scss';
 import { weekDays } from './data';
 import ClassBookingItem from '../ClassBookingItem';
 
-type Props = {
-  gymName?: string // gymName is used here only for demo purpose to demonstrate that it's possible to pass data from native to web via portals
-};
-
-const ClassBookingList: React.FC<Props> = ({ gymName  }) => {
+const ClassBookingList: React.FC = () => {
   return (
     <IonContent fullscreen>
       <div className={styles.flex}>
@@ -53,12 +49,7 @@ const ClassBookingList: React.FC<Props> = ({ gymName  }) => {
           })}
         </div>
       </div>
-      <div className={styles.listWrapper} style={{ paddingTop: gymName ? '10px' : undefined }}>
-        {gymName && (
-          <IonText color="primary" style={{ paddingLeft: '10px' }}>
-            Gym Name (data from native) - {gymName}
-          </IonText>
-        )}
+      <div className={styles.listWrapper}>
         {Object.keys(groupedClasses).map(classesDate => {
           return <IonList lines="none" key={classesDate} className={styles.list}>
             <IonListHeader className={styles.listHeader}><h6>{classesDate}</h6></IonListHeader>
