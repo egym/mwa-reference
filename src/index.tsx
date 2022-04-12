@@ -9,7 +9,12 @@ if (!Capacitor?.isNativePlatform()) {
   // useful to mock portals initial context when testing app locally in browser
   window.portalInitialContext = {
     value: {
+      url: '',
       startingRoute: '/home',
+      lightPrimaryColor: '',
+      primaryColor: '',
+      primaryTextColor: '',
+      secondaryColor: '',
       token: null,
       exerciserInfo: null,
     },

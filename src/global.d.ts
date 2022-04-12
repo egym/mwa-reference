@@ -19,7 +19,12 @@ declare global {
     // portals context
     portalInitialContext: {
       value: {
+        url: string;
         startingRoute: string;
+        lightPrimaryColor: string;
+        primaryColor: string;
+        primaryTextColor: string;
+        secondaryColor: string;
         token: string | null;
         exerciserInfo: Exerciser | null;
       },
