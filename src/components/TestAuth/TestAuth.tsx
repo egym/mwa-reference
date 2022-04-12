@@ -1,6 +1,6 @@
 import React, {FC, useMemo} from 'react';
 import {IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonText} from "@ionic/react";
-import {requestAuthToken, requestExerciserInfo} from "../../utils/nativeHandlers";
+import {requestAuthToken, requestExerciserInfo} from "../../utils/nativeHandlers/requests";
 import {usePortalsContext} from "../../hooks/usePortalsContext";
 
 const TestAuth: FC = () => {

@@ -1,5 +1,5 @@
 import React, {FC, useContext, useEffect, useReducer} from "react";
-import {getAuthTokenSubscription, getExerciserInfoSubscription} from "../utils/nativeHandlers";
+import {getAuthTokenSubscription, getExerciserInfoSubscription} from "../utils/nativeHandlers/subscriptions";
 import Portals from "@ionic/portals";
 import {PortalSubscription} from "@ionic/portals/types/definitions";
 

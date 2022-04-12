@@ -1,8 +1,7 @@
 import React, {FC} from 'react';
-import Portals from "@ionic/portals";
 import {IonButton, IonHeader, IonIcon, IonTitle, IonToolbar} from "@ionic/react";
 import {chevronBackOutline} from "ionicons/icons";
-import {publishDismiss} from "../../utils/nativeHandlers";
+import {publishDismiss} from "../../utils/nativeHandlers/requests";
 
 type Props = {
   title: string

@@ -1,5 +1,5 @@
 import { getClassDetailsById } from '../utils/data';
-import { onClassBookedClick } from '../utils/nativeHandlers';
+import { onClassBookedClick } from '../utils/nativeHandlers/requests';
 
 const useClassDetails = (classId?: string) => {
   const classDetails = classId ? getClassDetailsById(classId) : undefined;

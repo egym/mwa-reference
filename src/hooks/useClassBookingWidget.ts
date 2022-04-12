@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 import { ClassItem, getBookedClasses, getUpcomingClasses } from '../utils/data';
-import { requestOpenFeature } from '../utils/nativeHandlers';
+import { requestOpenFeature } from '../utils/nativeHandlers/requests';
 
 const useClassBookingWidget = () => {
   const handleClassItemClick = useCallback(async (classDetails: ClassItem) => {

@@ -1,8 +1,7 @@
-import Portals from '@ionic/portals';
-import {SubscriptionCallback} from "@ionic/portals/types/definitions";
-import { ClassItem } from './data';
-import {NativeRequestTopic, NativeRequestType, SubscribeTopic} from "./constants";
-import {logIonicPublish} from "./helpers";
+import {ClassItem} from "../../data";
+import {logIonicPublish} from "../../helpers";
+import Portals from "@ionic/portals";
+import {NativeRequestTopic, NativeRequestType} from "../../constants";
 
 export const onClassBookedClick = async (classDetails: ClassItem) => {
   logIonicPublish('onClassBookedClick');
@@ -55,12 +54,4 @@ export const requestOpenFeature = async (data: { startingRoute: string }) => {
       data
     }
   })
-}
-
-export const getAuthTokenSubscription = async (callback: SubscriptionCallback<string>) => {
-  return Portals.subscribe<string>({ topic: SubscribeTopic.authToken }, callback);
-}
-
-export const getExerciserInfoSubscription = async (callback: SubscriptionCallback<Exerciser>) => {
-  return Portals.subscribe<Exerciser>({ topic: SubscribeTopic.exerciserInfo }, callback)
 }
