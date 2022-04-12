@@ -1,5 +1,3 @@
-# Booking Classes - PoC
-
 Local start up:
 ```
 npm install
