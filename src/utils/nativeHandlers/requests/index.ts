@@ -1,16 +1,6 @@
-import {ClassItem} from "../../data";
 import {logIonicPublish} from "../../helpers";
 import Portals from "@ionic/portals";
 import {NativeRequestTopic, NativeRequestType} from "../../constants";
-
-export const onClassBookedClick = async (classDetails: ClassItem) => {
-  logIonicPublish('onClassBookedClick');
-  return Portals.publish({
-    topic: 'book-class', data: {
-      className: classDetails.name
-    }
-  });
-}
 
 export const publishDismiss = async () => {
   logIonicPublish('dismiss');

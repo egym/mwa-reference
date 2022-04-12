@@ -40,6 +40,7 @@ type ContextType = {
   setPortalsState: (context: Partial<PortalsContext>) => void;
   token?: string | null;
   exerciserInfo?: Exerciser | null;
+  url?: string | null;
 }
 
 const PortalsStateContext = React.createContext<Partial<ContextType>>({});
@@ -98,6 +99,7 @@ export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext })
       state,
       token: state.token,
       exerciserInfo: state.exerciserInfo,
+      url: state.url,
       setPortalsState
   }}>
     {children}
