@@ -25,7 +25,7 @@ declare global {
         primaryColor: string;
         primaryTextColor: string;
         secondaryColor: string;
-        token: string | null;
+        authToken: string | null;
         exerciserInfo: Exerciser | null;
       },
     }

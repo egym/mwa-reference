@@ -4,7 +4,7 @@ import {requestAuthToken, requestExerciserInfo} from "../../utils/nativeHandlers
 import {usePortalsContext} from "../../hooks/usePortalsContext";
 
 const TestAuth: FC = () => {
-  const { token, exerciserInfo } = usePortalsContext();
+  const { authToken, exerciserInfo } = usePortalsContext();
 
   const exerciserStringified = useMemo(() => {
     try {
@@ -32,7 +32,7 @@ const TestAuth: FC = () => {
           Request auth token
         </IonButton>
         <IonText>
-          Current token - {token}
+          Current auth token - {authToken}
         </IonText>
 
         <IonButton
