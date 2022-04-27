@@ -38,7 +38,7 @@ type ProviderProps = {
 type ContextType = {
   state: Partial<PortalsContext>;
   setPortalsState: (context: Partial<PortalsContext>) => void;
-  token?: string | null;
+  authToken?: string | null;
   exerciserInfo?: Exerciser | null;
   url?: string | null;
 }
@@ -52,12 +52,12 @@ export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext })
     let subscription: PortalSubscription;
 
     (async () => {
-      subscription = await getAuthTokenSubscription(({ data: token }) => {
-        localStorage.setItem('mwa::authToken', token);
+      subscription = await getAuthTokenSubscription(({ data: authToken }) => {
+        localStorage.setItem('mwa::authToken', authToken);
         dispatch({
           type: types.SET_PORTALS_CONTEXT,
           payload: {
-            token
+            authToken
           }
         });
       });
@@ -97,7 +97,7 @@ export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext })
   return <PortalsStateContext.Provider
     value={{
       state,
-      token: state.authToken,
+      authToken: state.authToken,
       exerciserInfo: state.exerciserInfo,
       url: state.url,
       setPortalsState
