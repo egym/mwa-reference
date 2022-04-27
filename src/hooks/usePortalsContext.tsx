@@ -97,7 +97,7 @@ export const PortalsProvider: FC<ProviderProps> = ({ children, initialContext })
   return <PortalsStateContext.Provider
     value={{
       state,
-      token: state.token,
+      token: state.authToken,
       exerciserInfo: state.exerciserInfo,
       url: state.url,
       setPortalsState

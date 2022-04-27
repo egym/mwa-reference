@@ -15,7 +15,7 @@ if (!Capacitor?.isNativePlatform()) {
       primaryColor: '',
       primaryTextColor: '',
       secondaryColor: '',
-      token: null,
+      authToken: null,
       exerciserInfo: null,
     },
   };
