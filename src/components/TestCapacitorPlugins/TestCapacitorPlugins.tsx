@@ -1,4 +1,4 @@
-import {FC, useState} from 'react';
+import { FC, useEffect, useState } from 'react';
 import {
   IonButton,
   IonCard,
@@ -7,6 +7,7 @@ import {
   IonCardTitle,
   IonImg,
   IonLoading,
+  IonText,
   IonTitle
 } from '@ionic/react';
 import {ActionSheet, ActionSheetButtonStyle} from '@capacitor/action-sheet';
@@ -14,6 +15,7 @@ import {Device} from '@capacitor/device';
 import {Camera, CameraResultType} from '@capacitor/camera';
 import { Geolocation } from '@capacitor/geolocation';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { Browser } from '@capacitor/browser';
 
 type Props = {
 
@@ -22,6 +24,8 @@ type Props = {
 const TestCapacitorPlugins: FC<Props> = props => {
   const [cameraResultUrl, setCameraResultUrl] = useState();
   const [loading, setLoading] = useState(false);
+  const [browserLoaded, setBrowserLoaded] = useState(false);
+  const [browserFinished, setBrowserFinished] = useState(false);
 
   const printCurrentPosition = async () => {
     setLoading(true);
@@ -61,6 +65,24 @@ const TestCapacitorPlugins: FC<Props> = props => {
 
     alert(JSON.stringify({...info, ...battery}, null, 2));
   };
+
+  const openExternalBrowser = async () => {
+    await Browser.open({ url: 'https://google.com', toolbarColor: '#e71212' });
+  }
+
+  useEffect(() => {
+    const browserLoadedListener = Browser.addListener('browserPageLoaded', () => {
+      setBrowserLoaded(true);
+    });
+    const browserFinishedListener = Browser.addListener('browserFinished', () => {
+      setBrowserFinished(true);
+    });
+
+    return () => {
+      browserLoadedListener.remove();
+      browserFinishedListener.remove();
+    }
+  })
 
   const openActionSheet = async () => {
     const result = await ActionSheet.showActions({
@@ -165,6 +187,21 @@ const TestCapacitorPlugins: FC<Props> = props => {
           >
             Open ActionSheet & Test haptics
           </IonButton>
+          <div style={{ display: 'flex', flexDirection: 'column', margin: '16px' }}>
+            <IonButton
+              onClick={openExternalBrowser}
+              color="primary"
+              fill="solid"
+              size="default"
+              expand="block"
+              style={{ marginTop: '32px'}}
+            >
+              Open external browser
+            </IonButton>
+            {browserLoaded && <IonText>Browser loaded</IonText>}
+            {browserFinished && <IonText>Browser finished</IonText>}
+          </div>
+
         </IonCardContent>
       </IonCard>
 
