@@ -14,6 +14,7 @@ const TestCors: FC<Props> = props => {
       console.log('data', data);
     } catch (e) {
       console.log(e);
+      alert('ERROR!!');
     }
   }
 
