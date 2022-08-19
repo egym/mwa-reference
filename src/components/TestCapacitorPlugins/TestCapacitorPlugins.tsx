@@ -181,7 +181,7 @@ const TestCapacitorPlugins: FC = props => {
           >
             Open ActionSheet & Test haptics
           </IonButton>
-          <div style={{ display: 'flex', flexDirection: 'column', margin: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', margin: '16px', marginTop: '32px' }}>
             <IonButton
               onClick={openExternalBrowser}
               color="primary"

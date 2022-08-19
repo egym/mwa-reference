@@ -6,7 +6,8 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCard,
-  IonCardContent
+  IonCardContent,
+  IonText
 } from '@ionic/react';
 import CommonPageHeader from "../../components/CommonPageHeader";
 import TestCapacitorPlugins from '../../components/TestCapacitorPlugins';
@@ -17,6 +18,11 @@ const Home: FC = () => {
     <IonPage>
       <CommonPageHeader title="Home page" />
       <IonContent fullscreen>
+        <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
+          <IonText>
+            {window.location.href}
+          </IonText>
+        </div>
         <TestAuth />
         <IonCard>
 
