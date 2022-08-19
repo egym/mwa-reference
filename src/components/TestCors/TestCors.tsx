@@ -1,11 +1,14 @@
-import { IonButton } from '@ionic/react';
-import { FC } from 'react';
+import { IonButton, IonText } from '@ionic/react';
+import { FC, useState } from 'react';
 import { Http } from '@capacitor-community/http';
 import styles from './TestCors.module.scss';
 
 type Props = {};
 
 const TestCors: FC<Props> = props => {
+  const [httpPluginResult, setHttpPluginResult] = useState<any>();
+  const [browserFetchResult, setBrowserFetchResult] = useState<any>();
+
   const doFetch = async () => {
     try {
       const response = await Http.get({
@@ -14,9 +17,11 @@ const TestCors: FC<Props> = props => {
       });
 
       console.log(response);
-      alert('success 1 !!');
+
+      alert('capacitor http success');
+      setHttpPluginResult(response);
     } catch (e) {
-      alert('ERROR 1 !!');
+      alert('capacitor http error');
     }
 
     try {
@@ -24,15 +29,26 @@ const TestCors: FC<Props> = props => {
       const data = await test.json();
 
       console.log('data', data);
-      alert('success 2 !!');
+      alert('browser fetch success');
+      setBrowserFetchResult(data);
     } catch (e) {
       console.log(e);
-      alert('ERROR 2 !!');
+      alert('browser fetch error');
     }
   }
 
   return (
     <div className={styles.wrapper}>
+      <pre>
+        <div>
+          <span>http plugin result - </span>
+          {httpPluginResult ? <span>{JSON.stringify(httpPluginResult, null, 2)}</span> : '?'}
+        </div>
+        <div>
+          <span>browser fetch result - </span>
+          {browserFetchResult ? <span>{JSON.stringify(browserFetchResult, null, 2)}</span> : '?'}
+        </div>
+      </pre>
       <IonButton
         onClick={doFetch}
         color="primary"
@@ -41,7 +57,7 @@ const TestCors: FC<Props> = props => {
         expand="block"
         style={{ margin: '16px' }}
       >
-        Fetch
+        CORS
       </IonButton>
     </div>
   );
