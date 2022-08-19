@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor-community/http": "^1.4.1",
     "@capacitor/action-sheet": "^1.0.8",
     "@capacitor/app": "1.1.1",
     "@capacitor/browser": "^1.0.7",

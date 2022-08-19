@@ -16,12 +16,9 @@ import {Camera, CameraResultType} from '@capacitor/camera';
 import { Geolocation } from '@capacitor/geolocation';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Browser } from '@capacitor/browser';
+import TestCors from '../TestCors';
 
-type Props = {
-
-};
-
-const TestCapacitorPlugins: FC<Props> = props => {
+const TestCapacitorPlugins: FC = props => {
   const [cameraResultUrl, setCameraResultUrl] = useState();
   const [loading, setLoading] = useState(false);
   const [browserLoaded, setBrowserLoaded] = useState(false);
@@ -63,7 +60,7 @@ const TestCapacitorPlugins: FC<Props> = props => {
     const info = await Device.getInfo();
     const battery = await Device.getBatteryInfo();
 
-    alert(JSON.stringify({...info, ...battery}, null, 2));
+    alert(JSON.stringify({ ...info, ...battery }, null, 2));
   };
 
   const openExternalBrowser = async () => {
@@ -71,17 +68,14 @@ const TestCapacitorPlugins: FC<Props> = props => {
   }
 
   useEffect(() => {
-    const browserLoadedListener = Browser.addListener('browserPageLoaded', () => {
-      setBrowserLoaded(true);
-    });
-    const browserFinishedListener = Browser.addListener('browserFinished', () => {
-      setBrowserFinished(true);
-    });
-
-    return () => {
-      browserLoadedListener.remove();
-      browserFinishedListener.remove();
-    }
+    (async () => {
+      const browserLoadedListener = await Browser.addListener('browserPageLoaded', () => {
+        setBrowserLoaded(true);
+      });
+      const browserFinishedListener = await Browser.addListener('browserFinished', () => {
+        setBrowserFinished(true);
+      });
+    })();
   })
 
   const openActionSheet = async () => {
@@ -194,7 +188,6 @@ const TestCapacitorPlugins: FC<Props> = props => {
               fill="solid"
               size="default"
               expand="block"
-              style={{ marginTop: '32px'}}
             >
               Open external browser
             </IonButton>
@@ -202,6 +195,7 @@ const TestCapacitorPlugins: FC<Props> = props => {
             {browserFinished && <IonText>Browser finished</IonText>}
           </div>
 
+          <TestCors />
         </IonCardContent>
       </IonCard>
 
