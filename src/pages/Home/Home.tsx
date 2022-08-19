@@ -20,7 +20,7 @@ const Home: FC = () => {
       <IonContent fullscreen>
         <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
           <IonText>
-            1 - {window.location.href}
+            2 - {window.location.href}
           </IonText>
         </div>
         <TestAuth />
