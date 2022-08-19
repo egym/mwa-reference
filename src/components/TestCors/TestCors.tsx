@@ -44,7 +44,7 @@ const TestCors: FC<Props> = props => {
           <span>http plugin result - </span>
           {httpPluginResult ? <span>{JSON.stringify(httpPluginResult, null, 2)}</span> : '?'}
         </div>
-        <div>
+        <div style={{ marginTop: '20px' }}>
           <span>browser fetch result - </span>
           {browserFetchResult ? <span>{JSON.stringify(browserFetchResult, null, 2)}</span> : '?'}
         </div>
