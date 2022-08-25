@@ -11,14 +11,19 @@ const TestCors: FC<Props> = props => {
 
   useEffect(() => {
     (async () => {
-      await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
-      await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
-      await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
-      await Http.setCookie({ url: 'https://my.testbackend.com', key: 'testbackend3', value: '3vvvvvvv' });
-      await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
-      await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
+      try {
+        await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
+        await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
+        await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
+        await Http.setCookie({ url: 'https://my.testbackend.com', key: 'testbackend3', value: '3vvvvvvv' });
+        await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
+        await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
 
-      alert('cookies set');
+        alert('cookies set');
+      } catch (e) {
+        alert(e);
+        alert(JSON.stringify(e));
+      }
     })();
   }, [])
 
