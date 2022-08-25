@@ -16,7 +16,7 @@ const TestCors: FC<Props> = props => {
       await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
       await Http.setCookie({ url: 'https://my.testbackend.com', key: 'testbackend3', value: '3vvvvvvv' });
       await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
-      await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
+      // await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
 
       alert('cookies set');
     } catch (e) {
@@ -29,14 +29,14 @@ const TestCors: FC<Props> = props => {
       const cookie3 = await Http.getCookie({ url: 'http://my.testbackend.com', key: 'testbackend2' });
       const cookie4 = await Http.getCookie({ url: 'https://my.testbackend.com', key: 'testbackend3' });
       const cookie5 = await Http.getCookie({ url: '/', key: 'tyu' });
-      const cookie6 = await Http.getCookie({ url: '', key: 'qweqweqwetyu' });
+      // const cookie6 = await Http.getCookie({ url: '', key: 'qweqweqwetyu' });
 
       alert(JSON.stringify({ test: 'cookie1', ...cookie1 }));
       alert(JSON.stringify({ test: 'cookie2', ...cookie2 }));
       alert(JSON.stringify({ test: 'cookie3', ...cookie3 }));
       alert(JSON.stringify({ test: 'cookie4', ...cookie4 }));
       alert(JSON.stringify({ test: 'cookie5', ...cookie5 }));
-      alert(JSON.stringify({ test: 'cookie6', ...cookie6 }));
+      // alert(JSON.stringify({ test: 'cookie6', ...cookie6 }));
     } catch (e) {
       console.log('error on retrieve cookies');
     }
@@ -50,7 +50,7 @@ const TestCors: FC<Props> = props => {
         url: 'https://floating-bayou-00569.herokuapp.com/test-cors',
       });
 
-      // alert('capacitor http success');
+      alert('capacitor http success');
       setHttpPluginResult(response);
     } catch (e) {
       alert('capacitor http error');
@@ -61,11 +61,11 @@ const TestCors: FC<Props> = props => {
       const data = await test.json();
 
       console.log('data', data);
-      // alert('browser fetch success');
+      alert('browser fetch success');
       setBrowserFetchResult(data);
     } catch (e) {
       console.log(e);
-      // alert('browser fetch error');
+      alert('browser fetch error');
     }
   }
 
