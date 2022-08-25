@@ -5,41 +5,24 @@ import styles from './TestCors.module.scss';
 
 type Props = {};
 
-const waittt = (seconds: number) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('erererererer')
-    }, seconds * 1000)
-  })
-}
-
 const TestCors: FC<Props> = props => {
   const [httpPluginResult, setHttpPluginResult] = useState<any>();
   const [browserFetchResult, setBrowserFetchResult] = useState<any>();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const ww = await waittt(4);
+  const testCookies = async () => {
+    try {
+      await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
+      await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
+      await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
+      await Http.setCookie({ url: 'https://my.testbackend.com', key: 'testbackend3', value: '3vvvvvvv' });
+      await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
+      await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
 
-        console.log(ww);
+      alert('cookies set');
+    } catch (e) {
+      alert('error on set cookies')
+    }
 
-        await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
-        await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
-        await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
-        await Http.setCookie({ url: 'https://my.testbackend.com', key: 'testbackend3', value: '3vvvvvvv' });
-        await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
-        await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
-
-        alert('cookies set');
-      } catch (e) {
-        alert(e);
-        alert(JSON.stringify(e));
-      }
-    })();
-  }, [])
-
-  const doFetch = async () => {
     try {
       const cookie1 = await Http.getCookie({ url: window.location.origin, key: 'testttt' });
       const cookie2 = await Http.getCookie({ url: 'my.testbackend.com', key: 'testbackend' });
@@ -54,7 +37,14 @@ const TestCors: FC<Props> = props => {
       alert(JSON.stringify({ test: 'cookie4', ...cookie4 }));
       alert(JSON.stringify({ test: 'cookie5', ...cookie5 }));
       alert(JSON.stringify({ test: 'cookie6', ...cookie6 }));
+    } catch (e) {
+      console.log('error on retrieve cookies');
+    }
 
+  }
+
+  const doFetch = async () => {
+    try {
       const response = await Http.get({
         // url: 'http://localhost:3030/read-cookie',
         url: 'https://floating-bayou-00569.herokuapp.com/test-cors',
@@ -100,6 +90,16 @@ const TestCors: FC<Props> = props => {
         style={{ margin: '16px' }}
       >
         CORS
+      </IonButton>
+      <IonButton
+        onClick={testCookies}
+        color="primary"
+        fill="solid"
+        size="default"
+        expand="block"
+        style={{ margin: '16px' }}
+      >
+        Cookies
       </IonButton>
     </div>
   );
