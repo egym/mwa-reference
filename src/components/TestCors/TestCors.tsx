@@ -10,21 +10,31 @@ const TestCors: FC<Props> = props => {
   const [browserFetchResult, setBrowserFetchResult] = useState<any>();
 
   useEffect(() => {
-    Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
+    (async () => {
+      await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
+      await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
+      await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
+
+      alert('cookies set');
+    })();
   }, [])
 
   const doFetch = async () => {
     try {
-      const cookie = await Http.getCookie({ url: window.location.origin, key: 'testttt' });
+      const cookie1 = await Http.getCookie({ url: window.location.origin, key: 'testttt' });
+      const cookie2 = await Http.getCookie({ url: 'my.testbackend.com', key: 'testbackend' });
+      const cookie3 = await Http.getCookie({ url: '/', key: 'tyu' });
 
-      alert(JSON.stringify(cookie));
+      alert(JSON.stringify({ test: 'cookie1', ...cookie1 }));
+      alert(JSON.stringify({ test: 'cookie2', ...cookie2 }));
+      alert(JSON.stringify({ test: 'cookie3', ...cookie3 }));
 
       const response = await Http.get({
         // url: 'http://localhost:3030/read-cookie',
         url: 'https://floating-bayou-00569.herokuapp.com/test-cors',
       });
 
-      alert('capacitor http success');
+      // alert('capacitor http success');
       setHttpPluginResult(response);
     } catch (e) {
       alert('capacitor http error');
@@ -35,11 +45,11 @@ const TestCors: FC<Props> = props => {
       const data = await test.json();
 
       console.log('data', data);
-      alert('browser fetch success');
+      // alert('browser fetch success');
       setBrowserFetchResult(data);
     } catch (e) {
       console.log(e);
-      alert('browser fetch error');
+      // alert('browser fetch error');
     }
   }
 
