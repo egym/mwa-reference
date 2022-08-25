@@ -1,5 +1,5 @@
 import { IonButton, IonText } from '@ionic/react';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Http } from '@capacitor-community/http';
 import styles from './TestCors.module.scss';
 
@@ -9,14 +9,16 @@ const TestCors: FC<Props> = props => {
   const [httpPluginResult, setHttpPluginResult] = useState<any>();
   const [browserFetchResult, setBrowserFetchResult] = useState<any>();
 
+  useEffect(() => {
+    Http.setCookie({ url: '/', key: 'testttt', value: '123123123' });
+  }, [])
+
   const doFetch = async () => {
     try {
       const response = await Http.get({
         // url: 'http://localhost:3030/read-cookie',
         url: 'https://floating-bayou-00569.herokuapp.com/test-cors',
       });
-
-      await Http.setCookie({ url: '/', key: 'testttt', value: '123123123' });
 
       const cookie = await Http.getCookie({ url: '/', key: 'testttt' });
 
