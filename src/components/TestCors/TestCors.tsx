@@ -13,7 +13,10 @@ const TestCors: FC<Props> = props => {
     (async () => {
       await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
       await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
+      await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
+      await Http.setCookie({ url: 'https://my.testbackend.com', key: 'testbackend3', value: '3vvvvvvv' });
       await Http.setCookie({ url: '/', key: 'tyu', value: 'nnnnnnn' });
+      await Http.setCookie({ url: '', key: 'qweqweqwetyu', value: 'mjmjmjmjmjmjm' });
 
       alert('cookies set');
     })();
@@ -23,11 +26,17 @@ const TestCors: FC<Props> = props => {
     try {
       const cookie1 = await Http.getCookie({ url: window.location.origin, key: 'testttt' });
       const cookie2 = await Http.getCookie({ url: 'my.testbackend.com', key: 'testbackend' });
-      const cookie3 = await Http.getCookie({ url: '/', key: 'tyu' });
+      const cookie3 = await Http.getCookie({ url: 'http://my.testbackend.com', key: 'testbackend2' });
+      const cookie4 = await Http.getCookie({ url: 'https://my.testbackend.com', key: 'testbackend3' });
+      const cookie5 = await Http.getCookie({ url: '/', key: 'tyu' });
+      const cookie6 = await Http.getCookie({ url: '', key: 'qweqweqwetyu' });
 
       alert(JSON.stringify({ test: 'cookie1', ...cookie1 }));
       alert(JSON.stringify({ test: 'cookie2', ...cookie2 }));
       alert(JSON.stringify({ test: 'cookie3', ...cookie3 }));
+      alert(JSON.stringify({ test: 'cookie4', ...cookie4 }));
+      alert(JSON.stringify({ test: 'cookie5', ...cookie5 }));
+      alert(JSON.stringify({ test: 'cookie6', ...cookie6 }));
 
       const response = await Http.get({
         // url: 'http://localhost:3030/read-cookie',
