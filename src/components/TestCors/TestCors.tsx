@@ -10,19 +10,19 @@ const TestCors: FC<Props> = props => {
   const [browserFetchResult, setBrowserFetchResult] = useState<any>();
 
   useEffect(() => {
-    Http.setCookie({ url: '/', key: 'testttt', value: '123123123' });
+    Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
   }, [])
 
   const doFetch = async () => {
     try {
+      const cookie = await Http.getCookie({ url: window.location.origin, key: 'testttt' });
+
+      alert(JSON.stringify(cookie));
+
       const response = await Http.get({
         // url: 'http://localhost:3030/read-cookie',
         url: 'https://floating-bayou-00569.herokuapp.com/test-cors',
       });
-
-      const cookie = await Http.getCookie({ url: '/', key: 'testttt' });
-
-      alert(JSON.stringify(cookie));
 
       alert('capacitor http success');
       setHttpPluginResult(response);
