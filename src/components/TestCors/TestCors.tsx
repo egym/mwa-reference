@@ -16,7 +16,11 @@ const TestCors: FC<Props> = props => {
         url: 'https://floating-bayou-00569.herokuapp.com/test-cors',
       });
 
-      console.log(response);
+      await Http.setCookie({ url: '/', key: 'testttt', value: '123123123' });
+
+      const cookie = await Http.getCookie({ url: '/', key: 'testttt' });
+
+      alert(JSON.stringify(cookie));
 
       alert('capacitor http success');
       setHttpPluginResult(response);
