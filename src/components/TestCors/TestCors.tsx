@@ -5,6 +5,14 @@ import styles from './TestCors.module.scss';
 
 type Props = {};
 
+const waittt = (seconds: number) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('erererererer')
+    }, seconds * 1000)
+  })
+}
+
 const TestCors: FC<Props> = props => {
   const [httpPluginResult, setHttpPluginResult] = useState<any>();
   const [browserFetchResult, setBrowserFetchResult] = useState<any>();
@@ -12,6 +20,10 @@ const TestCors: FC<Props> = props => {
   useEffect(() => {
     (async () => {
       try {
+        const ww = await waittt(4);
+
+        console.log(ww);
+
         await Http.setCookie({ url: window.location.origin, key: 'testttt', value: '123123123' });
         await Http.setCookie({ url: 'my.testbackend.com', key: 'testbackend', value: 'vvvvvvv' });
         await Http.setCookie({ url: 'http://my.testbackend.com', key: 'testbackend2', value: '2vvvvvvv' });
