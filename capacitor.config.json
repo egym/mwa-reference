@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "egym-webview-reference",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "server": {
+    "hostname": "my.testbackend.com",
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "always"
+  }
+}
