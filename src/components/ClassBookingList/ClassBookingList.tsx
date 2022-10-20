@@ -18,7 +18,7 @@ import ClassBookingItem from '../ClassBookingItem';
 
 const ClassBookingList: React.FC = () => {
   return (
-    <IonContent fullscreen>
+    <IonContent fullscreen style={{height: '100vh', width: '100vw'}}>
       <div className={styles.flex}>
         <div style={{ padding: '10px' }}>
           <IonChip color="primary" className={styles.chip}>

@@ -22,7 +22,7 @@ const ClassBookingDetails: React.FC<Props> = ({ classDetails, loading, onBookCla
 
   return (
     <>
-      <IonContent fullscreen>
+      <IonContent fullscreen style={{height: '100vh', width: '100vw'}}>
         <IonCard className={styles.card} style={{ visibility: loading ? 'hidden' : 'visible' }}>
           <img src={classDetails.image}/>
           <IonCardHeader>

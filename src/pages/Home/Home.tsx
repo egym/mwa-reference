@@ -17,7 +17,7 @@ const Home: FC = () => {
   return (
     <IonPage>
       <CommonPageHeader title="Home page" />
-      <IonContent fullscreen style={{ marginBottom: '100px' }}>
+      <IonContent fullscreen style={{ marginBottom: '100px', height: '100vh', width: '100vw', }}>
         <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
           <IonText>
             15 - {window.location.href}
