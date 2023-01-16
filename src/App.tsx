@@ -1,7 +1,9 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import React, { Suspense } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { setupIonicReact } from '@ionic/react';
+import qs from 'qs';
+import i18n from './i18n';
+import Layout from './Layout';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,21 +24,23 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-setupIonicReact();
+/* Custom styles / overrides */
+import './styles/global.scss';
+import './styles/modificators.scss';
+
+const queryParams = qs.parse(window.location.search.replace('?', ''));
+
+setupIonicReact({
+  mode: queryParams.mode as 'ios' | 'md',
+  rippleEffect: false,
+});
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+  <Suspense fallback={<span />}>
+    <I18nextProvider i18n={i18n}>
+      <Layout />
+    </I18nextProvider>
+  </Suspense>
 );
 
 export default App;

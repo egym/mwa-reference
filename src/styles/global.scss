@@ -1,0 +1,63 @@
+html {
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+}
+
+ion-header ion-toolbar {
+  --padding-start: 18px;
+  --padding-end: 18px;
+
+  ion-segment {
+    ion-segment-button {
+      &::part(indicator-background) {
+        background: #ffffff;
+
+        @media (prefers-color-scheme: dark) {
+          background: #636366;
+        }
+      }
+    }
+  }
+
+  &:last-of-type {
+    --border-width: 0;
+  }
+}
+
+ion-refresher {
+  z-index: 10;
+}
+
+ion-spinner {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  animation-duration: 600ms;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-delay: 0ms;
+  width: 34px;
+  height: 34px;
+
+  &.initial-auth-spinner {
+    animation-delay: 3000ms;
+  }
+}
+
+.overlay-shadow {
+  pointer-events: none;
+  position: fixed;
+  height: 64px;
+  width: 100%;
+  bottom: var(--ion-safe-area-bottom, 0px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  opacity: 0.7;
+  z-index: 110;
+
+  @media (prefers-color-scheme: dark) {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  }
+}
+
+table {
+  border-collapse: separate;
+}

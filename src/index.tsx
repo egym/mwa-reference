@@ -1,14 +1,52 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { getInitialContext } from '@ionic/portals';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import { StoreProvider } from './store';
+import { scheduleRefreshPortalsToken } from './utils/api/refreshPortalsToken';
+import { setGlobalPortalsContext } from './utils/helpers';
+
+const initialContext = getInitialContext<PortalsContext>()?.value || {
+  startingRoute: '/home',
+  authToken: '',
+  language: 'en_GB',
+  environment: 'develop',
+};
+
+initialContext.language = initialContext.language.replace('_', '-');
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      staleTime: 1000 * 60 * 2, // 2 minutes
+      cacheTime: Infinity,
+    },
+  },
+});
+
+setGlobalPortalsContext(initialContext);
+
+scheduleRefreshPortalsToken(initialContext.authToken);
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
-    <App />
+    <StoreProvider
+      initialState={{
+        portalsContext: initialContext,
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </StoreProvider>
   </React.StrictMode>
 );
 
