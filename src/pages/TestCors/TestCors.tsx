@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Http } from '@capacitor-community/http';
 import {
   IonButton,
@@ -10,6 +10,7 @@ import {
   IonCardTitle,
   IonContent,
   IonPage,
+  IonText,
 } from '@ionic/react';
 import CommonPageHeader from '../../components/CommonPageHeader';
 import { useTestCors } from '../../hooks';
@@ -17,34 +18,45 @@ import { useTestCors } from '../../hooks';
 const TestCors: FC = () => {
   const { testCorsQuery } = useTestCors();
 
-  console.log('testCorsQuery', testCorsQuery);
+  const [communityHttpPluginResult, setCommunityHttpPluginResult] = useState<string>();
+  const [browserFetchResult, setBrowserFetchResult] = useState<string>();
+  const capacitorV4Result = useMemo<string>(() => {
+    if (testCorsQuery.isFetching) return 'Fetching...';
+
+    return testCorsQuery.data?.message || String(testCorsQuery.error || '');
+  }, [testCorsQuery.data?.message, testCorsQuery.error, testCorsQuery.isFetching]);
 
   const testCorsWithCapacitorV4 = useCallback(async () => {
-    try {
-      const response = await testCorsQuery.refetch();
-      console.log('response cap v4+', response);
-    } catch (e) {
-      console.log(e);
-    }
+    await testCorsQuery.refetch();
   }, [testCorsQuery]);
 
   const testCorsWithCommunityHttpPlugin = useCallback(async () => {
     try {
+      setCommunityHttpPluginResult('Fetching...');
       const response = await Http.get({
         url: 'https://mwa-test-be.herokuapp.com/test-cors',
       });
 
-      console.log('response community http', response);
+      setCommunityHttpPluginResult(response.data.message);
     } catch (e) {
-      console.log(e);
+      // @ts-ignore
+      console.log(e.message);
+      // @ts-ignore
+      setCommunityHttpPluginResult(`Error: ${e.message}`);
     }
   }, []);
 
   const testCorsWithBrowserFetch = useCallback(async () => {
-    const test = await fetch('https://floating-bayou-00569.herokuapp.com/test-cors');
-    const data = await test.json();
+    try {
+      setBrowserFetchResult('Fetching...');
+      const test = await fetch('https://mwa-test-be.herokuapp.com/test-cors');
+      const data = await test.json();
 
-    console.log('data', data);
+      setBrowserFetchResult(data.data.message);
+    } catch (e) {
+      // @ts-ignore
+      setBrowserFetchResult(`Error: ${e.message}`);
+    }
   }, []);
 
   return (
@@ -57,8 +69,11 @@ const TestCors: FC = () => {
             <IonCardTitle>Bypass CORS</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonButton onClick={testCorsWithCapacitorV4}>Make a call</IonButton>
+            <IonText color={testCorsQuery.data?.message ? 'success' : 'danger'}>{capacitorV4Result}</IonText>
           </IonCardContent>
+          <IonButton fill="clear" onClick={testCorsWithCapacitorV4}>
+            Make a call
+          </IonButton>
         </IonCard>
 
         <IonCard>
@@ -67,8 +82,13 @@ const TestCors: FC = () => {
             <IonCardTitle>Bypass CORS</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonButton onClick={testCorsWithCommunityHttpPlugin}>Make a call</IonButton>
+            <IonText color={!communityHttpPluginResult?.includes('Error') ? 'success' : 'danger'}>
+              {communityHttpPluginResult}
+            </IonText>
           </IonCardContent>
+          <IonButton fill="clear" onClick={testCorsWithCommunityHttpPlugin}>
+            Make a call
+          </IonButton>
         </IonCard>
 
         <IonCard>
@@ -77,8 +97,13 @@ const TestCors: FC = () => {
             <IonCardTitle>Fail CORS</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonButton onClick={testCorsWithBrowserFetch}>Make a call</IonButton>
+            <IonText color={!browserFetchResult?.includes('Error') ? 'success' : 'danger'}>
+              {browserFetchResult}
+            </IonText>
           </IonCardContent>
+          <IonButton fill="clear" onClick={testCorsWithBrowserFetch}>
+            Make a call
+          </IonButton>
         </IonCard>
       </IonContent>
     </IonPage>

@@ -1,5 +1,17 @@
 import React from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonPage, IonRouterLink } from '@ionic/react';
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+} from '@ionic/react';
+import { calendarOutline, caretForwardOutline, documentLockOutline } from 'ionicons/icons';
 import CommonPageHeader from 'src/components/CommonPageHeader';
 
 const Home: React.FC = () => {
@@ -12,10 +24,16 @@ const Home: React.FC = () => {
             <IonCardTitle>Navigation</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <div className="flex-column">
-              <IonRouterLink routerLink={`/classes`}>Classes</IonRouterLink>
-              <IonRouterLink routerLink={`/test-cors`}>Test Cors</IonRouterLink>
-            </div>
+            <IonList>
+              <IonItem routerLink="/classes" button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={calendarOutline} slot="start"></IonIcon>
+                <IonLabel>Classes</IonLabel>
+              </IonItem>
+              <IonItem routerLink="/test-cors" button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={documentLockOutline} slot="start"></IonIcon>
+                <IonLabel>Test CORS</IonLabel>
+              </IonItem>
+            </IonList>
           </IonCardContent>
         </IonCard>
       </IonContent>
