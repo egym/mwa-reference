@@ -1,10 +1,9 @@
-import { FC } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import ClassBookingListPage from './pages/ClassBookingListPage';
-import ClassBookingDetailsPage from './pages/ClassBookingDetailsPage';
+import React, { Suspense } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { setupIonicReact } from '@ionic/react';
+import qs from 'qs';
+import i18n from './i18n';
+import Layout from './Layout';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,45 +22,25 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
-import './theme/variables.scss';
-import './global.scss';
+import './theme/variables.css';
 
-import ClassBookingWidgetPage from './pages/ClassBookingWidgetPage';
-import { PortalsProvider } from './hooks/usePortalsContext';
+/* Custom styles / overrides */
+import './styles/global.scss';
+import './styles/modificators.scss';
 
-// @ts-ignore
-// document.querySelector(':root')?.style.setProperty('--ion-color-primary', '#c75300');
+const queryParams = qs.parse(window.location.search.replace('?', ''));
 
 setupIonicReact({
-  mode: 'ios',
+  mode: queryParams.mode as 'ios' | 'md',
+  rippleEffect: false,
 });
 
-type AppProps = {
-  context: typeof window.portalInitialContext.value
-}
-
-const App: FC<AppProps> = ({ context }) => {
-  return (
-    <IonApp>
-      <PortalsProvider initialContext={context}>
-        <IonReactRouter>
-          <IonRouterOutlet>
-            <Route exact path="/home" component={Home}/>
-            <Route exact path="/classes">
-              <ClassBookingListPage />
-            </Route>
-            <Route exact path="/classes/:id" component={ClassBookingDetailsPage}/>
-            <Route exact path="/classes-widget">
-              <ClassBookingWidgetPage />
-            </Route>
-
-            <Redirect exact from='/' to={context.startingRoute || '/home'}/>
-          </IonRouterOutlet>
-        </IonReactRouter>
-      </PortalsProvider>
-
-    </IonApp>
-  );
-};
+const App: React.FC = () => (
+  <Suspense fallback={<span />}>
+    <I18nextProvider i18n={i18n}>
+      <Layout />
+    </I18nextProvider>
+  </Suspense>
+);
 
 export default App;

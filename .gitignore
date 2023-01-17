@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/**/*/node_modules
 /.pnp
 .pnp.js
 
@@ -10,7 +9,7 @@
 /coverage
 
 # production
-/**/*/build
+/build
 
 # misc
 .DS_Store
@@ -18,10 +17,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.vscode
+/.vscode/extensions.json
+!/.vscode/extensions.json
 .idea
-/build
-/www
 
 npm-debug.log*
 yarn-debug.log*

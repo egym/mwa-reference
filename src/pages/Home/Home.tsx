@@ -1,41 +1,41 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
-  IonContent,
-  IonPage,
-  IonRouterLink,
-  IonCardHeader,
-  IonCardTitle,
   IonCard,
   IonCardContent,
-  IonText
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
 } from '@ionic/react';
-import CommonPageHeader from "../../components/CommonPageHeader";
-import TestCapacitorPlugins from '../../components/TestCapacitorPlugins';
-import TestAuth from "../../components/TestAuth";
+import { calendarOutline, caretForwardOutline, documentLockOutline } from 'ionicons/icons';
+import CommonPageHeader from 'src/components/CommonPageHeader';
 
-const Home: FC = () => {
+const Home: React.FC = () => {
   return (
     <IonPage>
-      <CommonPageHeader title="Home page" />
-      <IonContent fullscreen style={{ marginBottom: '100px', height: '100vh', width: '100vw', }}>
-        <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
-          <IonText>
-            15 - {window.location.href}
-          </IonText>
-        </div>
-        <TestAuth />
+      <CommonPageHeader root title="Home" />
+      <IonContent fullscreen>
         <IonCard>
-
           <IonCardHeader>
             <IonCardTitle>Navigation</IonCardTitle>
           </IonCardHeader>
-
           <IonCardContent>
-            <IonRouterLink routerLink={`/classes`}>Go to classes list - route "/classes"</IonRouterLink>
+            <IonList>
+              <IonItem routerLink="/classes" button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={calendarOutline} slot="start"></IonIcon>
+                <IonLabel>Classes</IonLabel>
+              </IonItem>
+              <IonItem routerLink="/test-cors" button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={documentLockOutline} slot="start"></IonIcon>
+                <IonLabel>Test CORS</IonLabel>
+              </IonItem>
+            </IonList>
           </IonCardContent>
-
         </IonCard>
-        <TestCapacitorPlugins />
       </IonContent>
     </IonPage>
   );

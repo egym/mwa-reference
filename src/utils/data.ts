@@ -1,4 +1,4 @@
-import { addBusinessDays, format } from 'date-fns'
+import { addBusinessDays, format } from 'date-fns';
 
 const today = new Date();
 
@@ -11,7 +11,7 @@ export type ClassItem = {
   date: Date;
   image: string;
   booked: boolean;
-}
+};
 
 export const classes: ClassItem[] = [
   {
@@ -164,19 +164,19 @@ export const groupedClasses: Record<string, ClassItem[]> = classes.reduce((acc, 
     [formattedDay]: [
       // @ts-ignore
       ...(acc[formattedDay] || []),
-      classItem
-    ]
-  }
+      classItem,
+    ],
+  };
 }, {});
 
 export const getClassDetailsById = (id: string) => {
-  return classes.find(classItem => String(classItem.id) === id)
-}
+  return classes.find((classItem) => String(classItem.id) === id);
+};
 
 export const getUpcomingClasses = () => {
-  return classes.filter(classItem => !classItem.booked);
-}
+  return classes.filter((classItem) => !classItem.booked);
+};
 
 export const getBookedClasses = () => {
-  return classes.filter(classItem => classItem.booked);
-}
+  return classes.filter((classItem) => classItem.booked);
+};

@@ -1,15 +1,15 @@
 export enum NativeRequestTopic {
-  Subscription = 'subscription'
+  Subscription = 'subscription',
 }
 
 export enum NativeRequestType {
   authToken = 'authToken',
   exerciserInfo = 'exerciserInfo',
   dismiss = 'dismiss',
-  openFeature = 'openFeature'
+  openFeature = 'openFeature',
 }
 
 export enum SubscribeTopic {
   authToken = 'authToken',
-  exerciserInfo = 'exerciserInfo'
+  exerciserInfo = 'exerciserInfo',
 }

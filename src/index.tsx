@@ -1,57 +1,61 @@
-import { Capacitor } from '@capacitor/core';
 import React from 'react';
-import Portals from '@ionic/portals';
-import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { getInitialContext } from '@ionic/portals';
+import { createRoot } from 'react-dom/client';
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import { StoreProvider } from './store';
+import { scheduleRefreshPortalsToken } from './utils/api/refreshPortalsToken';
+import { setGlobalPortalsContext } from './utils/helpers';
 
-if (!Capacitor?.isNativePlatform()) {
-  // useful to mock portals initial context when testing app locally in browser
-  window.portalInitialContext = {
-    value: {
-      url: '',
-      startingRoute: '/home',
-      lightPrimaryColor: '',
-      primaryColor: '',
-      primaryTextColor: '',
-      secondaryColor: '',
-      authToken: null,
-      exerciserInfo: null,
+const initialContext = getInitialContext<PortalsContext>()?.value || {
+  startingRoute: '/home',
+  authToken: '',
+  language: 'en_GB',
+  environment: 'develop',
+};
+
+initialContext.language = initialContext.language.replace('_', '-');
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      staleTime: 1000 * 60 * 2, // 2 minutes
+      cacheTime: Infinity,
     },
-  };
-}
+  },
+});
 
-Portals.getInitialContext<typeof window.portalInitialContext.value>().then((context) => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <App context={context.value} />
-    </React.StrictMode>,
-    document.getElementById('root'),
-  );
-})
+setGlobalPortalsContext(initialContext);
 
+scheduleRefreshPortalsToken(initialContext.authToken);
 
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(
+  <React.StrictMode>
+    <StoreProvider
+      initialState={{
+        portalsContext: initialContext,
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </StoreProvider>
+  </React.StrictMode>
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.register({
-  onSuccess: (registration) => {
-    console.log('success registration', registration);
-  },
-  onUpdate: (registration) => {
-    console.log('update registration', registration);
+serviceWorkerRegistration.unregister();
 
-    const waitingServiceWorker = registration.waiting;
-
-    if (waitingServiceWorker) {
-      waitingServiceWorker.addEventListener("statechange", event => {
-        // @ts-ignore
-        if (event.target?.state === "activated") {
-          window.location.reload()
-        }
-      });
-      waitingServiceWorker.postMessage({ type: "SKIP_WAITING" });
-    }
-  }
-});
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

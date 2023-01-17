@@ -1,0 +1,11 @@
+coverage/
+dist/
+dangerfile.js
+node_modules/
+*.js
+src/reportWebVitals.ts
+src/serviceWorkerRegistration.ts
+src/setupTests.ts
+src/service-worker.ts
+src/react-app-env.d.ts
+capacitor.config.ts
