@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import React, { useCallback, useMemo, useState } from 'react';
-import { Http } from '@capacitor-community/http';
+import React from 'react';
 import {
   IonButton,
   IonCard,
@@ -13,52 +12,17 @@ import {
   IonText,
 } from '@ionic/react';
 import CommonPageHeader from '../../components/CommonPageHeader';
-import { useTestCors } from '../../hooks';
+import type { TestCorsProps } from './TestCorsProps';
 
-const TestCors: FC = () => {
-  const { testCorsQuery } = useTestCors();
-
-  const [communityHttpPluginResult, setCommunityHttpPluginResult] = useState<string>();
-  const [browserFetchResult, setBrowserFetchResult] = useState<string>();
-  const capacitorV4Result = useMemo<string>(() => {
-    if (testCorsQuery.isFetching) return 'Fetching...';
-
-    return testCorsQuery.data?.message || String(testCorsQuery.error || '');
-  }, [testCorsQuery.data?.message, testCorsQuery.error, testCorsQuery.isFetching]);
-
-  const testCorsWithCapacitorV4 = useCallback(async () => {
-    await testCorsQuery.refetch();
-  }, [testCorsQuery]);
-
-  const testCorsWithCommunityHttpPlugin = useCallback(async () => {
-    try {
-      setCommunityHttpPluginResult('Fetching...');
-      const response = await Http.get({
-        url: 'https://mwa-test-be.herokuapp.com/test-cors',
-      });
-
-      setCommunityHttpPluginResult(response.data.message);
-    } catch (e) {
-      // @ts-ignore
-      console.log(e.message);
-      // @ts-ignore
-      setCommunityHttpPluginResult(`Error: ${e.message}`);
-    }
-  }, []);
-
-  const testCorsWithBrowserFetch = useCallback(async () => {
-    try {
-      setBrowserFetchResult('Fetching...');
-      const test = await fetch('https://mwa-test-be.herokuapp.com/test-cors');
-      const data = await test.json();
-
-      setBrowserFetchResult(data.data.message);
-    } catch (e) {
-      // @ts-ignore
-      setBrowserFetchResult(`Error: ${e.message}`);
-    }
-  }, []);
-
+const TestCors: FC<TestCorsProps> = ({
+  testCorsQuerySuccess,
+  capacitorV4Result,
+  communityHttpPluginResult,
+  browserFetchResult,
+  testCorsWithCapacitorV4,
+  testCorsWithCommunityHttpPlugin,
+  testCorsWithBrowserFetch,
+}) => {
   return (
     <IonPage>
       <CommonPageHeader title="Test CORS" />
@@ -69,7 +33,7 @@ const TestCors: FC = () => {
             <IonCardTitle>Bypass CORS</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonText color={testCorsQuery.data?.message ? 'success' : 'danger'}>{capacitorV4Result}</IonText>
+            <IonText color={testCorsQuerySuccess ? 'success' : 'danger'}>{capacitorV4Result}</IonText>
           </IonCardContent>
           <IonButton fill="clear" onClick={testCorsWithCapacitorV4}>
             Make a call

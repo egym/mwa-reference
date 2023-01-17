@@ -1,1 +1,1 @@
-export { default } from './TestCors';
+export { default } from './TestCorsContainer';
