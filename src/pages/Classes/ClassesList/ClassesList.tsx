@@ -20,10 +20,10 @@ const ClassesList: FC<ClassesListProps> = ({ groupedClasses, loading, weekDays }
               <IonIcon icon={filter} />
               <IonLabel>{t('common.filters')}</IonLabel>
             </IonChip>
-            <IonChip color="primary" outline className={styles.chip}>
+            <IonChip color="primary" outline className={styles.chipOutline}>
               <IonLabel>{t('classes.allClasses')}</IonLabel>
             </IonChip>
-            <IonChip color="primary" outline className={styles.chip}>
+            <IonChip color="primary" outline className={styles.chipOutline}>
               <IonLabel>{t('classes.allClassTypes')}</IonLabel>
             </IonChip>
           </div>

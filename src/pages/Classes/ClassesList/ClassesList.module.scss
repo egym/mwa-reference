@@ -3,7 +3,7 @@
 }
 
 .list {
-  //background: var(--ion-color-light-tint);
+  background: var(--ion-color-light-tint);
 }
 
 .listHeader {
@@ -24,6 +24,13 @@
 
 .chip {
   border-radius: 4px;
+  background: rgba(var(--ion-color-base-rgb), 1);
+}
+
+.chipOutline {
+  border-radius: 4px;
+  border-color: rgba(var(--ion-color-base-rgb), 1);
+  color: rgba(var(--ion-color-base-rgb), 1);
 }
 
 .weekDaysWrapper {
