@@ -46,7 +46,10 @@ const CommonPageHeader: FC<Props> = ({ root, title }) => {
         <IonTitle size="large" slot="start">
           {title}
         </IonTitle>
-        <IonButtons slot="primary">
+      </IonToolbar>
+
+      <IonToolbar>
+        <IonButtons slot="start">
           <IonSegment value={currentMode} onIonChange={onModeChange}>
             <IonSegmentButton value="ios">iOS</IonSegmentButton>
             <IonSegmentButton value="md">Android</IonSegmentButton>

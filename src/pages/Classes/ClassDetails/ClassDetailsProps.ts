@@ -5,6 +5,7 @@ export type ClassDetailsContainerProps = {};
 
 export type UseClassDetailsResultProps = {
   classDetails: ClassItem;
+  loading: boolean;
 };
 
 export type ClassDetailsProps = ClassDetailsContainerProps & UseClassDetailsResultProps;

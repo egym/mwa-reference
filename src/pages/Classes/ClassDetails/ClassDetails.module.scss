@@ -1,0 +1,83 @@
+.card {
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  img {
+    width: 100%;
+    border-radius: 0;
+    transform: scale(1.1);
+  }
+}
+
+.chip {
+  margin: 0;
+  border-radius: 2px;
+  margin-top: 7px;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.subHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scheduleBlock {
+  border-radius: 6px;
+  padding: 9px;
+  background: var(--ion-color-medium);
+  color: var(--ion-color-medium-contrast);
+  display: flex;
+  align-items: center;
+}
+
+.scheduleBlockDate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 9px;
+  border-right: 1px solid var(--ion-color-medium-shade);
+}
+
+.scheduleBlockContent {
+  padding-left: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.iconWrapper {
+  padding: 3px;
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ion-color-medium-shade);
+  color: var(--ion-color-medium-contrast);
+}
+
+.contentItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookBtn {
+  --border-radius: 8px;
+  margin: 20px 16px;
+  height: 38px;
+}

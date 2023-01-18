@@ -6,6 +6,7 @@ export const queryKeys = {
   },
   classes: {
     all: () => ['classes', 'all'],
+    id: (id: number) => [...queryKeys.classes.all(), 'id', id],
   },
   testCors: ['test-cors'],
 };
