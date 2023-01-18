@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { IonContent, IonLabel, IonPage, IonSegment, IonSegmentButton } from '@ionic/react';
-import { Loader } from 'src/components';
+import { CommonPageHeader, Loader } from 'src/components';
 import ClassBookingItem from '../ClassesList/components/ClassBookingItem';
 import styles from './ClassesWidget.module.scss';
 import type { ClassesWidgetProps } from './ClassesWidgetProps';
@@ -16,6 +16,8 @@ const ClassesWidget: FC<ClassesWidgetProps> = ({ handleClassItemClick, upcomingC
 
   return (
     <IonPage>
+      {/* In real app CommonPageHeader should be removed */}
+      <CommonPageHeader title="Classes Widget" />
       <IonContent className={styles.content}>
         <IonSegment
           mode="ios"

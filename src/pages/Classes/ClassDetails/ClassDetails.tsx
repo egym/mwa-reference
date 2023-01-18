@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   IonButton,
   IonCard,
@@ -14,14 +15,15 @@ import {
   IonText,
   IonToolbar,
 } from '@ionic/react';
-import { format, parseISO } from 'date-fns';
 import { arrowForward, calendarOutline } from 'ionicons/icons';
 import { CommonPageHeader, Loader } from 'src/components';
 import SpotsLeft from '../components/SpotsLeft';
 import styles from './ClassDetails.module.scss';
 import type { ClassDetailsProps } from './ClassDetailsProps';
 
-const ClassDetails: FC<ClassDetailsProps> = ({ classDetails, loading }) => {
+const ClassDetails: FC<ClassDetailsProps> = ({ classDetails, loading, dayFormatted, weekDayFormatted }) => {
+  const { t } = useTranslation();
+
   return (
     <IonPage>
       <CommonPageHeader title={classDetails?.name || '...'} />
@@ -47,8 +49,8 @@ const ClassDetails: FC<ClassDetailsProps> = ({ classDetails, loading }) => {
                 </IonText>
                 <div className={styles.scheduleBlock}>
                   <div className={styles.scheduleBlockDate}>
-                    <span>{format(parseISO(classDetails.date), 'E')}</span>
-                    <span>{format(parseISO(classDetails.date), 'd')}</span>
+                    <span>{weekDayFormatted}</span>
+                    <span>{dayFormatted}</span>
                   </div>
                   <div className={styles.scheduleBlockContent}>
                     <div className={styles.scheduleBlockTime}>
@@ -99,7 +101,7 @@ const ClassDetails: FC<ClassDetailsProps> = ({ classDetails, loading }) => {
             className={styles.bookBtn}
             onClick={() => alert('Book a class')}
           >
-            Book Class
+            {t('classes.bookClass')}
           </IonButton>
         </IonToolbar>
       </IonFooter>

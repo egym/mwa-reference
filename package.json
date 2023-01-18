@@ -58,6 +58,7 @@
     "i18next-http-backend": "^2.1.1",
     "ionicons": "^6.0.3",
     "jwt-decode": "^3.1.2",
+    "luxon": "^3.2.1",
     "msw": "^0.49.2",
     "path-to-regexp": "^6.2.1",
     "qs": "^6.11.0",
@@ -86,6 +87,7 @@
   "devDependencies": {
     "@capacitor/cli": "4.6.1",
     "@ionic/prettier-config": "^2.0.0",
+    "@types/luxon": "^3.2.0",
     "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",

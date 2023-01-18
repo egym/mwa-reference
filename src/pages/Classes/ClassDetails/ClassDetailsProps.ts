@@ -6,6 +6,8 @@ export type ClassDetailsContainerProps = {};
 export type UseClassDetailsResultProps = {
   classDetails: ClassItem;
   loading: boolean;
+  weekDayFormatted: string;
+  dayFormatted: string;
 };
 
 export type ClassDetailsProps = ClassDetailsContainerProps & UseClassDetailsResultProps;

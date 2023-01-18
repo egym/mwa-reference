@@ -1,4 +1,4 @@
-import { addBusinessDays } from 'date-fns';
+import { DateTime } from 'luxon';
 import type { ClassItem } from 'src/types';
 
 type Data = {
@@ -47,7 +47,7 @@ class MockDB {
   }
 }
 
-const today = new Date();
+const today = DateTime.now();
 
 export default new MockDB({
   classes: [
@@ -57,7 +57,7 @@ export default new MockDB({
       trainer: 'with Rebeca',
       gymName: 'Fitness Gym Berlin',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 1).toISOString(),
+      date: today.plus({ day: 1 }).toISO(),
       image: '/assets/training_template_1.png',
       booked: false,
     },
@@ -67,7 +67,7 @@ export default new MockDB({
       trainer: 'with Darren Adams',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 1).toISOString(),
+      date: today.plus({ day: 1 }).toISO(),
       image: '/assets/training_template_2.png',
       booked: true,
     },
@@ -77,7 +77,7 @@ export default new MockDB({
       trainer: 'with Lilly Fletcher',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 1).toISOString(),
+      date: today.plus({ day: 1 }).toISO(),
       image: '/assets/training_template_3.png',
       booked: false,
     },
@@ -87,7 +87,7 @@ export default new MockDB({
       trainer: 'with Rebeca',
       gymName: 'Fitness Gym Berlin',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 1).toISOString(),
+      date: today.plus({ day: 1 }).toISO(),
       image: '/assets/training_template_24.png',
       booked: true,
     },
@@ -97,7 +97,7 @@ export default new MockDB({
       trainer: 'with Rebeca',
       gymName: 'Fitness Gym Berlin',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 2).toISOString(),
+      date: today.plus({ day: 2 }).toISO(),
       image: '/assets/training_template_25.png',
       booked: false,
     },
@@ -107,7 +107,7 @@ export default new MockDB({
       trainer: 'with Darren Adams',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 2).toISOString(),
+      date: today.plus({ day: 2 }).toISO(),
       image: '/assets/training_template_26.png',
       booked: true,
     },
@@ -117,7 +117,7 @@ export default new MockDB({
       trainer: 'with Lilly Fletcher',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 3).toISOString(),
+      date: today.plus({ day: 3 }).toISO(),
       image: '/assets/training_template_29.png',
       booked: true,
     },
@@ -127,7 +127,7 @@ export default new MockDB({
       trainer: 'with Rebeca',
       gymName: 'Fitness Gym Berlin',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 2).toISOString(),
+      date: today.plus({ day: 2 }).toISO(),
       image: '/assets/training_template_1.png',
       booked: false,
     },
@@ -137,7 +137,7 @@ export default new MockDB({
       trainer: 'with Darren Adams',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 2).toISOString(),
+      date: today.plus({ day: 2 }).toISO(),
       image: '/assets/training_template_2.png',
       booked: true,
     },
@@ -147,7 +147,7 @@ export default new MockDB({
       trainer: 'with Lilly Fletcher',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 3).toISOString(),
+      date: today.plus({ day: 3 }).toISO(),
       image: '/assets/training_template_3.png',
       booked: false,
     },
@@ -157,7 +157,7 @@ export default new MockDB({
       trainer: 'with Rebeca',
       gymName: 'Fitness Gym Berlin',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 3).toISOString(),
+      date: today.plus({ day: 3 }).toISO(),
       image: '/assets/training_template_24.png',
       booked: true,
     },
@@ -167,7 +167,7 @@ export default new MockDB({
       trainer: 'with Lilly Fletcher',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 2).toISOString(),
+      date: today.plus({ day: 2 }).toISO(),
       image: '/assets/training_template_25.png',
       booked: false,
     },
@@ -177,7 +177,7 @@ export default new MockDB({
       trainer: 'with Lilly Fletcher',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 3).toISOString(),
+      date: today.plus({ day: 3 }).toISO(),
       image: '/assets/training_template_26.png',
       booked: true,
     },
@@ -187,7 +187,7 @@ export default new MockDB({
       trainer: 'with Lilly Fletcher',
       gymName: 'Super Gym',
       time: '8:30 AM - 45 min',
-      date: addBusinessDays(today, 1).toISOString(),
+      date: today.plus({ day: 1 }).toISO(),
       image: '/assets/training_template_29.png',
       booked: false,
     },

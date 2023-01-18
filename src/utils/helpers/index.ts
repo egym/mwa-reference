@@ -1,3 +1,5 @@
+import type { DateTime } from 'luxon';
+
 export const getBackendUrl = () => {
   return {
     develop: 'https://mwa-test-be.herokuapp.com',
@@ -31,4 +33,22 @@ export const waitAndResolve = <Data>(data: Data, timeout: number) => {
       resolve(data);
     }, timeout);
   });
+};
+
+export const getWeekRangeByDay = (day: DateTime) => {
+  const currenDayOfWeek = day.weekday - 1;
+
+  return Array.from({ length: 7 })
+    .map((_, dayNumber) => {
+      return currenDayOfWeek >= dayNumber
+        ? day.minus({ days: currenDayOfWeek - dayNumber })
+        : day.plus({ days: dayNumber - currenDayOfWeek });
+    })
+    .map((date) => {
+      return {
+        key: date.toMillis(),
+        date,
+        selected: date.equals(day),
+      };
+    });
 };

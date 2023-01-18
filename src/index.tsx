@@ -1,6 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { getInitialContext } from '@ionic/portals';
+import { Settings } from 'luxon';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,11 +12,13 @@ import { setGlobalPortalsContext } from './utils/helpers';
 const initialContext = getInitialContext<PortalsContext>()?.value || {
   startingRoute: '/home',
   authToken: '',
-  language: 'en_GB',
+  language: 'de_DE',
   environment: 'develop',
 };
 
 initialContext.language = initialContext.language.replace('_', '-');
+
+Settings.defaultLocale = initialContext.language;
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,0 +1,12 @@
+{
+  "common": {
+    "filters": "Filters",
+    "spotsLeft": "{{count}} spots left"
+  },
+  "classes": {
+    "listTitle": "Classes list",
+    "allClasses": "All Classes",
+    "allClassTypes": "All Class Types",
+    "bookClass": "Book class"
+  }
+}
