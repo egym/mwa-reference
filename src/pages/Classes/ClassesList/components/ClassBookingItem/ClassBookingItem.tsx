@@ -6,14 +6,14 @@ import styles from './ClassBookingItem.module.scss';
 
 type Props = {
   currentClass: ClassItem;
-  onClick?: (classDetails: ClassItem) => void;
+  onClick?: (classId: number) => void;
 };
 
 const ClassBookingItem: React.FC<Props> = ({ currentClass, onClick }) => {
   const handleClick = () => {
     if (!onClick) return;
 
-    onClick(currentClass);
+    onClick(currentClass.id);
   };
 
   return (

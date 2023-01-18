@@ -11,7 +11,7 @@ import {
   IonList,
   IonPage,
 } from '@ionic/react';
-import { calendarOutline, caretForwardOutline, documentLockOutline } from 'ionicons/icons';
+import { calendar, calendarOutline, caretForwardOutline, documentLockOutline } from 'ionicons/icons';
 import CommonPageHeader from 'src/components/CommonPageHeader';
 
 const Home: React.FC = () => {
@@ -28,6 +28,10 @@ const Home: React.FC = () => {
               <IonItem routerLink="/classes" button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={calendarOutline} slot="start"></IonIcon>
                 <IonLabel>Classes</IonLabel>
+              </IonItem>
+              <IonItem routerLink="/classes-widget" button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={calendar} slot="start"></IonIcon>
+                <IonLabel>Classes widget</IonLabel>
               </IonItem>
               <IonItem routerLink="/test-cors" button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={documentLockOutline} slot="start"></IonIcon>
