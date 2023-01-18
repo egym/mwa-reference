@@ -2,7 +2,7 @@
 declare module '*.scss';
 
 interface Window {
-  portalsContext?: PortalsContext;
+  portalsContext: PortalsContext;
   backendUrl: string;
 }
 
@@ -10,7 +10,10 @@ interface PortalsContext {
   startingRoute: string;
   language: string;
   authToken: string;
-  environment: 'develop' | 'production';
+  lightPrimaryColor: string;
+  primaryColor: string;
+  primaryTextColor: string;
+  url: string;
 }
 
 interface Exerciser {

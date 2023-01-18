@@ -2,7 +2,6 @@ import type { HttpOptions, HttpResponse, HttpHeaders } from '@capacitor/core';
 import { CapacitorHttp, CapacitorCookies } from '@capacitor/core';
 import { compile } from 'path-to-regexp';
 import qs from 'qs';
-import { getBackendUrl } from '../helpers';
 
 export const compileApiUrl = (url: string, urlParams?: Record<string, any>, urlPrefix?: string): string =>
   `${urlPrefix || ''}${url.includes(':') ? compile(url)(urlParams) : url}`;
@@ -49,13 +48,13 @@ export const createApiRequest =
       qs.stringify({ ...defaultParams?.query, ...options?.queryParams }, { arrayFormat: 'repeat' })
     );
 
-    const baseBackendUrl = baseUrl || getBackendUrl();
+    const baseBackendUrl = baseUrl || window.portalsContext.url;
 
-    console.log('baseBackendUrl', baseBackendUrl);
+    const urlResult = `${baseBackendUrl}${compileApiUrl(url, urlParams)}${queryParams}`;
 
     const response = await CapacitorHttp.request({
       method,
-      url: `${baseBackendUrl}${compileApiUrl(url, urlParams)}${queryParams}`,
+      url: urlResult,
       data: options?.payload,
       responseType: 'json',
       headers: await createHeaders(baseBackendUrl),

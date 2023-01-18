@@ -7,14 +7,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './store';
 import { scheduleRefreshPortalsToken } from './utils/api/refreshPortalsToken';
-import { setGlobalPortalsContext } from './utils/helpers';
+import { hexToRgb, setGlobalPortalsContext } from './utils/helpers';
 
-const initialContext = getInitialContext<PortalsContext>()?.value || {
-  startingRoute: '/home',
-  authToken: '',
-  language: 'de_DE',
-  environment: 'develop',
-};
+console.log('wqeqwe');
+
+const initialContext =
+  getInitialContext<PortalsContext>()?.value ||
+  ({
+    startingRoute: '/home',
+    authToken: '',
+    language: 'de_DE',
+    lightPrimaryColor: '#ebfafc',
+    primaryColor: '#00c4dc',
+    primaryTextColor: '#ffffff',
+    url: 'https://mwa-test-be.herokuapp.com',
+  } as PortalsContext);
 
 initialContext.language = initialContext.language.replace('_', '-');
 
@@ -33,6 +40,11 @@ const queryClient = new QueryClient({
 });
 
 setGlobalPortalsContext(initialContext);
+
+document.body.style.setProperty('--ion-color-primary', window.portalsContext.primaryColor);
+document.body.style.setProperty('--ion-color-primary-rgb', hexToRgb(window.portalsContext.primaryColor));
+document.body.style.setProperty('--ion-color-primary-shade', window.portalsContext.lightPrimaryColor);
+document.body.style.setProperty('--ion-color-primary-tint', window.portalsContext.lightPrimaryColor);
 
 scheduleRefreshPortalsToken(initialContext.authToken);
 

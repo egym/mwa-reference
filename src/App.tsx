@@ -4,6 +4,7 @@ import { setupIonicReact } from '@ionic/react';
 import qs from 'qs';
 import i18n from './i18n';
 import Layout from './Layout';
+import { hexToRgb } from './utils/helpers';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -31,8 +32,8 @@ import './styles/modificators.scss';
 const queryParams = qs.parse(window.location.search.replace('?', ''));
 
 setupIonicReact({
-  mode: queryParams.mode as 'ios' | 'md',
-  rippleEffect: false,
+  mode: queryParams.mode as 'ios' | 'md', // do not need to specify 'mode' in the real app (here it's done only for mode switcher)
+  rippleEffect: false, // align with native app's styles, they don't use ripple effect
 });
 
 const App: React.FC = () => (

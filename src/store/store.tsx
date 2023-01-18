@@ -19,7 +19,7 @@ function useStoreData(initialState: Store): {
 
   const set = useCallback((value: Store) => {
     store.current = { ...store.current, ...value };
-    setGlobalPortalsContext(store.current.portalsContext);
+    setGlobalPortalsContext(store.current.portalsContext!);
     subscribers.current.forEach((callback) => callback());
   }, []);
 

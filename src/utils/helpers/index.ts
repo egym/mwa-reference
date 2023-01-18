@@ -1,13 +1,6 @@
 import type { DateTime } from 'luxon';
 
-export const getBackendUrl = () => {
-  return {
-    develop: 'https://mwa-test-be.herokuapp.com',
-    production: 'https://mwa-test-be.herokuapp.com',
-  }[window.portalsContext?.environment || 'develop'];
-};
-
-export const setGlobalPortalsContext = (context?: PortalsContext) => {
+export const setGlobalPortalsContext = (context: PortalsContext) => {
   window.portalsContext = context;
 };
 
@@ -51,4 +44,14 @@ export const getWeekRangeByDay = (day: DateTime) => {
         selected: date.equals(day),
       };
     });
+};
+
+export const hexToRgb = (hex: string) => {
+  let result = null;
+  if (hex.length === 6 || hex.length === 7) {
+    result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  } else if (hex.length === 8 || hex.length === 9) {
+    result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  }
+  return result ? parseInt(result[1], 16) + ', ' + parseInt(result[2], 16) + ', ' + parseInt(result[3], 16) : null;
 };
