@@ -11,7 +11,7 @@ import {
   IonList,
   IonPage,
 } from '@ionic/react';
-import { calendar, calendarOutline, caretForwardOutline, documentLockOutline } from 'ionicons/icons';
+import { calendar, calendarOutline, caretForwardOutline, documentLockOutline, lockOpenOutline } from 'ionicons/icons';
 import CommonPageHeader from 'src/components/CommonPageHeader';
 
 const Home: React.FC = () => {
@@ -36,6 +36,10 @@ const Home: React.FC = () => {
               <IonItem routerLink="/test-cors" button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={documentLockOutline} slot="start"></IonIcon>
                 <IonLabel>Test CORS</IonLabel>
+              </IonItem>
+              <IonItem routerLink="/test-auth" button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={lockOpenOutline} slot="start"></IonIcon>
+                <IonLabel>Test Auth</IonLabel>
               </IonItem>
             </IonList>
           </IonCardContent>

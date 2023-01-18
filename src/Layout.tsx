@@ -3,6 +3,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import usePortalsSubscriptions from './hooks/usePortalsSubscriptions';
 import { routesConfigs } from './pages/router';
 import { getStartingRouteSelector, useStore } from './store';
 import { mapRoutes } from './utils/router';
@@ -11,6 +12,7 @@ const routes = mapRoutes(routesConfigs);
 
 const Layout: FC = () => {
   const [startingRoute] = useStore(getStartingRouteSelector);
+  usePortalsSubscriptions();
 
   return (
     <IonApp>

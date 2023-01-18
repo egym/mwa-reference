@@ -8,5 +8,8 @@
     "allClasses": "Alle Klassen",
     "allClassTypes": "Alle Klassentypen",
     "bookClass": "Buchklasse"
+  },
+  "errors": {
+    "oops": "Etwas ist schief gelaufen"
   }
 }

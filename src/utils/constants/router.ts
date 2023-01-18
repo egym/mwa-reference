@@ -6,4 +6,5 @@ export const routeUrls = {
   classes: '/classes',
   classesWidget: '/classes-widget',
   classById: getOrCompilePath<{ classId: string | number }>('/classes/:classId'),
+  testAuth: '/test-auth',
 };

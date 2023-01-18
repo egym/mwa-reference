@@ -4,6 +4,7 @@ import { routeUrls } from 'src/utils/constants/router';
 import ClassDetails from './Classes/ClassDetails';
 import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
+import TestAuth from './TestAuth';
 import TestCors from './TestCors';
 
 export const routesConfigs: RouteConfig[] = [
@@ -16,6 +17,11 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.testCors,
     exact: true,
     component: TestCors,
+  },
+  {
+    path: routeUrls.testAuth,
+    exact: true,
+    component: TestAuth,
   },
   {
     path: routeUrls.classes,

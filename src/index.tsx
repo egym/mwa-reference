@@ -9,8 +9,6 @@ import { StoreProvider } from './store';
 import { scheduleRefreshPortalsToken } from './utils/api/refreshPortalsToken';
 import { hexToRgb, setGlobalPortalsContext } from './utils/helpers';
 
-console.log('wqeqwe');
-
 const initialContext =
   getInitialContext<PortalsContext>()?.value ||
   ({
