@@ -1,17 +1,7 @@
-import { addBusinessDays, format } from 'date-fns';
+import { addBusinessDays, format, parseISO } from 'date-fns';
+import type { ClassItem } from 'src/types/classes';
 
 const today = new Date();
-
-export type ClassItem = {
-  id: number;
-  name: string;
-  trainer: string;
-  gymName: string;
-  time: string;
-  date: Date;
-  image: string;
-  booked: boolean;
-};
 
 export const classes: ClassItem[] = [
   {
@@ -20,7 +10,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Rebeca',
     gymName: 'Fitness Gym Berlin',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 1),
+    date: addBusinessDays(today, 1).toISOString(),
     image: '/assets/training_template_1.png',
     booked: false,
   },
@@ -30,7 +20,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Darren Adams',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 1),
+    date: addBusinessDays(today, 1).toISOString(),
     image: '/assets/training_template_2.png',
     booked: true,
   },
@@ -40,7 +30,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Lilly Fletcher',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 1),
+    date: addBusinessDays(today, 1).toISOString(),
     image: '/assets/training_template_3.png',
     booked: false,
   },
@@ -50,7 +40,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Rebeca',
     gymName: 'Fitness Gym Berlin',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 1),
+    date: addBusinessDays(today, 1).toISOString(),
     image: '/assets/training_template_24.png',
     booked: true,
   },
@@ -60,7 +50,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Rebeca',
     gymName: 'Fitness Gym Berlin',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 2),
+    date: addBusinessDays(today, 2).toISOString(),
     image: '/assets/training_template_25.png',
     booked: false,
   },
@@ -70,7 +60,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Darren Adams',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 2),
+    date: addBusinessDays(today, 2).toISOString(),
     image: '/assets/training_template_26.png',
     booked: true,
   },
@@ -80,7 +70,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Lilly Fletcher',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 3),
+    date: addBusinessDays(today, 3).toISOString(),
     image: '/assets/training_template_29.png',
     booked: true,
   },
@@ -90,7 +80,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Rebeca',
     gymName: 'Fitness Gym Berlin',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 2),
+    date: addBusinessDays(today, 2).toISOString(),
     image: '/assets/training_template_1.png',
     booked: false,
   },
@@ -100,7 +90,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Darren Adams',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 2),
+    date: addBusinessDays(today, 2).toISOString(),
     image: '/assets/training_template_2.png',
     booked: true,
   },
@@ -110,7 +100,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Lilly Fletcher',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 3),
+    date: addBusinessDays(today, 3).toISOString(),
     image: '/assets/training_template_3.png',
     booked: false,
   },
@@ -120,7 +110,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Rebeca',
     gymName: 'Fitness Gym Berlin',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 3),
+    date: addBusinessDays(today, 3).toISOString(),
     image: '/assets/training_template_24.png',
     booked: true,
   },
@@ -130,7 +120,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Lilly Fletcher',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 2),
+    date: addBusinessDays(today, 2).toISOString(),
     image: '/assets/training_template_25.png',
     booked: false,
   },
@@ -140,7 +130,7 @@ export const classes: ClassItem[] = [
     trainer: 'with Lilly Fletcher',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 3),
+    date: addBusinessDays(today, 3).toISOString(),
     image: '/assets/training_template_26.png',
     booked: true,
   },
@@ -150,14 +140,14 @@ export const classes: ClassItem[] = [
     trainer: 'with Lilly Fletcher',
     gymName: 'Super Gym',
     time: '8:30 AM - 45 min',
-    date: addBusinessDays(today, 1),
+    date: addBusinessDays(today, 1).toISOString(),
     image: '/assets/training_template_29.png',
     booked: false,
   },
 ];
 
 export const groupedClasses: Record<string, ClassItem[]> = classes.reduce((acc, classItem) => {
-  const formattedDay = format(classItem.date, 'eee, LLL d');
+  const formattedDay = format(parseISO(classItem.date), 'eee, LLL d');
 
   return {
     ...acc,

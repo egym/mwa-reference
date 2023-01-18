@@ -24,3 +24,11 @@ export const parseJson = (data: string) => {
     return data;
   }
 };
+
+export const waitAndResolve = <Data>(data: Data, timeout: number) => {
+  return new Promise<Data>((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, timeout);
+  });
+};

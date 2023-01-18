@@ -1,6 +1,6 @@
 import Portals from '@ionic/portals';
 import type { SubscriptionCallback } from '@ionic/portals/types/definitions';
-import { SubscribeTopic } from '../../constants';
+import { SubscribeTopic } from 'src/types';
 
 export const getAuthTokenSubscription = async (callback: SubscriptionCallback<string>) => {
   return Portals.subscribe<string>({ topic: SubscribeTopic.authToken }, callback);

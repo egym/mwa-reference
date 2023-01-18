@@ -1,5 +1,5 @@
 import Portals from '@ionic/portals';
-import { NativeRequestTopic, NativeRequestType } from '../../constants';
+import { NativeRequestTopic, NativeRequestType } from 'src/types';
 
 export const publishDismiss = async () => {
   await Portals.publish({

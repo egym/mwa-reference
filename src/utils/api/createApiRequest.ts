@@ -37,7 +37,8 @@ export const createApiRequest =
   <Result = unknown, Payload = Result, UrlParams = unknown, QueryParams = DefaultQueryParams>(
     url: string,
     method: HttpOptions['method'] = 'get',
-    defaultParams?: { query?: Partial<QueryParams>; url?: Partial<UrlParams> }
+    defaultParams?: { query?: Partial<QueryParams>; url?: Partial<UrlParams> },
+    baseUrl?: string
   ) =>
   async (
     options?: ApiRequestOptions<Payload, QueryParams, UrlParams>
@@ -48,7 +49,7 @@ export const createApiRequest =
       qs.stringify({ ...defaultParams?.query, ...options?.queryParams }, { arrayFormat: 'repeat' })
     );
 
-    const baseBackendUrl = getBackendUrl();
+    const baseBackendUrl = baseUrl || getBackendUrl();
 
     console.log('baseBackendUrl', baseBackendUrl);
 
