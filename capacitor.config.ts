@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.egym.mwa-reference',
+  appId: 'com.egym.mwareference',
   appName: 'mwa-reference',
   webDir: 'build',
   bundledWebRuntime: false,
