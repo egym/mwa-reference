@@ -14,6 +14,7 @@ interface PortalsContext {
   primaryColor: string;
   primaryTextColor: string;
   url: string;
+  showLogger: 'true' | 'false';
 }
 
 interface Exerciser {

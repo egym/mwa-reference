@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Portals from '@ionic/portals';
 import { useIonAlert } from '@ionic/react';
 import { getExerciserSelector, getPortalsContextSelector, useStore } from 'src/store';
 import type { PortalsError } from 'src/types/error';
 import { parseJson } from 'src/utils/helpers';
 import { SubscribeTopic } from '../../types';
 import { scheduleRefreshPortalsToken } from '../../utils/api/refreshPortalsToken';
+import { portalsSubscribe } from '../../utils/nativeHandlers/subscriptions';
 
 const usePortalsSubscriptions = () => {
   const [portalsContext, set] = useStore(getPortalsContextSelector);
@@ -18,23 +18,18 @@ const usePortalsSubscriptions = () => {
     (async () => {
       console.log('Portals Subscribed!');
 
-      await Portals.subscribe<string>({ topic: SubscribeTopic.authToken }, ({ data }) => {
-        console.log('[WEB] - subscription - authToken', data);
+      await portalsSubscribe<string>({ topic: SubscribeTopic.authToken }, ({ data }) => {
         scheduleRefreshPortalsToken(data);
         set({ portalsContext: { ...portalsContext, authToken: data } as PortalsContext });
       });
 
-      await Portals.subscribe<string>({ topic: SubscribeTopic.exerciserInfo }, ({ topic, data }) => {
+      await portalsSubscribe<string>({ topic: SubscribeTopic.exerciserInfo }, ({ data }) => {
         const newExerciser: Exerciser = parseJson(data);
-
-        console.log('[WEB] - subscription - exerciserInfo - serialized', topic, data);
 
         set({ exerciserInfo: { ...exerciserInfo, ...newExerciser } });
       });
 
-      await Portals.subscribe<string>({ topic: 'error' }, ({ topic, data }) => {
-        console.log('[WEB] - subscription - error', topic, data);
-
+      await portalsSubscribe<string>({ topic: 'error' }, ({ data }) => {
         const error = parseJson(data) as PortalsError;
 
         presentAlert({

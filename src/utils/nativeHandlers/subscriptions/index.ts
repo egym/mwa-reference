@@ -1,11 +1,16 @@
 import Portals from '@ionic/portals';
-import type { SubscriptionCallback } from '@ionic/portals/types/definitions';
-import { SubscribeTopic } from 'src/types';
+import type { SubscriptionCallback, PortalSubscription, SubscribeOptions } from '@ionic/portals/types/definitions';
+import { logPortalsResponse } from '@egym/mwa-logger';
 
-export const getAuthTokenSubscription = async (callback: SubscriptionCallback<string>) => {
-  return Portals.subscribe<string>({ topic: SubscribeTopic.authToken }, callback);
-};
-
-export const getExerciserInfoSubscription = async (callback: SubscriptionCallback<Exerciser>) => {
-  return Portals.subscribe<Exerciser>({ topic: SubscribeTopic.exerciserInfo }, callback);
+export const portalsSubscribe = async <T>(
+  options: SubscribeOptions,
+  callback: SubscriptionCallback<T>
+): Promise<PortalSubscription> => {
+  return Portals.subscribe<T>(options, (...args) => {
+    logPortalsResponse(options.topic, {
+      ...options,
+      ...args,
+    });
+    callback(...args);
+  });
 };

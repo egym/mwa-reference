@@ -1,5 +1,6 @@
 import type { JwtPayload } from 'jwt-decode';
 import jwtDecode from 'jwt-decode';
+import { logDebug } from '@egym/mwa-logger';
 import { requestAuthToken } from '../nativeHandlers/requests';
 
 export const scheduleRefreshPortalsToken = (token?: string) => {
@@ -8,15 +9,14 @@ export const scheduleRefreshPortalsToken = (token?: string) => {
 
     const now = Date.now() / 1000;
     const exp = decodedAuthToken.exp || 0;
-    // 5 minutes before token expires
-    const diff = exp - now - 300;
+    const diff = exp - now;
 
     const expiresAtDate = new Date(exp * 1000).toLocaleString();
 
-    console.log('[WEB] - authToken expiresAtDate', expiresAtDate);
+    logDebug('authToken expiresAtDate', expiresAtDate);
 
     setTimeout(() => {
-      console.log(`[WEB] - Refresh token start ${new Date().toLocaleString()}`);
+      logDebug('Refresh token start', new Date().toLocaleString());
       requestAuthToken();
     }, diff * 1000);
   }

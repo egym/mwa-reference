@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { getInitialContext } from '@ionic/portals';
 import { Settings } from 'luxon';
 import { createRoot } from 'react-dom/client';
+import { logDebug, logWebWitals } from '@egym/mwa-logger';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './store';
@@ -19,6 +20,7 @@ const initialContext =
     primaryColor: '#00c4dc',
     primaryTextColor: '#ffffff',
     url: 'https://mwa-test-be.herokuapp.com',
+    showLogger: 'true',
   } as PortalsContext);
 
 initialContext.language = initialContext.language.replace('_', '-');
@@ -46,6 +48,8 @@ document.body.style.setProperty('--ion-color-primary-tint', window.portalsContex
 
 scheduleRefreshPortalsToken(initialContext.authToken);
 
+logDebug('initialContext', initialContext);
+
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
@@ -70,4 +74,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(logWebWitals);

@@ -9,4 +9,10 @@ export const queryKeys = {
     id: (id: number) => [...queryKeys.classes.all(), 'id', id],
   },
   testCors: ['test-cors'],
+  testLogger: {
+    success: ['success'],
+    serverDown: ['serverDown'],
+    validationError: ['validationError'],
+    editError: ['editError'],
+  },
 };

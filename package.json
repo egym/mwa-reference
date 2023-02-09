@@ -41,6 +41,7 @@
     "@capacitor/ios": "4.6.1",
     "@capacitor/keyboard": "4.1.0",
     "@capacitor/status-bar": "4.1.1",
+    "@egym/mwa-logger": "^0.2.14",
     "@ionic/portals": "^0.7.0",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
