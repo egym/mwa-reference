@@ -6,6 +6,7 @@ import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
 import TestAuth from './TestAuth';
 import TestCors from './TestCors';
+import TestLogger from './TestLogger';
 
 export const routesConfigs: RouteConfig[] = [
   {
@@ -37,5 +38,10 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.classById(),
     exact: true,
     component: ClassDetails,
+  },
+  {
+    path: routeUrls.testLogger,
+    exact: true,
+    component: TestLogger,
   },
 ];

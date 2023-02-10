@@ -2,9 +2,11 @@ import React, { Suspense } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { setupIonicReact } from '@ionic/react';
 import qs from 'qs';
+import { EgymMwaDevtools, ErrorBoundary } from '@egym/mwa-logger';
+import ErrorFallback from './ErrorFallback';
 import i18n from './i18n';
 import Layout from './Layout';
-import { hexToRgb } from './utils/helpers';
+import { getShowLoggerSelector, useStore } from './store';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,12 +38,19 @@ setupIonicReact({
   rippleEffect: false, // align with native app's styles, they don't use ripple effect
 });
 
-const App: React.FC = () => (
-  <Suspense fallback={<span />}>
-    <I18nextProvider i18n={i18n}>
-      <Layout />
-    </I18nextProvider>
-  </Suspense>
-);
+const App: React.FC = () => {
+  const [showLogger] = useStore(getShowLoggerSelector);
+
+  return (
+    <Suspense fallback={<span />}>
+      {showLogger && <EgymMwaDevtools position="top-right" />}
+      <I18nextProvider i18n={i18n}>
+        <ErrorBoundary fallback={<ErrorFallback />}>
+          <Layout />
+        </ErrorBoundary>
+      </I18nextProvider>
+    </Suspense>
+  );
+};
 
 export default App;

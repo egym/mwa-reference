@@ -11,3 +11,7 @@ export const getStartingRouteSelector = (store: Store) => {
 };
 
 export const getExerciserSelector = (store: Store) => store.exerciserInfo;
+
+export const getShowLoggerSelector = (store: Store) => {
+  return getPortalsContextSelector(store)?.showLogger === 'true';
+};

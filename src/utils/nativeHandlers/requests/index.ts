@@ -1,8 +1,16 @@
+import type { PortalsPlugin } from '@ionic/portals';
 import Portals from '@ionic/portals';
+import { logPortalsRequest } from '@egym/mwa-logger';
 import { NativeRequestTopic, NativeRequestType } from 'src/types';
 
+export const portalsPublish: PortalsPlugin['publish'] = async (message) => {
+  logPortalsRequest(`${message.topic} ${message.data.type}`, message.data);
+
+  await Portals.publish(message);
+};
+
 export const publishDismiss = async () => {
-  await Portals.publish({
+  await portalsPublish({
     topic: NativeRequestTopic.Subscription,
     data: {
       type: NativeRequestType.dismiss,
@@ -11,7 +19,7 @@ export const publishDismiss = async () => {
 };
 
 export const requestAuthToken = async () => {
-  await Portals.publish({
+  await portalsPublish({
     topic: NativeRequestTopic.Subscription,
     data: {
       type: NativeRequestType.authToken,
@@ -21,7 +29,7 @@ export const requestAuthToken = async () => {
 };
 
 export const requestExerciserInfo = async () => {
-  await Portals.publish({
+  await portalsPublish({
     topic: NativeRequestTopic.Subscription,
     data: {
       type: NativeRequestType.exerciserInfo,
@@ -30,7 +38,7 @@ export const requestExerciserInfo = async () => {
 };
 
 export const requestOpenFeature = async (data: { startingRoute: string }) => {
-  await Portals.publish({
+  await portalsPublish({
     topic: NativeRequestTopic.Subscription,
     data: {
       type: NativeRequestType.openFeature,
