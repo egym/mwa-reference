@@ -1,6 +1,7 @@
 import Home from 'src/pages/Home';
 import type { RouteConfig } from 'src/types';
 import { routeUrls } from 'src/utils/constants/router';
+import BarcodeScanner from './BarcodeScanner';
 import ClassDetails from './Classes/ClassDetails';
 import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
@@ -43,5 +44,10 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.testLogger,
     exact: true,
     component: TestLogger,
+  },
+  {
+    path: routeUrls.barcodeScanner,
+    exact: true,
+    component: BarcodeScanner,
   },
 ];

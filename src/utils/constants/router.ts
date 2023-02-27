@@ -8,4 +8,5 @@ export const routeUrls = {
   classById: getOrCompilePath<{ classId: string | number }>('/classes/:classId'),
   testAuth: '/test-auth',
   testLogger: '/test-logger',
+  barcodeScanner: '/barcode-scanner',
 };

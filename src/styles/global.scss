@@ -63,3 +63,23 @@ ion-spinner {
 table {
   border-collapse: separate;
 }
+
+.scanner-ui {
+  display: none;
+}
+.scanner-hide {
+  visibility: visible;
+}
+
+body.scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
+  background-color: transparent;
+}
+
+body.scanner-active .scanner-ui {
+  display: block;
+}
+body.scanner-active .scanner-hide {
+  visibility: hidden;
+}
