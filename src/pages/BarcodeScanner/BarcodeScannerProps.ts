@@ -2,7 +2,9 @@
 export type BarcodeScannerContainerProps = {};
 
 export type UseBarcodeScannerResultProps = {
+  barcodeActive: boolean;
   startScan: () => void;
+  stopScan: () => void;
   scanResult?: string;
   error: boolean;
 };

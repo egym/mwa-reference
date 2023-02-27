@@ -6,6 +6,7 @@ import type { UseBarcodeScannerResultProps } from '../../BarcodeScannerProps';
 const useBarcodeScanner = (): UseBarcodeScannerResultProps => {
   const [scanResult, setScanResult] = useState<string | undefined>();
   const [error, setError] = useState<boolean>(false);
+  const [barcodeActive, setBarcodeActive] = useState<boolean>(false);
 
   useEffect(() => {
     BarcodeScanner.prepare();
@@ -13,6 +14,7 @@ const useBarcodeScanner = (): UseBarcodeScannerResultProps => {
     return () => {
       BarcodeScanner.showBackground();
       BarcodeScanner.stopScan();
+      document.querySelector('body')?.classList.remove('scanner-active');
     };
   }, []);
 
@@ -23,9 +25,10 @@ const useBarcodeScanner = (): UseBarcodeScannerResultProps => {
       logDebug('barcode scanner permission result', permissionResult);
 
       if (permissionResult.granted) {
-        document.querySelector('body')?.classList.add('scanner-active');
         await BarcodeScanner.hideBackground();
+        document.querySelector('body')?.classList.add('scanner-active');
 
+        setBarcodeActive(true);
         const result = await BarcodeScanner.startScan({ cameraDirection: CameraDirection.BACK });
 
         if (result.hasContent) {
@@ -57,13 +60,23 @@ const useBarcodeScanner = (): UseBarcodeScannerResultProps => {
     } finally {
       await BarcodeScanner.showBackground();
       document.querySelector('body')?.classList.remove('scanner-active');
+      setBarcodeActive(false);
     }
   }, []);
 
+  const stopScan = useCallback(() => {
+    BarcodeScanner.showBackground();
+    BarcodeScanner.stopScan();
+    document.querySelector('body')?.classList.remove('scanner-active');
+    setBarcodeActive(false);
+  }, []);
+
   return {
+    barcodeActive,
     scanResult,
     error,
     startScan,
+    stopScan,
   };
 };
 
