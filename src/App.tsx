@@ -6,7 +6,8 @@ import { EgymMwaDevtools, ErrorBoundary } from '@egym/mwa-logger';
 import ErrorFallback from './ErrorFallback';
 import i18n from './i18n';
 import Layout from './Layout';
-import { getShowLoggerSelector, useStore } from './store';
+import { useStore } from './store';
+import { getShowLoggerSelector } from './store/selectors';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

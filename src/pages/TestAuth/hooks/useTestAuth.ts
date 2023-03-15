@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
-import { getAuthTokenSelector, getExerciserSelector, useStore } from '../../../store';
+import { useStore } from 'src/store';
+import { getAuthTokenSelector, getExerciserSelector } from 'src/store/selectors';
 import { requestAuthToken, requestExerciserInfo } from '../../../utils/nativeHandlers/requests';
 import type { UseTestAuthResultProps } from '../TestAuthProps';
 

@@ -7,14 +7,12 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'plugin:prettier/recommended',
-    'plugin:jest/recommended',
     'plugin:import/typescript',
   ],
-  plugins: ['react', '@typescript-eslint', 'import'],
+  plugins: ['react', '@typescript-eslint', 'import', 'react-refresh'],
   env: {
     browser: true,
     es6: true,
-    jest: true,
   },
   globals: {
     Atomics: 'readonly',
@@ -60,6 +58,7 @@ module.exports = {
     /*
      * Custom rules
      * */
+    'react-refresh/only-export-components': 'warn',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     'import/no-extraneous-dependencies': [

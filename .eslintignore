@@ -9,3 +9,7 @@ src/setupTests.ts
 src/service-worker.ts
 src/react-app-env.d.ts
 capacitor.config.ts
+
+.prettierrc.js
+env.d.ts
+vite.config.ts

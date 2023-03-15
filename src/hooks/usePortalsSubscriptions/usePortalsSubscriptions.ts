@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useIonAlert } from '@ionic/react';
-import { getExerciserSelector, getPortalsContextSelector, useStore } from 'src/store';
+import { useStore } from 'src/store';
+import { getExerciserSelector, getPortalsContextSelector } from 'src/store/selectors';
+import { SubscribeTopic } from 'src/types';
 import type { PortalsError } from 'src/types/error';
+import { scheduleRefreshPortalsToken } from 'src/utils/api/refreshPortalsToken';
 import { parseJson } from 'src/utils/helpers';
-import { SubscribeTopic } from '../../types';
-import { scheduleRefreshPortalsToken } from '../../utils/api/refreshPortalsToken';
-import { portalsSubscribe } from '../../utils/nativeHandlers/subscriptions';
+import { portalsSubscribe } from 'src/utils/nativeHandlers/subscriptions';
 
 const usePortalsSubscriptions = () => {
   const [portalsContext, set] = useStore(getPortalsContextSelector);

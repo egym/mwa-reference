@@ -5,7 +5,8 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import usePortalsSubscriptions from './hooks/usePortalsSubscriptions';
 import { routesConfigs } from './pages/router';
-import { getStartingRouteSelector, useStore } from './store';
+import { useStore } from './store';
+import { getStartingRouteSelector } from './store/selectors';
 import { mapRoutes } from './utils/router';
 
 const routes = mapRoutes(routesConfigs);
