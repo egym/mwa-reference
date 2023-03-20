@@ -1,7 +1,20 @@
 import type { DateTime } from 'luxon';
+import { Color } from '../color';
 
 export const setGlobalPortalsContext = (context: PortalsContext) => {
   window.portalsContext = context;
+};
+
+export const setThemeColors = (context: PortalsContext) => {
+  const primaryColor = new Color(context.primaryColor);
+  const textColor = new Color(context.primaryTextColor);
+
+  document.body.style.setProperty('--ion-color-primary', primaryColor.hex);
+  document.body.style.setProperty('--ion-color-primary-rgb', primaryColor.rgbString);
+  document.body.style.setProperty('--ion-color-primary-contrast', textColor.hex);
+  document.body.style.setProperty('--ion-color-primary-contrast-rgb', textColor.rgbString);
+  document.body.style.setProperty('--ion-color-primary-shade', primaryColor.shade(0.12).hex);
+  document.body.style.setProperty('--ion-color-primary-tint', context.lightPrimaryColor);
 };
 
 type Cx = (...classNames: (undefined | null | string | boolean)[]) => string;

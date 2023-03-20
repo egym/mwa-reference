@@ -7,8 +7,8 @@ import { logDebug, logWebWitals } from '@egym/mwa-logger';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './store';
-import { scheduleRefreshPortalsToken } from './utils/api/refreshPortalsToken';
-import { hexToRgb, setGlobalPortalsContext } from './utils/helpers';
+import { decodeToken, refreshTokenErrorHandler, retryFunction } from './utils/api/refreshPortalsToken';
+import { setGlobalPortalsContext, setThemeColors } from './utils/helpers';
 
 const initialContext =
   getInitialContext<PortalsContext>()?.value ||
@@ -30,24 +30,24 @@ Settings.defaultLocale = initialContext.language;
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: false,
+      retry: retryFunction,
+      retryDelay: 2000,
       refetchOnWindowFocus: false,
-      refetchOnMount: false,
       staleTime: 1000 * 60 * 2, // 2 minutes
       cacheTime: Infinity,
+      onError: refreshTokenErrorHandler,
+    },
+    mutations: {
+      retry: retryFunction,
+      retryDelay: 2000,
+      onError: refreshTokenErrorHandler,
     },
   },
 });
 
 setGlobalPortalsContext(initialContext);
-
-document.body.style.setProperty('--ion-color-primary', window.portalsContext.primaryColor);
-document.body.style.setProperty('--ion-color-primary-rgb', hexToRgb(window.portalsContext.primaryColor));
-document.body.style.setProperty('--ion-color-primary-shade', window.portalsContext.lightPrimaryColor);
-document.body.style.setProperty('--ion-color-primary-tint', window.portalsContext.lightPrimaryColor);
-
-scheduleRefreshPortalsToken(initialContext.authToken);
-
+setThemeColors(window.portalsContext);
+decodeToken(initialContext.authToken);
 logDebug('initialContext', initialContext);
 
 const container = document.getElementById('root');

@@ -5,7 +5,7 @@ import { useStore } from 'src/store';
 import { getExerciserSelector, getPortalsContextSelector } from 'src/store/selectors';
 import { SubscribeTopic } from 'src/types';
 import type { PortalsError } from 'src/types/error';
-import { scheduleRefreshPortalsToken } from 'src/utils/api/refreshPortalsToken';
+import { decodeToken } from 'src/utils/api/refreshPortalsToken';
 import { parseJson } from 'src/utils/helpers';
 import { portalsSubscribe } from 'src/utils/nativeHandlers/subscriptions';
 
@@ -20,7 +20,7 @@ const usePortalsSubscriptions = () => {
       console.log('Portals Subscribed!');
 
       await portalsSubscribe<string>({ topic: SubscribeTopic.authToken }, ({ data }) => {
-        scheduleRefreshPortalsToken(data);
+        decodeToken(data);
         set({ portalsContext: { ...portalsContext, authToken: data } as PortalsContext });
       });
 
