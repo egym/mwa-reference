@@ -19,6 +19,7 @@ import {
   caretForwardOutline,
   documentLockOutline,
   lockOpenOutline,
+  navigateCircleOutline,
 } from 'ionicons/icons';
 import CommonPageHeader from 'src/components/CommonPageHeader';
 import { routeUrls } from '../../utils/constants';
@@ -57,6 +58,10 @@ const Home: React.FC = () => {
               <IonItem routerLink={routeUrls.barcodeScanner} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={barcodeOutline} slot="start"></IonIcon>
                 <IonLabel>Test Barcode Scanner</IonLabel>
+              </IonItem>
+              <IonItem routerLink={routeUrls.geolocation} button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={navigateCircleOutline} slot="start"></IonIcon>
+                <IonLabel>Test Geolocation</IonLabel>
               </IonItem>
             </IonList>
           </IonCardContent>

@@ -5,6 +5,7 @@ import BarcodeScanner from './BarcodeScanner';
 import ClassDetails from './Classes/ClassDetails';
 import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
+import Geolocation from './Geolocation';
 import TestAuth from './TestAuth';
 import TestCors from './TestCors';
 import TestLogger from './TestLogger';
@@ -49,5 +50,10 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.barcodeScanner,
     exact: true,
     component: BarcodeScanner,
+  },
+  {
+    path: routeUrls.geolocation,
+    exact: true,
+    component: Geolocation,
   },
 ];
