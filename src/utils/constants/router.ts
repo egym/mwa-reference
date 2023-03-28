@@ -9,4 +9,5 @@ export const routeUrls = {
   testAuth: '/test-auth',
   testLogger: '/test-logger',
   barcodeScanner: '/barcode-scanner',
+  geolocation: '/geolocation',
 };
