@@ -3,6 +3,7 @@ import { I18nextProvider } from 'react-i18next';
 import { setupIonicReact } from '@ionic/react';
 import qs from 'qs';
 import { EgymMwaDevtools, ErrorBoundary } from '@egym/mwa-logger';
+import { appflowCIconfig } from './appflow_ci_config';
 import ErrorFallback from './ErrorFallback';
 import i18n from './i18n';
 import Layout from './Layout';
@@ -44,7 +45,7 @@ const App: React.FC = () => {
 
   return (
     <Suspense fallback={<span />}>
-      {showLogger && <EgymMwaDevtools position="top-right" />}
+      {showLogger && <EgymMwaDevtools position="top-right" ciConfig={appflowCIconfig} />}
       <I18nextProvider i18n={i18n}>
         <ErrorBoundary fallback={<ErrorFallback />}>
           <Layout />

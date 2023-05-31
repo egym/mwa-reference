@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "./build.sh",
+    "build-local": "tsc && vite build --mode production",
     "serve": "vite preview",
     "ionic:serve": "vite dev --host",
     "ios": "ionic capacitor run ios --external --livereload -p 5173",
@@ -44,7 +45,7 @@
     "@capacitor/ios": "^4.6.1",
     "@capacitor/keyboard": "4.1.0",
     "@capacitor/status-bar": "4.1.1",
-    "@egym/mwa-logger": "^0.2.18",
+    "@egym/mwa-logger": "^0.2.6",
     "@ionic/portals": "^0.7.0",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
