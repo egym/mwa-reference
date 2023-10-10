@@ -14,6 +14,7 @@ import {
   IonPage,
   IonText,
   IonToolbar,
+  useIonRouter,
 } from '@ionic/react';
 import { arrowForward, calendarOutline } from 'ionicons/icons';
 import { CommonPageHeader, Loader } from 'src/components';
@@ -23,12 +24,16 @@ import type { ClassDetailsProps } from './ClassDetailsProps';
 
 const ClassDetails: FC<ClassDetailsProps> = ({ classDetails, loading, dayFormatted, weekDayFormatted }) => {
   const { t } = useTranslation();
+  const { routeInfo } = useIonRouter();
+
+  const fromOpenFeature = new URLSearchParams(routeInfo.search).get('openFeature');
 
   return (
     <IonPage>
       <CommonPageHeader
         // @ts-ignore (for testing <ErrorBoundary> and wsod logs, uncomment second line to see the page)
         // title={classDetails?.detail.throwerror || '...'}
+        root={Boolean(fromOpenFeature)}
         title={classDetails?.name || '...'}
       />
       <IonContent>
