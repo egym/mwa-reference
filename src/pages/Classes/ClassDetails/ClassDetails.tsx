@@ -28,8 +28,8 @@ const ClassDetails: FC<ClassDetailsProps> = ({ classDetails, loading, dayFormatt
     <IonPage>
       <CommonPageHeader
         // @ts-ignore (for testing <ErrorBoundary> and wsod logs, uncomment second line to see the page)
-        title={classDetails?.detail.throwerror || '...'}
-        // title={classDetails?.name || '...'}
+        // title={classDetails?.detail.throwerror || '...'}
+        title={classDetails?.name || '...'}
       />
       <IonContent>
         {loading ? (
