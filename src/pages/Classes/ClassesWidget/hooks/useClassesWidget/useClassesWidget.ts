@@ -20,7 +20,7 @@ const useClassesWidget = (): UseClassesWidgetResultProps => {
 
   const handleClassItemClick = useCallback(async (classId: number) => {
     await requestOpenFeature({
-      startingRoute: `/classes/${classId}`,
+      startingRoute: `/classes/${classId}?openFeature=true`,
     });
   }, []);
 
