@@ -20,6 +20,7 @@ import {
   documentLockOutline,
   lockOpenOutline,
   navigateCircleOutline,
+  shareOutline,
 } from 'ionicons/icons';
 import CommonPageHeader from 'src/components/CommonPageHeader';
 import { routeUrls } from '../../utils/constants';
@@ -62,6 +63,10 @@ const Home: React.FC = () => {
               <IonItem routerLink={routeUrls.geolocation} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={navigateCircleOutline} slot="start"></IonIcon>
                 <IonLabel>Test Geolocation</IonLabel>
+              </IonItem>
+              <IonItem routerLink={routeUrls.share} button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={shareOutline} slot="start"></IonIcon>
+                <IonLabel>Test Share Plugin</IonLabel>
               </IonItem>
             </IonList>
           </IonCardContent>

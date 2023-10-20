@@ -10,4 +10,5 @@ export const routeUrls = {
   testLogger: '/test-logger',
   barcodeScanner: '/barcode-scanner',
   geolocation: '/geolocation',
+  share: '/share',
 };
