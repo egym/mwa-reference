@@ -83,7 +83,7 @@
     "workbox-streams": "^5.1.4"
   },
   "devDependencies": {
-    "@capacitor/cli": "4.6.1",
+    "@capacitor/cli": "4.8.0",
     "@ionic/prettier-config": "^2.0.0",
     "@types/luxon": "^3.2.0",
     "@types/node": "^18.15.3",
