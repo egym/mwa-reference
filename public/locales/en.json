@@ -9,6 +9,14 @@
     "allClassTypes": "All Class Types",
     "bookClass": "Book class"
   },
+  "locations": {
+    "innerTitle": "Locations",
+    "tabLocation": "Location",
+    "hours": "Hours",
+    "contactHours": "Contact location for holiday hours",
+    "gymNotFound": "Sorry, we didn't find a GYM with that name",
+    "notHours": "Not Hours Found"
+  },
   "errors": {
     "oops": "Something went wrong"
   }
