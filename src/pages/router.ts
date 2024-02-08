@@ -6,6 +6,8 @@ import ClassDetails from './Classes/ClassDetails';
 import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
 import Geolocation from './Geolocation';
+import Locations from './Locations';
+import LocationDetail from './Locations/LocationDetail';
 import Share from './Share';
 import TestAuth from './TestAuth';
 import TestCors from './TestCors';
@@ -56,6 +58,16 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.geolocation,
     exact: true,
     component: Geolocation,
+  },
+  {
+    path: routeUrls.locations,
+    exact: true,
+    component: Locations,
+  },
+  {
+    path: routeUrls.locationById(),
+    exact: true,
+    component: LocationDetail,
   },
   {
     path: routeUrls.share,
