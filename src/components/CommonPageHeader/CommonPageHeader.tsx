@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import type { IonSegmentCustomEvent } from '@ionic/core/dist/types/components';
 import type { SegmentChangeEventDetail } from '@ionic/react';
 import {
@@ -55,10 +55,6 @@ const CommonPageHeader: FC<Props> = ({ root, title }) => {
             <IonSegmentButton value="md">Android</IonSegmentButton>
           </IonSegment>
         </IonButtons>
-      </IonToolbar>
-
-      <IonToolbar>
-        <IonTitle size="small">{window.location.href}</IonTitle>
       </IonToolbar>
     </IonHeader>
   );
