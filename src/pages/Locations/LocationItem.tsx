@@ -24,7 +24,7 @@ const LocationItem: FC<UseLocationResultProps> = ({ groupedLocations, loading })
 
   return (
     <>
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearchProp={handleSearch} />
       {loading ? (
         <Loader />
       ) : locationResult.length > 0 ? (
