@@ -4,7 +4,7 @@ import type { Location } from '../../../types';
 export type LocationContainerProps = {};
 
 export type UseLocationResultProps = {
-    groupedLocations: Location[];
+  groupedLocations: Location[];
   loading: boolean;
 };
 
