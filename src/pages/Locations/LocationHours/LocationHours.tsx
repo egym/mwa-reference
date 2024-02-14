@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonList, IonItem, IonText } from '@ionic/react';
 import type { Location } from '../../../types';
-import styles from '../LocationItem.module.scss';
+import styles from '../Location.module.scss';
 
 interface LocationProp {
   location: Location | undefined;

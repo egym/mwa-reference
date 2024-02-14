@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { IonContent, IonPage } from '@ionic/react';
 import { CommonPageHeader } from '../../components';
 import useLocation from './hooks/useLocation';
-import LocationItem from './LocationItem';
+import LocationList from './LocationList';
 
 const Locations: FC = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const Locations: FC = () => {
     <IonPage>
       <CommonPageHeader title={t('locations.innerTitle')} />
       <IonContent fullscreen className="ion-padding">
-        <LocationItem {...result} />
+        <LocationList {...result} />
       </IonContent>
     </IonPage>
   );

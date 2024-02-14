@@ -1,35 +1,54 @@
 import type { FC } from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel, IonText } from '@ionic/react';
 import { CommonPageHeader, Loader } from 'src/components';
-import type { Location } from '../../../types';
 import useLocation from '../hooks/useLocation';
+import styles from '../Location.module.scss';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
-import styles from '../LocationItem.module.scss';
 
 enum ClassType {
   Location = 'location',
   Hours = 'hours',
 }
 
+type LocationItem = {
+  locationId: string;
+};
+
 const LocationDetail: FC = () => {
   const { t } = useTranslation();
 
-  // @ts-ignore
-  const { locationId } = useParams();
-  const [selectedSegment, setSelectedSegment] = useState<ClassType>(ClassType.Location);
-  const [locationResult, setLocationResult] = useState<Location>();
+  const { locationId } = useParams<LocationItem>();
   const { loading, groupedLocations } = useLocation();
 
-  useEffect(() => {
+  const [selectedSegment, setSelectedSegment] = useState<ClassType>(ClassType.Location);
+
+  const locationResult = useMemo(() => {
     if (!loading) {
-      const location: Location = groupedLocations.filter((eachLocation) => eachLocation.uuid === locationId)[0];
-      setLocationResult(location);
+      return groupedLocations.find((eachLocation) => eachLocation.uuid === locationId);
     }
+    return undefined;
   }, [loading, groupedLocations, locationId]);
+
+  const generateSegment = (tab: ClassType): JSX.Element => {
+    if (tab === ClassType.Location) {
+      return <LocationInfo location={locationResult} />;
+    } else if (tab === ClassType.Hours) {
+      return (
+        <>
+          <IonText className={styles.banner}>
+            <p>{t('locations.contactHours')}</p>
+          </IonText>
+          <LocationHours location={locationResult} />
+        </>
+      );
+    } else {
+      return <></>;
+    }
+  };
 
   return (
     <IonPage>
@@ -44,18 +63,7 @@ const LocationDetail: FC = () => {
               <IonLabel>{t('locations.hours')}</IonLabel>
             </IonSegmentButton>
           </IonSegment>
-          {loading ? (
-            <Loader />
-          ) : selectedSegment === ClassType.Location ? (
-            <LocationInfo location={locationResult} />
-          ) : (
-            <>
-              <IonText className={styles.banner}>
-                <p>{t('locations.contactHours')}</p>
-              </IonText>
-              <LocationHours location={locationResult} />
-            </>
-          )}
+          {loading ? <Loader /> : generateSegment(selectedSegment)}
         </IonContent>
       </IonContent>
     </IonPage>

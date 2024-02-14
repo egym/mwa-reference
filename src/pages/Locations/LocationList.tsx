@@ -5,10 +5,11 @@ import { IonList, IonItem, IonText } from '@ionic/react';
 import { Loader } from 'src/components';
 import SearchBar from '../../components/SearchBar';
 import type { Location } from '../../types';
+import { routeUrls } from '../../utils/constants';
 import type { UseLocationResultProps } from './hooks/LocationsProps';
-import styles from './LocationItem.module.scss';
+import styles from './Location.module.scss';
 
-const LocationItem: FC<UseLocationResultProps> = ({ groupedLocations, loading }) => {
+const LocationList: FC<UseLocationResultProps> = ({ groupedLocations, loading }) => {
   const { t } = useTranslation();
   const [locationResult, setLocationResult] = useState<Location[]>([]);
 
@@ -34,7 +35,7 @@ const LocationItem: FC<UseLocationResultProps> = ({ groupedLocations, loading })
               <IonItem
                 className={styles.itemCursor}
                 detail={false}
-                routerLink={`/locations/${eachLocation.uuid}`}
+                routerLink={`${routeUrls.locations}/${eachLocation.uuid}`}
                 button
               >
                 <IonText className={styles.textWrapper} class="ion-text-wrap">
@@ -57,4 +58,4 @@ const LocationItem: FC<UseLocationResultProps> = ({ groupedLocations, loading })
   );
 };
 
-export default LocationItem;
+export default LocationList;

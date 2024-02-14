@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { IonList, IonItem, IonIcon, IonLabel, IonText } from '@ionic/react';
 import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
 import type { Location } from '../../../types';
-import styles from '../LocationItem.module.scss';
+import styles from '../Location.module.scss';
 
 interface LocationProp {
   location: Location | undefined;
