@@ -8,7 +8,7 @@ import type { Location } from '../../../types';
 import useLocation from '../hooks/useLocation';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
-import '../LocationItem.css';
+import styles from '../LocationItem.module.scss';
 
 enum ClassType {
   Location = 'location',
@@ -50,7 +50,7 @@ const LocationDetail: FC = () => {
             <LocationInfo location={locationResult} />
           ) : (
             <>
-              <IonText className="ion-text-micro-wrap">
+              <IonText className={styles.banner}>
                 <p>{t('locations.contactHours')}</p>
               </IonText>
               <LocationHours location={locationResult} />

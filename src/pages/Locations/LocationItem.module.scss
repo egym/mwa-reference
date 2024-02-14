@@ -1,44 +1,36 @@
-.custom-list {
+.listBackground {//custom-list
   background-color: #f4f4f4;
 }
 
-.custom-item {
+.itemCursor {//custom-item
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
-.ion-text-micro-wrap {
+.banner {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
   background-color: rgb(231, 231, 231);
 }
 
-.ion-text-wrap {
+.textWrapper {
   padding-top: 10px;
   padding-bottom: 10px;
   width: 100%;
 }
 
-.ion-text-wrap p {
+.textWrapper p {
   margin-top: 1%;
   margin-bottom: 1%;
 }
 
-.ion-text-wrap h4 {
+.textWrapper h4 {
   margin-top: 1%;
   margin-bottom: 1%;
 }
 
-.custom-item-title {
-  font-weight: bold;
-}
-
-.custom-item-subtitle {
-  color: #555;
-}
-
-.redOne {
+.redText {
   color: red;
 }
 

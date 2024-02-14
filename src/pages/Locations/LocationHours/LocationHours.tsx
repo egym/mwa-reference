@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonList, IonItem, IonText } from '@ionic/react';
-import '../LocationItem.css';
 import type { Location } from '../../../types';
+import styles from '../LocationItem.module.scss';
 
 interface LocationProp {
   location: Location | undefined;
@@ -24,13 +24,13 @@ const LocationHours: FC<LocationProp> = ({ location }: LocationProp) => {
       {location?.workingHours ? (
         Object.entries(location.workingHours).map((eachHour) => {
           return (
-            <IonList lines="none" key={eachHour[0]} className="custom-list">
-              <IonItem className="custom-item" detail={false}>
-                <IonText class="ion-text-wrap">
-                  <div className="minorLeft">
+            <IonList lines="none" key={eachHour[0]} className={styles.listBackground}>
+              <IonItem className={styles.itemCursor} detail={false}>
+                <IonText className={styles.textWrapper} class="ion-text-wrap">
+                  <div className={styles.minorLeft}>
                     <h4>{eachHour[0]}</h4>
                   </div>
-                  <div className="minorRight">
+                  <div className={styles.minorRight}>
                     <p>
                       {amPmFormat(eachHour[1].split('-')[0])}-{amPmFormat(eachHour[1].split('-')[1])}
                     </p>
@@ -41,7 +41,7 @@ const LocationHours: FC<LocationProp> = ({ location }: LocationProp) => {
           );
         })
       ) : (
-        <IonText className="ion-text-micro-wrap">
+        <IonText className={styles.banner}>
           <p>{t('locations.notHours')}</p>
         </IonText>
       )}

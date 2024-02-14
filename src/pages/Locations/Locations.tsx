@@ -1,10 +1,9 @@
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonContent, IonPage } from '@ionic/react';
-import CommonPageHeader from 'src/components/CommonPageHeader';
+import { CommonPageHeader } from '../../components';
 import useLocation from './hooks/useLocation';
 import LocationItem from './LocationItem';
-import './LocationItem.css';
 
 const Locations: FC = () => {
   const { t } = useTranslation();
@@ -12,11 +11,9 @@ const Locations: FC = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <CommonPageHeader title={t('locations.innerTitle')} />
-        <IonContent className="ion-padding">
-          <LocationItem {...result} />
-        </IonContent>
+      <CommonPageHeader title={t('locations.innerTitle')} />
+      <IonContent fullscreen className="ion-padding">
+        <LocationItem {...result} />
       </IonContent>
     </IonPage>
   );
