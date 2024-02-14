@@ -1,9 +1,8 @@
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IonList, IonItem, IonText } from '@ionic/react';
+import { IonList, IonItem, IonText, IonSearchbar } from '@ionic/react';
 import { Loader } from 'src/components';
-import SearchBar from '../../components/SearchBar';
 import type { Location } from '../../types';
 import { routeUrls } from '../../utils/constants';
 import type { UseLocationResultProps } from './hooks/LocationsProps';
@@ -13,7 +12,8 @@ const LocationList: FC<UseLocationResultProps> = ({ groupedLocations, loading })
   const { t } = useTranslation();
   const [locationResult, setLocationResult] = useState<Location[]>([]);
 
-  const handleSearch = (searchText: string) => {
+  const handleSearch = (event: any) => {
+    const searchText: string = event.target.value || '';
     const regex = new RegExp(searchText, 'i');
     const filteredResults: Location[] = groupedLocations.filter((location) => regex.test(location.name));
     setLocationResult(filteredResults);
@@ -25,7 +25,7 @@ const LocationList: FC<UseLocationResultProps> = ({ groupedLocations, loading })
 
   return (
     <>
-      <SearchBar onSearchProp={handleSearch} />
+      <IonSearchbar onIonChange={handleSearch} placeholder="Search by location" />
       {loading ? (
         <Loader />
       ) : locationResult.length > 0 ? (
