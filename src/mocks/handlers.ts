@@ -1,11 +1,11 @@
-import { rest } from 'msw';
+import { http, HttpResponse } from 'msw';
 import type { ClassItem } from '../types';
 import db from './db';
 
 export const handlers = [
-  rest.get<ClassItem[]>('http://localhost:8000/mocks/classes', (req, res, ctx) => {
+  //@ts-ignore
+  http.get<ClassItem[]>('http://localhost:8000/mocks/classes', () => {
     const classes = db.get('classes');
-
-    return res(ctx.json(classes));
+    return HttpResponse.json(classes);
   }),
 ];
