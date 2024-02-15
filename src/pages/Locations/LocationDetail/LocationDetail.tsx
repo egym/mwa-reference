@@ -3,11 +3,13 @@ import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel, IonText } from '@ionic/react';
+import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
 import { CommonPageHeader, Loader } from 'src/components';
 import useLocationList from '../hooks/useLocationList';
 import styles from '../Location.module.scss';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
+import { LocationInfoProps } from '../../../types/locations';
 
 enum ClassType {
   Location = 'location',
@@ -35,7 +37,28 @@ const LocationDetail: FC = () => {
 
   const generateSegment = (tab: ClassType): JSX.Element => {
     if (tab === ClassType.Location) {
-      return <LocationInfo location={locationResult} />;
+      if (locationResult) {
+        const locationFeed: Array<LocationInfoProps> = [
+          {
+            icon: locationOutline,
+            label: `${locationResult.address.addressLine1} ${locationResult.address.city} ${locationResult.address.postalCode}`,
+          },
+          {
+            icon: mailOutline,
+            label: locationResult.email,
+          },
+          {
+            icon: callOutline,
+            label: locationResult.phone,
+          },
+          {
+            icon: globeOutline,
+            label: locationResult.url,
+            class: styles.redText,
+          },
+        ];
+        return <LocationInfo locationFeed={locationFeed} />;
+      }
     } else if (tab === ClassType.Hours) {
       return (
         <>
@@ -45,14 +68,17 @@ const LocationDetail: FC = () => {
           <LocationHours location={locationResult} />
         </>
       );
-    } else {
-      return <></>;
     }
+    return (
+      <IonText className={styles.banner}>
+        <p>Not Information Found</p>
+      </IonText>
+    );
   };
 
   const onSegmentChange = (e: any) => {
     setSelectedSegment(e.detail.value as ClassType);
-  }
+  };
 
   return (
     <IonPage>

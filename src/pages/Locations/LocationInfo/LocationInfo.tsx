@@ -1,53 +1,22 @@
 import type { FC } from 'react';
-import { IonList, IonItem, IonIcon, IonLabel, IonText } from '@ionic/react';
-import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
-import type { Location } from '../../../types';
+import { IonList, IonItem, IonIcon, IonLabel } from '@ionic/react';
 import styles from '../Location.module.scss';
+import { LocationInfoProps } from '../../../types/locations';
 
 interface LocationProp {
-  location: Location | undefined;
+  locationFeed: Array<LocationInfoProps>;
 }
 
-const LocationInfo: FC<LocationProp> = ({ location }: LocationProp) => {
+const LocationInfo: FC<LocationProp> = ({ locationFeed }: LocationProp) => {
   return (
-    <>
-      {location ? (
-        <IonList lines="none" className={styles.listBackground}>
-          {(location.address.addressLine1 || location.address.city || location.address.postalCode) && (
-            <IonItem className={styles.itemCursor} detail={false}>
-              <IonIcon icon={locationOutline} slot="start"></IonIcon>
-              <IonLabel>
-                {location.address.addressLine1} {location.address.city} {location.address.postalCode}
-              </IonLabel>
-            </IonItem>
-          )}
-          {location.email && (
-            <IonItem className={styles.itemCursor} detail={false}>
-              <IonIcon icon={mailOutline} slot="start"></IonIcon>
-              <IonLabel>{location.email}</IonLabel>
-            </IonItem>
-          )}
-
-          {location.phone && (
-            <IonItem className={styles.itemCursor} detail={false}>
-              <IonIcon icon={callOutline} slot="start"></IonIcon>
-              <IonLabel>{location.phone}</IonLabel>
-            </IonItem>
-          )}
-
-          {location.url && (
-            <IonItem className={`${styles.itemCursor} ${styles.redText}`} detail={false}>
-              <IonIcon icon={globeOutline} slot="start"></IonIcon>
-              <IonLabel>{location.url}</IonLabel>
-            </IonItem>
-          )}
-        </IonList>
-      ) : (
-        <IonText className={styles.banner}>
-          <p>Not Information Found</p>
-        </IonText>
-      )}
-    </>
+    <IonList lines="none" className={styles.listBackground}>
+      {locationFeed.map((eachLocationLabel) => (
+        <IonItem className={`${styles.itemCursor} ${eachLocationLabel.class || ''}`} detail={false}>
+          <IonIcon icon={eachLocationLabel.icon} slot="start"></IonIcon>
+          <IonLabel>{eachLocationLabel.label}</IonLabel>
+        </IonItem>
+      ))}
+    </IonList>
   );
 };
 

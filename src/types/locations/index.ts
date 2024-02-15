@@ -27,3 +27,9 @@ export type Location = {
   } | null;
   workingHoursFreeText: string | null;
 };
+
+export type LocationInfoProps = {
+  icon: string;
+  label: string;
+  class?: string;
+};
