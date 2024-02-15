@@ -2,12 +2,12 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonContent, IonPage } from '@ionic/react';
 import { CommonPageHeader } from '../../components';
-import useLocation from './hooks/useLocation';
+import useLocationList from './hooks/useLocationList';
 import LocationList from './LocationList';
 
 const Locations: FC = () => {
   const { t } = useTranslation();
-  const result = useLocation();
+  const result = useLocationList();
 
   return (
     <IonPage>

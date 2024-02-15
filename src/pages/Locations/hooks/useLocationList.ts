@@ -2,19 +2,19 @@ import { useMemo } from 'react';
 import useLocations from 'src/hooks/useLocations';
 import type { UseLocationResultProps } from './LocationsProps';
 
-const useLocation = (): UseLocationResultProps => {
+const useLocationList = (): UseLocationResultProps => {
   const { locationsQuery } = useLocations();
 
-  const groupedLocations = useMemo(() => {
+  const locations = useMemo(() => {
     if (!locationsQuery.isSuccess) return {};
 
     return locationsQuery.data;
   }, [locationsQuery.data, locationsQuery.isSuccess]);
 
   return {
-    groupedLocations,
+    locations,
     loading: locationsQuery.isLoading,
   };
 };
 
-export default useLocation;
+export default useLocationList;

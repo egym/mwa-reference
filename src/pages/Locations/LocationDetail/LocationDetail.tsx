@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel, IonText } from '@ionic/react';
 import { CommonPageHeader, Loader } from 'src/components';
-import useLocation from '../hooks/useLocation';
+import useLocationList from '../hooks/useLocationList';
 import styles from '../Location.module.scss';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
@@ -22,16 +22,16 @@ const LocationDetail: FC = () => {
   const { t } = useTranslation();
 
   const { locationId } = useParams<LocationItem>();
-  const { loading, groupedLocations } = useLocation();
+  const { loading, locations } = useLocationList();
 
   const [selectedSegment, setSelectedSegment] = useState<ClassType>(ClassType.Location);
 
   const locationResult = useMemo(() => {
     if (!loading) {
-      return groupedLocations.find((eachLocation) => eachLocation.uuid === locationId);
+      return locations.find((eachLocation) => eachLocation.uuid === locationId);
     }
     return undefined;
-  }, [loading, groupedLocations, locationId]);
+  }, [loading, locations, locationId]);
 
   const generateSegment = (tab: ClassType): JSX.Element => {
     if (tab === ClassType.Location) {
