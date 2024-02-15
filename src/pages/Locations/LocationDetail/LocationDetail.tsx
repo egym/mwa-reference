@@ -50,12 +50,16 @@ const LocationDetail: FC = () => {
     }
   };
 
+  const onSegmentChange = (e: any) => {
+    setSelectedSegment(e.detail.value as ClassType);
+  }
+
   return (
     <IonPage>
       <IonContent fullscreen>
         <CommonPageHeader title={locationResult?.name || 'Location Detail'} />
         <IonContent className="ion-padding">
-          <IonSegment onIonChange={(e) => setSelectedSegment(e.detail.value as ClassType)} value={selectedSegment}>
+          <IonSegment onIonChange={onSegmentChange} value={selectedSegment}>
             <IonSegmentButton value={ClassType.Location}>
               <IonLabel>{t('locations.tabLocation')}</IonLabel>
             </IonSegmentButton>
