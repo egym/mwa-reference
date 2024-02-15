@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel, IonText } from '@ionic/react';
 import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
 import { CommonPageHeader, Loader } from 'src/components';
+import type { LocationInfoProps } from '../../../types/locations';
 import useLocationList from '../hooks/useLocationList';
 import styles from '../Location.module.scss';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
-import { LocationInfoProps } from '../../../types/locations';
 
 enum ClassType {
   Location = 'location',
@@ -38,7 +38,7 @@ const LocationDetail: FC = () => {
   const generateSegment = (tab: ClassType): JSX.Element => {
     if (tab === ClassType.Location) {
       if (locationResult) {
-        const locationFeed: Array<LocationInfoProps> = [
+        const locationFeed: LocationInfoProps[] = [
           {
             icon: locationOutline,
             label: `${locationResult.address.addressLine1} ${locationResult.address.city} ${locationResult.address.postalCode}`,
