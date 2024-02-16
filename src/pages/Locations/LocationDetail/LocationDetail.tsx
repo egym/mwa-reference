@@ -71,7 +71,7 @@ const LocationDetail: FC = () => {
     }
     return (
       <IonText className={styles.banner}>
-        <p>Not Information Found</p>
+        <p>{t('locations.notInformation')}</p>
       </IonText>
     );
   };
