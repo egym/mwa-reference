@@ -5,7 +5,7 @@ import type { Location } from '../../../types';
 import styles from '../Location.module.scss';
 
 interface LocationProp {
-  location: Location | undefined;
+  location?: Location;
 }
 
 const amPmFormat = (hour24: string) => {
