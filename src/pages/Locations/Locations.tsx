@@ -5,10 +5,10 @@ import { IonList, IonItem, IonText, IonSearchbar, IonContent, IonPage } from '@i
 import { CommonPageHeader, Loader } from 'src/components';
 import type { Location } from '../../types';
 import { routeUrls } from '../../utils/constants';
-import type { UseLocationResultProps } from './hooks/LocationsProps';
+import type { LocationsPageProps } from './hooks/LocationsProps';
 import styles from './Locations.module.scss';
 
-const Locations: FC<UseLocationResultProps> = ({ locations, loading }) => {
+const Locations: FC<LocationsPageProps> = ({ locations, loading }) => {
   const { t } = useTranslation();
   const [locationResult, setLocationResult] = useState<Location[]>([]);
 
