@@ -7,9 +7,9 @@ import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicon
 import { CommonPageHeader, Loader } from 'src/components';
 import type { LocationInfoProps } from '../../../types/locations';
 import useLocationList from '../hooks/useLocationList';
-import styles from '../Locations.module.scss';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
+import styles from '../Locations.module.scss';
 
 enum ClassType {
   Location = 'location',
@@ -54,7 +54,7 @@ const LocationDetail: FC = () => {
           {
             icon: globeOutline,
             label: locationResult.url,
-            class: styles.redText,
+            class: 'danger',
           },
         ];
         return <LocationInfo locationFeed={locationFeed} />;
