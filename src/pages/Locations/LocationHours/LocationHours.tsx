@@ -4,7 +4,7 @@ import { IonList, IonItem, IonText } from '@ionic/react';
 import type { Location } from '../../../types';
 import styles from '../Locations.module.scss';
 
-interface LocationProp {
+interface LocationHoursProps {
   location?: Location;
 }
 
@@ -16,7 +16,7 @@ const amPmFormat = (hour24: string) => {
   return hours + ' ' + ampm;
 };
 
-const LocationHours: FC<LocationProp> = ({ location }: LocationProp) => {
+const LocationHours: FC<LocationHoursProps> = ({ location }: LocationHoursProps) => {
   const { t } = useTranslation();
 
   return (

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel, IonText } from '@ionic/react';
 import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
 import { CommonPageHeader, Loader } from 'src/components';
-import type { LocationInfoProps } from '../../../types/locations';
+import type { LocationInfoContent } from '../../../types/locations';
 import useLocationList from '../hooks/useLocationList';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
@@ -38,7 +38,7 @@ const LocationDetail: FC = () => {
   const generateSegment = (tab: ClassType): JSX.Element => {
     if (tab === ClassType.Location) {
       if (locationResult) {
-        const locationFeed: LocationInfoProps[] = [
+        const locationFeed: LocationInfoContent[] = [
           {
             icon: locationOutline,
             label: `${locationResult.address.addressLine1} ${locationResult.address.city} ${locationResult.address.postalCode}`,
