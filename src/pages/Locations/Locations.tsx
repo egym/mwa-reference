@@ -6,7 +6,7 @@ import { CommonPageHeader, Loader } from 'src/components';
 import type { Location } from '../../types';
 import { routeUrls } from '../../utils/constants';
 import type { UseLocationResultProps } from './hooks/LocationsProps';
-import styles from './Location.module.scss';
+import styles from './Locations.module.scss';
 
 const Locations: FC<UseLocationResultProps> = ({ locations, loading }) => {
   const { t } = useTranslation();
