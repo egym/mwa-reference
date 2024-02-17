@@ -17,7 +17,8 @@
     "gymNotFound": "Sorry, we didn't find a GYM with that name",
     "notHours": "Not Hours Found",
     "notInformation": "Not Information Found",
-    "searchByLocation": "Search by location"
+    "searchByLocation": "Search by location",
+    "locationDetailDefault": "Location Detail"
   },
   "errors": {
     "oops": "Something went wrong"

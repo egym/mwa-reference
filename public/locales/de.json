@@ -17,7 +17,8 @@
     "gymNotFound": "Leider haben wir kein Fitnessstudio mit diesem Namen gefunden",
     "notHours": "Keine Öffnungszeiten gefunden",
     "notInformation": "Keine Informationen gefunden",
-    "searchByLocation": "Suche nach Standort"
+    "searchByLocation": "Suche nach Standort",
+    "locationDetailDefault": "Standortdetails"
   },
   "errors": {
     "oops": "Etwas ist schief gelaufen"

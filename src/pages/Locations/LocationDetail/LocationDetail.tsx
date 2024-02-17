@@ -83,7 +83,7 @@ const LocationDetail: FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <CommonPageHeader title={locationResult?.name || 'Location Detail'} />
+        <CommonPageHeader title={locationResult?.name || t('locations.locationDetailDefault')} />
         <IonContent className="ion-padding">
           <IonSegment onIonChange={onSegmentChange} value={selectedSegment}>
             <IonSegmentButton value={ClassType.Location}>
