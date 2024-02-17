@@ -8,14 +8,14 @@ import { routeUrls } from '../../utils/constants';
 import type { LocationsPageProps } from './hooks/LocationsProps';
 import styles from './Locations.module.scss';
 
-const LocationsPage: FC<LocationsPageProps> = ({ locations, loading }) => {
+const LocationsPage: FC<LocationsPageProps> = ({ locations: locationList, loading }) => {
   const { t } = useTranslation();
   const [locationResult, setLocationResult] = useState<Location[]>([]);
 
   const handleSearch = (event: any) => {
     const searchText: string = event.target.value || '';
     const regex = new RegExp(searchText, 'i');
-    const filteredResults: Location[] = locations.filter((location) => regex.test(location.name));
+    const filteredResults: Location[] = locationList.filter((location) => regex.test(location.name));
     setLocationResult(filteredResults);
   };
 
@@ -48,8 +48,8 @@ const LocationsPage: FC<LocationsPageProps> = ({ locations, loading }) => {
   };
 
   useEffect(() => {
-    if (!loading) setLocationResult(locations);
-  }, [loading, locations]);
+    if (!loading) setLocationResult(locationList);
+  }, [loading, locationList]);
 
   return (
     <IonPage>
