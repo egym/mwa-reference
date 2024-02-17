@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import useLocationList from './hooks/useLocationList';
-import Locations from './Locations';
+import LocationsPage from './LocationsPage';
 
 const LocationsPageContainer: FC = () => {
   const result = useLocationList();
 
-  return <Locations {...result} />;
+  return <LocationsPage {...result} />;
 };
 
 export default LocationsPageContainer;

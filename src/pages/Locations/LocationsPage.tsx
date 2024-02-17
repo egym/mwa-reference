@@ -8,7 +8,7 @@ import { routeUrls } from '../../utils/constants';
 import type { LocationsPageProps } from './hooks/LocationsProps';
 import styles from './Locations.module.scss';
 
-const Locations: FC<LocationsPageProps> = ({ locations, loading }) => {
+const LocationsPage: FC<LocationsPageProps> = ({ locations, loading }) => {
   const { t } = useTranslation();
   const [locationResult, setLocationResult] = useState<Location[]>([]);
 
@@ -62,4 +62,4 @@ const Locations: FC<LocationsPageProps> = ({ locations, loading }) => {
   );
 };
 
-export default Locations;
+export default LocationsPage;
