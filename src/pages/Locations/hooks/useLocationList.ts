@@ -6,7 +6,7 @@ const useLocationList = (): LocationsPageProps => {
   const { locationsQuery } = useLocations();
 
   const locations = useMemo(() => {
-    if (!locationsQuery.isSuccess) return {};
+    if (!locationsQuery.isSuccess) return [];
 
     return locationsQuery.data;
   }, [locationsQuery.data, locationsQuery.isSuccess]);
