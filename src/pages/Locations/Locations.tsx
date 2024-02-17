@@ -55,7 +55,7 @@ const Locations: FC<LocationsPageProps> = ({ locations, loading }) => {
     <IonPage>
       <CommonPageHeader title={t('locations.innerTitle')} />
       <IonContent fullscreen className="ion-padding">
-        <IonSearchbar onIonChange={handleSearch} placeholder="Search by location" />
+        <IonSearchbar onIonChange={handleSearch} placeholder={`${t('locations.searchByLocation')}`} />
         {loading ? <Loader /> : generateLocation()}
       </IonContent>
     </IonPage>

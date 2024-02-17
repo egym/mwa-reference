@@ -16,7 +16,8 @@
     "contactHours": "Contact location for holiday hours",
     "gymNotFound": "Sorry, we didn't find a GYM with that name",
     "notHours": "Not Hours Found",
-    "notInformation": "Not Information Found"
+    "notInformation": "Not Information Found",
+    "searchByLocation": "Search by location"
   },
   "errors": {
     "oops": "Something went wrong"
