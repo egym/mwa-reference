@@ -12,7 +12,6 @@ const amPmFormat = (hour24: string) => {
   const onDate = new Date(`2021-01-01T${hour24}:00`);
   const hours = onDate.getHours() % 12 || 12;
   const ampm = onDate.getHours() < 12 ? 'AM' : 'PM';
-
   return hours + ' ' + ampm;
 };
 
