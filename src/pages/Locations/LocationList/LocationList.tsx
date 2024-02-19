@@ -16,9 +16,9 @@ const LocationList: FC<LocationListProps> = ({ locations }: LocationListProps) =
     <>
       {locations.length > 0 ? (
         locations.map((eachLocation: Location) => (
-          <IonList lines="none" key={eachLocation.uuid} className={styles.listBackground}>
+          <IonList lines="none" key={eachLocation.uuid} className={styles.customListBackground}>
             <IonItem
-              className={styles.itemCursor}
+              className={styles.customItemBorder}
               detail={false}
               routerLink={`${routeUrls.locations}/${eachLocation.uuid}`}
               button

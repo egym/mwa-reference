@@ -9,9 +9,9 @@ interface LocationInfoProps {
 
 const LocationInfo: FC<LocationInfoProps> = ({ locationFeed }: LocationInfoProps) => {
   return (
-    <IonList lines="none" className={styles.listBackground}>
+    <IonList lines="none" className={styles.customListBackground}>
       {locationFeed.map((eachLocationLabel) => (
-        <IonItem className={styles.itemCursor} detail={false}>
+        <IonItem className={styles.customItemBorder} detail={false}>
           <IonIcon icon={eachLocationLabel.icon} color={`${eachLocationLabel.class || 'dark'}`} slot="start"></IonIcon>
           <IonLabel color={`${eachLocationLabel.class || 'dark'}`}>{eachLocationLabel.label}</IonLabel>
         </IonItem>

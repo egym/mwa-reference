@@ -23,8 +23,8 @@ const LocationHours: FC<LocationHoursProps> = ({ location }: LocationHoursProps)
       {location?.workingHours ? (
         Object.entries(location.workingHours).map((eachHour) => {
           return (
-            <IonList lines="none" key={eachHour[0]} className={styles.listBackground}>
-              <IonItem className={styles.itemCursor} detail={false}>
+            <IonList lines="none" key={eachHour[0]} className={styles.customListBackground}>
+              <IonItem className={styles.customItemBorder} detail={false}>
                 <IonText className={styles.textWrapper} class="ion-text-wrap">
                   <div className={styles.minorLeft}>
                     <h4>{eachHour[0]}</h4>
