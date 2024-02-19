@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonSearchbar, IonContent, IonPage } from '@ionic/react';
 import { CommonPageHeader, Loader } from 'src/components';
-import type { LocationsPageProps } from './hooks/LocationsProps';
+import type { LocationsPageProps } from './hooks/LocationsPageProps';
 import useLocationsPage from './hooks/useLocationsPage';
 import LocationList from './LocationList';
 
