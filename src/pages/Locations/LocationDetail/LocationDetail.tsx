@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import type { IonSegmentCustomEvent } from '@ionic/core';
+import type { SegmentChangeEventDetail } from '@ionic/react';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel, IonText } from '@ionic/react';
 import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
 import { CommonPageHeader, Loader } from 'src/components';
@@ -76,7 +78,7 @@ const LocationDetail: FC = () => {
     );
   };
 
-  const onSegmentChange = (e: any) => {
+  const onSegmentChange = (e: IonSegmentCustomEvent<SegmentChangeEventDetail>) => {
     setSelectedSegment(e.detail.value as ClassType);
   };
 
