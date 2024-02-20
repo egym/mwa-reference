@@ -15,10 +15,15 @@ const LocationList: FC<LocationListProps> = ({ locations }: LocationListProps) =
   return (
     <>
       {locations.length > 0 ? (
-        locations.map((eachLocation: Location) => (
-          <IonList lines="full" key={eachLocation.uuid} className={styles.customListBackground}>
-            <IonItem detail={false} routerLink={`${routeUrls.locations}/${eachLocation.uuid}`} button>
-              <IonText className={styles.textWrapper} class="ion-text-wrap">
+        <IonList lines="full" className={styles.customListBackground}>
+          {locations.map((eachLocation: Location) => (
+            <IonItem
+              detail={false}
+              key={eachLocation.uuid}
+              routerLink={`${routeUrls.locations}/${eachLocation.uuid}`}
+              button
+            >
+              <IonText class="ion-text-wrap">
                 <h4>{eachLocation.name}</h4>
                 <p>{eachLocation.address.addressLine1}</p>
                 <p>
@@ -26,8 +31,8 @@ const LocationList: FC<LocationListProps> = ({ locations }: LocationListProps) =
                 </p>
               </IonText>
             </IonItem>
-          </IonList>
-        ))
+          ))}
+        </IonList>
       ) : (
         <IonText className={styles.banner}>
           <p>{t('locations.gymNotFound')}</p>
