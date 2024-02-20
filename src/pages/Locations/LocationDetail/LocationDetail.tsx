@@ -1,33 +1,17 @@
 import type { FC } from 'react';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import type { IonSegmentCustomEvent } from '@ionic/core';
 import type { SegmentChangeEventDetail } from '@ionic/react';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel } from '@ionic/react';
 import { CommonPageHeader, Loader } from 'src/components';
 import { LocationSegmentType } from '../../../types';
-import useLocationList from '../hooks/useLocationList';
+import type { LocationsDetailProps } from '../hooks/LocationsPageProps';
 import LocationSegment from '../LocationSegment';
 
-type LocationItem = {
-  locationId: string;
-};
-
-const LocationDetail: FC = () => {
+const LocationDetail: FC<LocationsDetailProps> = ({ locationDetail, loading }) => {
   const { t } = useTranslation();
-
-  const { locationId } = useParams<LocationItem>();
-  const { loading, locations } = useLocationList();
-
   const [selectedSegment, setSelectedSegment] = useState<LocationSegmentType>(LocationSegmentType.Location);
-
-  const locationResult = useMemo(() => {
-    if (!loading) {
-      return locations.find((eachLocation) => eachLocation.uuid === locationId);
-    }
-    return undefined;
-  }, [loading, locations, locationId]);
 
   const onSegmentChange = (e: IonSegmentCustomEvent<SegmentChangeEventDetail>) => {
     setSelectedSegment(e.detail.value as LocationSegmentType);
@@ -36,7 +20,7 @@ const LocationDetail: FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <CommonPageHeader title={locationResult?.name || t('locations.locationDetailDefault')} />
+        <CommonPageHeader title={locationDetail?.name || t('locations.locationDetailDefault')} />
         <IonContent className="ion-padding">
           <IonSegment onIonChange={onSegmentChange} value={selectedSegment}>
             <IonSegmentButton value={LocationSegmentType.Location}>
@@ -46,7 +30,7 @@ const LocationDetail: FC = () => {
               <IonLabel>{t('locations.hours')}</IonLabel>
             </IonSegmentButton>
           </IonSegment>
-          {loading ? <Loader /> : <LocationSegment location={locationResult} locationSegment={selectedSegment} />}
+          {loading ? <Loader /> : <LocationSegment location={locationDetail} locationSegment={selectedSegment} />}
         </IonContent>
       </IonContent>
     </IonPage>
