@@ -2,11 +2,11 @@ import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonText } from '@ionic/react';
 import { callOutline, globeOutline, locationOutline, mailOutline } from 'ionicons/icons';
+import styles from '../../../styles/Locations.scss';
 import type { Location, LocationInfoContent } from '../../../types';
 import { LocationSegmentType } from '../../../types';
 import LocationHours from '../LocationHours';
 import LocationInfo from '../LocationInfo';
-import styles from '../Locations.module.scss';
 
 interface LocationSegmentProps {
   location?: Location;

@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonList, IonItem, IonText, IonLabel } from '@ionic/react';
+import styles from '../../../styles/Locations.scss';
 import type { Location } from '../../../types';
-import styles from '../Locations.module.scss';
 
 interface LocationHoursProps {
   location?: Location;
@@ -24,7 +24,7 @@ const LocationHours: FC<LocationHoursProps> = ({ location }: LocationHoursProps)
         <p>{t('locations.contactHours')}</p>
       </IonText>
       {location?.workingHours ? (
-        <IonList lines="full" className={styles.customListBackground}>
+        <IonList lines="full" className={styles.list}>
           {Object.entries(location.workingHours).map((eachHour) => {
             return (
               <IonItem key={eachHour[0]} detail={false}>

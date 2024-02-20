@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonList, IonItem, IonText } from '@ionic/react';
+import styles from '../../../styles/Locations.scss';
 import type { Location } from '../../../types';
 import { routeUrls } from '../../../utils/constants';
-import styles from '../Locations.module.scss';
 
 interface LocationListProps {
   locations: Location[];
@@ -15,7 +15,7 @@ const LocationList: FC<LocationListProps> = ({ locations }: LocationListProps) =
   return (
     <>
       {locations.length > 0 ? (
-        <IonList lines="full" className={styles.customListBackground}>
+        <IonList lines="full" className={styles.list}>
           {locations.map((eachLocation: Location) => (
             <IonItem
               detail={false}

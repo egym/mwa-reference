@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { IonList, IonItem, IonIcon, IonLabel } from '@ionic/react';
+import styles from '../../../styles/Locations.scss';
 import type { LocationInfoContent } from '../../../types';
-import styles from '../Locations.module.scss';
 
 interface LocationInfoProps {
   locationFeed: LocationInfoContent[];
@@ -9,7 +9,7 @@ interface LocationInfoProps {
 
 const LocationInfo: FC<LocationInfoProps> = ({ locationFeed }: LocationInfoProps) => {
   return (
-    <IonList lines="full" className={styles.customListBackground}>
+    <IonList lines="full" className={styles.list}>
       {locationFeed.map((eachLocationLabel) => (
         <IonItem detail={false}>
           <IonIcon icon={eachLocationLabel.icon} color={`${eachLocationLabel.class || 'dark'}`} slot="start"></IonIcon>
