@@ -4,12 +4,12 @@ import { Loader } from 'src/components';
 import useLocationDetail from '../hooks/useLocationDetail';
 import LocationDetail from './LocationDetail';
 
-type LocationItem = {
+type LocationQueryParam = {
   locationId: string;
 };
 
 const LocationDetailContainer: FC = () => {
-  const { locationId } = useParams<LocationItem>();
+  const { locationId } = useParams<LocationQueryParam>();
   const result = useLocationDetail(locationId);
 
   if (result.loading) {
