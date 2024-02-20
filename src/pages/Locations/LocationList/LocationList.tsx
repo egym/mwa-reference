@@ -20,7 +20,7 @@ const LocationList: FC<LocationListProps> = ({ locations }: LocationListProps) =
             <IonItem
               detail={false}
               key={eachLocation.uuid}
-              routerLink={`${routeUrls.locations}/${eachLocation.uuid}`}
+              routerLink={routeUrls.locationById({ locationId: eachLocation.uuid })}
               button
             >
               <IonText class="ion-text-wrap">
