@@ -20,6 +20,9 @@ const LocationHours: FC<LocationHoursProps> = ({ location }: LocationHoursProps)
 
   return (
     <>
+      <IonText className={styles.banner}>
+        <p>{t('locations.contactHours')}</p>
+      </IonText>
       {location?.workingHours ? (
         <IonList lines="full" className={styles.customListBackground}>
           {Object.entries(location.workingHours).map((eachHour) => {

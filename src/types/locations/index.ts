@@ -33,3 +33,8 @@ export type LocationInfoContent = {
   label: string;
   class?: string;
 };
+
+export enum LocationSegmentType {
+  Location = 'location',
+  Hours = 'hours',
+}

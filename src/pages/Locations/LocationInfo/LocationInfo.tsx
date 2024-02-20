@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { IonList, IonItem, IonIcon, IonLabel } from '@ionic/react';
-import type { LocationInfoContent } from '../../../types/locations';
+import type { LocationInfoContent } from '../../../types';
 import styles from '../Locations.module.scss';
 
 interface LocationInfoProps {
