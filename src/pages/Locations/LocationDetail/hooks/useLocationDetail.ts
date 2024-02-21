@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import useLocationList from 'src/hooks/useLocations';
+import useLocations from 'src/hooks/useLocations';
 import type { LocationsDetailProps } from 'src/hooks/useLocations/LocationsPageProps';
 
 const useLocationDetail = (locationId: string): LocationsDetailProps => {
-  const { loading, locations } = useLocationList();
+  const { loading, locations } = useLocations();
 
   const locationDetail = useMemo(() => {
     if (!loading) {

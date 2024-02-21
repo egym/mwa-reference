@@ -1,1 +1,1 @@
-export { default } from './useLocationList';
+export { default } from './useLocations';
