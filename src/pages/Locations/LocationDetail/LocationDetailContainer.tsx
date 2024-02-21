@@ -12,11 +12,7 @@ const LocationDetailContainer: FC = () => {
   const { locationId } = useParams<LocationQueryParam>();
   const result = useLocationDetail(locationId);
 
-  if (result.loading) {
-    return <Loader />;
-  }
-
-  return <LocationDetail {...result} />;
+  return <>{result.loading ? <Loader /> : <LocationDetail {...result} />}</>;
 };
 
 export default LocationDetailContainer;
