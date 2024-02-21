@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { getLocationRequest } from 'src/api/locations';
 import type { LocationsPageProps } from './LocationsPageProps';
 
-const useLocationList = () => {
+const useLocationQuery = () => {
   const locationsQuery = useQuery(
     ['children'],
     async () => {
@@ -24,7 +24,7 @@ const useLocationList = () => {
 };
 
 const useLocations = (): LocationsPageProps => {
-  const { locationsQuery } = useLocationList();
+  const { locationsQuery } = useLocationQuery();
 
   const locations = useMemo(() => {
     if (!locationsQuery.isSuccess) return [];
