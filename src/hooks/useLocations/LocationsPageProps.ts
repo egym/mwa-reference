@@ -1,4 +1,4 @@
-import type { Location } from '../../../types';
+import type { Location } from '../../types';
 
 export type LocationsPageProps = {
   locations: Location[];

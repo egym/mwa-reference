@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import useLocations from 'src/hooks/useLocations';
 import type { LocationsPageProps } from './LocationsPageProps';
+import useLocations from './useLocations';
 
 const useLocationList = (): LocationsPageProps => {
   const { locationsQuery } = useLocations();

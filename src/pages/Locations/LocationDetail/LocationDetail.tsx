@@ -5,8 +5,8 @@ import type { IonSegmentCustomEvent } from '@ionic/core';
 import type { SegmentChangeEventDetail } from '@ionic/react';
 import { IonContent, IonPage, IonSegment, IonSegmentButton, IonLabel } from '@ionic/react';
 import { CommonPageHeader, Loader } from 'src/components';
-import { LocationSegmentType } from '../../../types';
-import type { LocationsDetailProps } from '../hooks/LocationsPageProps';
+import type { LocationsDetailProps } from 'src/hooks/useLocations/LocationsPageProps';
+import { LocationSegmentType } from 'src/types';
 import LocationSegment from '../LocationSegment';
 
 const LocationDetail: FC<LocationsDetailProps> = ({ locationDetail, loading }) => {

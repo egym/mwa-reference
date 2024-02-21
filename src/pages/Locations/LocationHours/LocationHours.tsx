@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonList, IonItem, IonText, IonLabel } from '@ionic/react';
-import styles from '../../../styles/Locations.scss';
-import type { Location } from '../../../types';
+import styles from 'src/styles/Locations.scss';
+import type { Location } from 'src/types';
 
 interface LocationHoursProps {
   location?: Location;

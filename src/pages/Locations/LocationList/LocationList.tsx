@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IonList, IonItem, IonText } from '@ionic/react';
-import styles from '../../../styles/Locations.scss';
-import type { Location } from '../../../types';
-import { routeUrls } from '../../../utils/constants';
+import styles from 'src/styles/Locations.scss';
+import type { Location } from 'src/types';
+import { routeUrls } from 'src/utils/constants';
 
 interface LocationListProps {
   locations: Location[];

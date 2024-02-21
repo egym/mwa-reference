@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { IonSearchbarCustomEvent } from '@ionic/core';
 import type { SearchbarChangeEventDetail } from '@ionic/react';
-import type { Location } from '../../../types';
+import type { Location } from 'src/types';
 
 const useLocationsPage = (initialLocations: Location[]) => {
   const [locationResult, setLocationResult] = useState<Location[]>(initialLocations);
