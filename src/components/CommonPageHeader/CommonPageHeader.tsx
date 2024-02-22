@@ -57,9 +57,9 @@ const CommonPageHeader: FC<Props> = ({ root, title }) => {
         </IonButtons>
       </IonToolbar>
 
-      <IonToolbar>
+      {/* <IonToolbar>
         <IonTitle size="small">{window.location.href}</IonTitle>
-      </IonToolbar>
+      </IonToolbar> */}
     </IonHeader>
   );
 };

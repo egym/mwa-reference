@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   IonCard,
   IonCardContent,
@@ -17,6 +18,7 @@ import {
   calendar,
   calendarOutline,
   caretForwardOutline,
+  locateOutline,
   documentLockOutline,
   lockOpenOutline,
   navigateCircleOutline,
@@ -26,6 +28,7 @@ import CommonPageHeader from 'src/components/CommonPageHeader';
 import { routeUrls } from '../../utils/constants';
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <IonPage>
       <CommonPageHeader root title="Home" />
@@ -39,6 +42,10 @@ const Home: React.FC = () => {
               <IonItem routerLink={routeUrls.classes} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={calendarOutline} slot="start"></IonIcon>
                 <IonLabel>Classes</IonLabel>
+              </IonItem>
+              <IonItem routerLink={routeUrls.locations} button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={locateOutline} slot="start"></IonIcon>
+                <IonLabel>{t('locations.innerTitle')}</IonLabel>
               </IonItem>
               <IonItem routerLink={routeUrls.classesWidget} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={calendar} slot="start"></IonIcon>

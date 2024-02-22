@@ -9,6 +9,17 @@
     "allClassTypes": "Alle Klassentypen",
     "bookClass": "Buchklasse"
   },
+  "locations": {
+    "innerTitle": "Standorte",
+    "tabLocation": "Standort",
+    "hours": "Std",
+    "contactHours": "Kontaktieren Sie den Standort für Feiertagszeiten",
+    "gymNotFound": "Leider haben wir kein Fitnessstudio mit diesem Namen gefunden",
+    "notHours": "Keine Öffnungszeiten gefunden",
+    "notInformation": "Keine Informationen gefunden",
+    "searchByLocation": "Suche nach Standort",
+    "locationDetailDefault": "Standortdetails"
+  },
   "errors": {
     "oops": "Etwas ist schief gelaufen"
   }
