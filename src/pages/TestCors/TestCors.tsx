@@ -17,10 +17,8 @@ import type { TestCorsProps } from './TestCorsProps';
 const TestCors: FC<TestCorsProps> = ({
   testCorsQuerySuccess,
   capacitorV4Result,
-  communityHttpPluginResult,
   browserFetchResult,
   testCorsWithCapacitorV4,
-  testCorsWithCommunityHttpPlugin,
   testCorsWithBrowserFetch,
 }) => {
   return (
@@ -36,21 +34,6 @@ const TestCors: FC<TestCorsProps> = ({
             <IonText color={testCorsQuerySuccess ? 'success' : 'danger'}>{capacitorV4Result}</IonText>
           </IonCardContent>
           <IonButton fill="clear" onClick={testCorsWithCapacitorV4}>
-            Make a call
-          </IonButton>
-        </IonCard>
-
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>With HTTP Community API</IonCardSubtitle>
-            <IonCardTitle>Bypass CORS</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonText color={!communityHttpPluginResult?.includes('Error') ? 'success' : 'danger'}>
-              {communityHttpPluginResult}
-            </IonText>
-          </IonCardContent>
-          <IonButton fill="clear" onClick={testCorsWithCommunityHttpPlugin}>
             Make a call
           </IonButton>
         </IonCard>

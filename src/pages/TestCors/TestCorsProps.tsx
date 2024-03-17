@@ -4,10 +4,8 @@ export type TestCorsContainerProps = {};
 export type UseTestCorsResult = {
   testCorsQuerySuccess: boolean;
   capacitorV4Result: string;
-  communityHttpPluginResult?: string;
   browserFetchResult?: string;
   testCorsWithCapacitorV4: () => void;
-  testCorsWithCommunityHttpPlugin: () => void;
   testCorsWithBrowserFetch: () => void;
 };
 

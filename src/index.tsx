@@ -1,9 +1,9 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { getInitialContext } from '@ionic/portals';
 import { Settings } from 'luxon';
 import { createRoot } from 'react-dom/client';
 import { logDebug, logWebWitals } from '@egym/mwa-logger';
+import { getPortalsInitialContext } from '@egym/mwa-utils';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './store';
@@ -11,7 +11,7 @@ import { decodeToken, refreshTokenErrorHandler, retryFunction } from './utils/ap
 import { setGlobalPortalsContext, setThemeColors } from './utils/helpers';
 
 const initialContext =
-  getInitialContext<PortalsContext>()?.value ||
+  getPortalsInitialContext<PortalsContext>()?.value ||
   ({
     startingRoute: '/home',
     authToken: '',
