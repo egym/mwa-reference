@@ -1,21 +1,17 @@
-import { useQuery } from 'react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { getTestCors } from '../../api';
 import { queryKeys } from '../../utils/queryKeys';
 
 const useTestCors = () => {
-  const testCorsQuery = useQuery(
-    queryKeys.testCors,
-    async () => {
-      return getTestCors();
-    },
-    {
-      enabled: false, // allows only manual trigger
-      select: (result) => result.data,
-      staleTime: 0,
-      keepPreviousData: true,
-      refetchOnMount: true,
-    }
-  );
+  const testCorsQuery = useQuery({
+    queryKey: queryKeys.testCors,
+    queryFn: async () => getTestCors(),
+    enabled: false, // allows only manual trigger
+    select: (result) => result.data,
+    staleTime: 0,
+    placeholderData: keepPreviousData,
+    refetchOnMount: true,
+  });
 
   return {
     testCorsQuery,

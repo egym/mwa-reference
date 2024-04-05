@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from 'react-query';
+import { keepPreviousData, useMutation, useQuery } from '@tanstack/react-query';
 import {
   getError500Request,
   getSuccessfulRequest,
@@ -8,40 +8,36 @@ import {
 import { queryKeys } from '../../utils/queryKeys';
 
 const useTestHttpLogger = () => {
-  const successQuery = useQuery(
-    queryKeys.testLogger.success,
-    async () => {
-      return getSuccessfulRequest();
-    },
-    {
-      enabled: false, // allows only manual trigger
-      select: (result) => result.data,
-      staleTime: 0,
-      keepPreviousData: true,
-      refetchOnMount: true,
-    }
-  );
-
-  const error500Query = useQuery(
-    queryKeys.testLogger.serverDown,
-    async () => {
-      return getError500Request();
-    },
-    {
-      enabled: false, // allows only manual trigger
-      select: (result) => result.data,
-      staleTime: 0,
-      keepPreviousData: true,
-      refetchOnMount: true,
-    }
-  );
-
-  const error400Mutation = useMutation(queryKeys.testLogger.validationError, async () => {
-    return postError400Request({ payload: { name: 'test', age: 333 } });
+  const successQuery = useQuery({
+    queryKey: queryKeys.testLogger.success,
+    queryFn: async () => getSuccessfulRequest(),
+    enabled: false, // allows only manual trigger
+    select: (result) => result.data,
+    staleTime: 0,
+    placeholderData: keepPreviousData,
+    refetchOnMount: true,
   });
 
-  const error404Mutation = useMutation(queryKeys.testLogger.editError, async () => {
-    return putError404Request({ payload: { name: 'John', age: 23 }, urlParams: { id: '12' } });
+  const error500Query = useQuery({
+    queryKey: queryKeys.testLogger.serverDown,
+    queryFn: async () => getError500Request(),
+    enabled: false, // allows only manual trigger
+    select: (result) => result.data,
+    staleTime: 0,
+    placeholderData: keepPreviousData,
+    refetchOnMount: true,
+  });
+
+  const error400Mutation = useMutation({
+    mutationKey: queryKeys.testLogger.validationError,
+    mutationFn: async () => postError400Request({ payload: { name: 'test', age: 333 } }),
+  });
+
+  const error404Mutation = useMutation({
+    mutationKey: queryKeys.testLogger.editError,
+    mutationFn: async () => {
+      return putError404Request({ payload: { name: 'John', age: 23 }, urlParams: { id: '12' } });
+    },
   });
 
   return {
@@ -51,5 +47,4 @@ const useTestHttpLogger = () => {
     error404Mutation,
   };
 };
-
 export default useTestHttpLogger;

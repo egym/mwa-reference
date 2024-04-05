@@ -20,7 +20,7 @@ type Props = {
 };
 
 const CommonPageHeader: FC<Props> = ({ root, title }) => {
-  const currentMode = useMemo(() => document.getElementsByTagName('html')[0].getAttribute('mode'), []);
+  const currentMode = useMemo<string>(() => document.getElementsByTagName('html')[0].getAttribute('mode') || 'ios', []);
 
   const onModeChange = useCallback((event: IonSegmentCustomEvent<SegmentChangeEventDetail>) => {
     const newMode = event.detail.value;

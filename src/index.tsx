@@ -1,5 +1,5 @@
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Settings } from 'luxon';
 import { createRoot } from 'react-dom/client';
 import { logDebug, logWebWitals } from '@egym/mwa-logger';
@@ -34,8 +34,11 @@ const queryClient = new QueryClient({
       retryDelay: 2000,
       refetchOnWindowFocus: false,
       staleTime: 1000 * 60 * 2, // 2 minutes
-      cacheTime: Infinity,
-      onError: refreshTokenErrorHandler,
+      gcTime: Infinity,
+      throwOnError: (error) => {
+        refreshTokenErrorHandler(error);
+        return true;
+      },
     },
     mutations: {
       retry: retryFunction,

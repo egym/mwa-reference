@@ -1,6 +1,6 @@
 import type { HttpResponse } from '@capacitor/core';
 import type { JwtPayload } from 'jwt-decode';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { logDebug } from '@egym/mwa-logger';
 import { requestAuthToken } from '../nativeHandlers/requests';
 
@@ -34,6 +34,7 @@ export const scheduleRefreshPortalsToken = (token?: string) => {
 };
 
 export const refreshTokenErrorHandler = (error: unknown) => {
+  console.log('error', error);
   const err = error as unknown as HttpResponse;
 
   if ('status' in err) {

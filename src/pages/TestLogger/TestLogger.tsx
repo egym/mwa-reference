@@ -38,7 +38,7 @@ const TestLogger: FC<TestLoggerProps> = ({ successQuery, error500Query, error404
             <h3>POST request</h3>
             <p>
               error400Mutation -{' '}
-              {error400Mutation.isLoading
+              {error400Mutation.isPending
                 ? 'Loading..'
                 : ((error400Mutation.isSuccess || error400Mutation.isError) && 'Open debug view and see logs') ||
                   'Click me'}
@@ -51,7 +51,7 @@ const TestLogger: FC<TestLoggerProps> = ({ successQuery, error500Query, error404
             <h3>PUT request</h3>
             <p>
               error404Mutation -{' '}
-              {error404Mutation.isLoading
+              {error404Mutation.isPending
                 ? 'Loading..'
                 : ((error404Mutation.isSuccess || error404Mutation.isError) && 'Open debug view and see logs') ||
                   'Click me'}
