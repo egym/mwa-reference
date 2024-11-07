@@ -22,6 +22,7 @@ const Layout: FC = () => {
           <IonRouterOutlet>
             {routes}
             <Route path="/" render={() => <Redirect to={startingRoute || '/home'} />} exact={true} />
+            <Route path="/index.html" render={() => <Redirect to={'/home'} />} exact={true} />
           </IonRouterOutlet>
         </Switch>
       </IonReactRouter>
