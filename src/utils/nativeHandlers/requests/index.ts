@@ -20,6 +20,15 @@ export const publishSetWidgetHeight = async (data: { height: number }) => {
   });
 };
 
+export const publishContentLoadingDidFinish = async () => {
+  await portalsPublish({
+    topic: NativeRequestTopic.Subscription,
+    data: {
+      type: NativeRequestType.contentLoadingDidFinish,
+    },
+  });
+};
+
 export const requestLinking = async () => {
   await portalsPublish({
     topic: NativeRequestTopic.Subscription,

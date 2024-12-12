@@ -19,6 +19,7 @@ export enum NativeRequestType {
   openFeature = 'openFeature',
   linking = 'linking',
   setWidgetHeight = 'setWidgetHeight',
+  contentLoadingDidFinish = 'contentLoadingDidFinish',
 }
 
 export enum SubscribeTopic {

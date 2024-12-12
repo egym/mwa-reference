@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useUpdateEffect } from 'react-use';
 import { useQueryClient } from '@tanstack/react-query';
 import useLatestActivities from '../../../hooks/useLatestActivities/useLatestActivities';
 import useRefreshDashboardWidget from '../../../hooks/useRefreshDashboardWidget';
@@ -10,7 +11,11 @@ import {
   getWidgetPreferencesSelector,
 } from '../../../store/selectors';
 import { routeUrls } from '../../../utils/constants';
-import { publishSetWidgetHeight, requestOpenFeature } from '../../../utils/nativeHandlers/requests';
+import {
+  publishContentLoadingDidFinish,
+  publishSetWidgetHeight,
+  requestOpenFeature,
+} from '../../../utils/nativeHandlers/requests';
 import { queryKeys } from '../../../utils/queryKeys';
 import type { UseLatestActivityWidgetPageResultProps } from '../LatestActivityWidgetPageProps';
 
@@ -22,6 +27,7 @@ const useLatestActivityWidgetPage = (): UseLatestActivityWidgetPageResultProps =
   const { t } = useTranslation();
   const contentRef = useRef<HTMLDivElement>(null);
   const queryClient = useQueryClient();
+  const contentReady = useRef(false);
 
   useRefreshDashboardWidget({
     onRefresh: async () => {
@@ -38,6 +44,23 @@ const useLatestActivityWidgetPage = (): UseLatestActivityWidgetPageResultProps =
       }, 100);
     },
   });
+
+  useUpdateEffect(() => {
+    setTimeout(() => {
+      if (!contentRef.current?.offsetHeight) return;
+
+      if (!latestActivitiesQuery.isLoading && latestActivitiesQuery.isFetched) {
+        if (!contentReady.current) {
+          publishContentLoadingDidFinish();
+          contentReady.current = true;
+        }
+
+        publishSetWidgetHeight({
+          height: contentRef.current?.offsetHeight,
+        });
+      }
+    }, 100);
+  }, [latestActivitiesQuery.isLoading]);
 
   const title = useMemo(() => {
     if (widgetPreferences.localizedTitle) {
