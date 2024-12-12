@@ -15,4 +15,5 @@ export const queryKeys = {
     validationError: ['validationError'],
     editError: ['editError'],
   },
+  latestActivities: ['latestActivities'],
 };

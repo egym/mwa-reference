@@ -13,3 +13,15 @@ export const getShowLoggerSelector = createSelector(
   ({ showLogger }) => showLogger === 'true'
 );
 export const getAppLanguageSelector = createSelector(getPortalsContextSelector, ({ language }) => language);
+
+export const getWidgetPreferencesSelector = createSelector(getPortalsContextSelector, ({ preferences }) => {
+  return preferences || {};
+});
+export const getEgymAccountLinkingSelector = createSelector(getPortalsContextSelector, ({ linking }) => {
+  return linking || {};
+});
+
+export const getIsEgymAccountLinkedSelector = createSelector(getEgymAccountLinkingSelector, ({ status }) => {
+  // ensure backward compatibility with older native apps that do not provide the linking field in the initial context
+  return !status || status === 'linked';
+});

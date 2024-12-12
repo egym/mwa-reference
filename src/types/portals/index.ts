@@ -17,9 +17,13 @@ export enum NativeRequestType {
   exerciserInfo = 'exerciserInfo',
   dismiss = 'dismiss',
   openFeature = 'openFeature',
+  linking = 'linking',
+  setWidgetHeight = 'setWidgetHeight',
 }
 
 export enum SubscribeTopic {
   authToken = 'authToken',
   exerciserInfo = 'exerciserInfo',
+  linking = 'linking',
+  refresh = 'refresh',
 }

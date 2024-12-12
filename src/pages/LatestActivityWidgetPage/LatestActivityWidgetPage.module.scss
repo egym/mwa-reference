@@ -1,0 +1,51 @@
+.page {
+  background: transparent;
+  --background: transparent;
+  --overflow: hidden;
+}
+
+.ionContent {
+  background: transparent;
+  --background: transparent;
+}
+
+.iframeSkeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.widget {
+  padding: 0 20px;
+  opacity: 1;
+
+  transition: opacity 0.3s ease-in-out;
+}
+
+.widgetLoading {
+  opacity: 0;
+}
+
+.card {
+  margin: 0;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.cardEmptyState {
+  height: 241px;
+}
+
+.cardContent {
+  padding-inline-start: 20px;
+  padding-inline-end: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  height: 100%;
+}
+
+.logWorkoutButtonIcon {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+}

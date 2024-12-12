@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Latest Activity Widget Skeleton</title>
+  <style>
+
+      html, body {
+          margin: 0;
+          background: transparent;
+      }
+
+      @keyframes shimmer {
+          0% {
+              background-position: -400px 0px;
+          }
+          100% {
+              background-position: 400px 0px;
+          }
+      }
+
+      #wrapper {
+          box-sizing: border-box;
+          width: 100%;
+          background-color: transparent;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+
+          padding: 0 20px;
+      }
+
+      #card {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          border-radius: 8px;
+          height: 241px;
+          background-color: white;
+          padding: 0 20px;
+          box-sizing: border-box;
+      }
+
+      .item {
+          display: flex;
+          align-items: center;
+          padding: 12px 0;
+      }
+
+      .item:not(:last-child) {
+          border-bottom: 1px solid #f2f2f2;
+      }
+
+      .item-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          flex: 1;
+          margin-left: 16px;
+      }
+
+      .skeleton {
+          box-sizing: border-box;
+          width: 100%;
+          height: 16px; /* Adjust height as per requirement */
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 800px 104px;
+          animation: shimmer 1s linear infinite;
+          border-radius: 8px; /* Optional, for rounded edges */
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+          animation-iteration-count: infinite;
+          animation-name: shimmer;
+          animation-timing-function: linear;
+      }
+
+      .br-2 {
+          border-radius: 2px;
+      }
+
+      .none {
+          display: none;
+      }
+  </style>
+</head>
+<body>
+<div class="wrapper" id="wrapper">
+  <div class="skeleton" id="title" style="margin-bottom: 12px; width: 130px; height: 25px"></div>
+  <div class="card" id="card">
+    <div class="item">
+      <div class="skeleton" style="border-radius: 8px; width: 72px; height: 72px"></div>
+      <div class="item-content">
+        <div class="skeleton" style="width: 60px; height: 10px; margin-bottom: 10px"></div>
+        <div class="skeleton" style="width: 100px; height: 20px; margin-bottom: 8px"></div>
+        <div class="skeleton" style="width: 90px; height: 12px; margin-bottom: 10px"></div>
+        <div class="skeleton" style="width: 120px; height: 26px"></div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="skeleton" style="border-radius: 8px; width: 72px; height: 72px"></div>
+      <div class="item-content">
+        <div class="skeleton" style="width: 60px; height: 10px; margin-bottom: 10px"></div>
+        <div class="skeleton" style="width: 100px; height: 20px; margin-bottom: 8px"></div>
+        <div class="skeleton" style="width: 90px; height: 12px; margin-bottom: 10px"></div>
+        <div class="skeleton" style="width: 120px; height: 26px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const shouldHideTitle = urlParams.get('hideTitle') === 'true';
+  const px = urlParams.get('px');
+  const dashboardBackgroundColor = urlParams.get('dashboardBackgroundColor');
+
+  if (dashboardBackgroundColor) {
+    document.body.style.backgroundColor = dashboardBackgroundColor;
+  }
+  const titleElement = document.getElementById('title')
+
+  if (shouldHideTitle) {
+    titleElement.classList.add('none');
+  }
+
+  if (px !== undefined && !isNaN(Number(px))) {
+    const wrapperElement = document.getElementById('wrapper');
+
+    wrapperElement.style.padding = `0 ${px}px`;
+  }
+
+</script>
+
+</body>
+</html>

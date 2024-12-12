@@ -6,6 +6,7 @@ import ClassDetails from './Classes/ClassDetails';
 import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
 import Geolocation from './Geolocation';
+import LatestActivityWidgetPage from './LatestActivityWidgetPage';
 import Share from './Share';
 import TestAuth from './TestAuth';
 import TestCors from './TestCors';
@@ -61,5 +62,15 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.share,
     exact: true,
     component: Share,
+  },
+  {
+    path: routeUrls.latestActivityWidget,
+    exact: true,
+    component: LatestActivityWidgetPage,
+  },
+  {
+    path: routeUrls.latestActivityWidgetWidget,
+    exact: true,
+    component: LatestActivityWidgetPage,
   },
 ];

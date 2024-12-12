@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useEffectOnce } from 'react-use';
 import { useIonAlert } from '@ionic/react';
 import { portalsSubscribe } from '@egym/mwa-utils';
 import { useStore } from 'src/store';
@@ -8,12 +9,24 @@ import { SubscribeTopic } from 'src/types';
 import type { PortalsError } from 'src/types/error';
 import { decodeToken } from 'src/utils/api/refreshPortalsToken';
 import { parseJson } from 'src/utils/helpers';
+import usePortalsLinkingSubscription from '../usePortalsLinkingSubscription';
 
 const usePortalsSubscriptions = () => {
   const [portalsContext, set] = useStore(getPortalsContextSelector);
   const [exerciserInfo] = useStore(getExerciserSelector);
   const [presentAlert] = useIonAlert();
   const { t } = useTranslation();
+  const { subscribe: linkingSubscribe, unsubscribe: linkingUnsubscribe } = usePortalsLinkingSubscription();
+
+  useEffectOnce(() => {
+    (async () => {
+      await linkingSubscribe();
+    })();
+
+    return () => {
+      linkingUnsubscribe();
+    };
+  });
 
   useEffect(() => {
     (async () => {

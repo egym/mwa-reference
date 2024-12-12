@@ -15,6 +15,11 @@ interface PortalsContext {
   primaryTextColor: string;
   url: string;
   showLogger: 'true' | 'false';
+  preferences: Record<string, any>;
+  linking: {
+    status: 'linked' | 'unlinked';
+    egymEmail: string;
+  };
 }
 
 interface Exerciser {

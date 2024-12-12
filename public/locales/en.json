@@ -11,5 +11,14 @@
   },
   "errors": {
     "oops": "Something went wrong"
+  },
+  "workoutsHistory": {
+    "widget": {
+      "title": "Latest Activity",
+      "emptyState": {
+        "title": "No Activity",
+        "description": "Unfortunately you haven’t tracked any activity yet. Go ahead and track your first workout and come back here to check!"
+      }
+    }
   }
 }

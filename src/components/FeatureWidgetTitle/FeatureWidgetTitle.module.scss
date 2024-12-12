@@ -1,0 +1,24 @@
+.sectionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  --button-large-height: auto;
+  --button-large-x-padding: 0;
+  --button-clear-border-width: 0;
+  --button-clear-border-style: none;
+  --button-clear-text-decoration: none;
+  --button-text-transform: none;
+  --button-large-font-size: 16px;
+  --button-large-font-weight: 400;
+  --padding-top: 0;
+  --padding-bottom: 0;
+
+  &::part(native) {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

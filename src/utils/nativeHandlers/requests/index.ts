@@ -10,6 +10,25 @@ export const publishDismiss = async () => {
   });
 };
 
+export const publishSetWidgetHeight = async (data: { height: number }) => {
+  await portalsPublish({
+    topic: NativeRequestTopic.Subscription,
+    data: {
+      type: NativeRequestType.setWidgetHeight,
+      data,
+    },
+  });
+};
+
+export const requestLinking = async () => {
+  await portalsPublish({
+    topic: NativeRequestTopic.Subscription,
+    data: {
+      type: NativeRequestType.linking,
+    },
+  });
+};
+
 export const requestAuthToken = async () => {
   await portalsPublish({
     topic: NativeRequestTopic.Subscription,

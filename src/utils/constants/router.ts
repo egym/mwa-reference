@@ -11,4 +11,6 @@ export const routeUrls = {
   barcodeScanner: '/barcode-scanner',
   geolocation: '/geolocation',
   share: '/share',
+  latestActivityWidget: '/workouts/latest-activity-widget',
+  latestActivityWidgetWidget: '/workouts/latest-activity-widget-widget',
 };
