@@ -15,34 +15,19 @@ import {
 import { CommonPageHeader } from 'src/components';
 import type { BarcodeScannerProps } from './BarcodeScannerProps';
 
-const BarcodeScanner: FC<BarcodeScannerProps> = ({ barcodeActive, startScan, stopScan, scanResult, error }) => {
+const BarcodeScanner: FC<BarcodeScannerProps> = ({ scanBarcode }) => {
   return (
     <IonPage>
-      {!barcodeActive && <CommonPageHeader title="Barcode Scanner" />}
       <IonContent fullscreen>
-        {!barcodeActive && (
-          <IonCard>
-            <IonCardHeader>
-              <IonCardTitle>Scan result</IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <IonText color={!error ? 'success' : 'danger'}>{scanResult}</IonText>
-            </IonCardContent>
-            <IonButton fill="clear" onClick={startScan}>
-              Start scan
-            </IonButton>
-          </IonCard>
-        )}
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Scan result</IonCardTitle>
+          </IonCardHeader>
+          <IonButton fill="clear" onClick={scanBarcode}>
+            Start scan
+          </IonButton>
+        </IonCard>
       </IonContent>
-      {barcodeActive && (
-        <IonFooter>
-          <IonToolbar>
-            <IonButton expand="full" onClick={stopScan}>
-              Stop
-            </IonButton>
-          </IonToolbar>
-        </IonFooter>
-      )}
     </IonPage>
   );
 };
