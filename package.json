@@ -73,7 +73,7 @@
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-    "@capacitor/cli": "^5.7.4",
+    "@capacitor/cli": "^7.0.0",
     "@ionic/prettier-config": "^4.0.0",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.12.4",

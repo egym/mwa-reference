@@ -1,18 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
-import {
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonContent,
-  IonFooter,
-  IonPage,
-  IonText,
-  IonToolbar,
-} from '@ionic/react';
-import { CommonPageHeader } from 'src/components';
+import { IonButton, IonCard, IonCardHeader, IonCardTitle, IonContent, IonPage } from '@ionic/react';
 import type { BarcodeScannerProps } from './BarcodeScannerProps';
 
 const BarcodeScanner: FC<BarcodeScannerProps> = ({ scanBarcode }) => {
