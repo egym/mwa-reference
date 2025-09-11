@@ -3,6 +3,7 @@ export type BarcodeScannerContainerProps = {};
 
 export type UseBarcodeScannerResultProps = {
   scanBarcode: () => Promise<void>;
+  scannerResult?: string;
 };
 
 export type BarcodeScannerProps = BarcodeScannerContainerProps & UseBarcodeScannerResultProps;
