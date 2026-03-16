@@ -7,6 +7,7 @@ import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
 import Geolocation from './Geolocation';
 import LatestActivityWidgetPage from './LatestActivityWidgetPage';
+import NFCPassWallet from './NFCPassWallet';
 import Share from './Share';
 import TestAuth from './TestAuth';
 import TestCors from './TestCors';
@@ -52,6 +53,11 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.barcodeScanner,
     exact: true,
     component: BarcodeScanner,
+  },
+  {
+    path: routeUrls.nfcPassWallet,
+    exact: true,
+    component: NFCPassWallet,
   },
   {
     path: routeUrls.geolocation,
