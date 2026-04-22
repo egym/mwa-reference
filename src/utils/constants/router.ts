@@ -9,6 +9,7 @@ export const routeUrls = {
   testAuth: '/test-auth',
   testLogger: '/test-logger',
   barcodeScanner: '/barcode-scanner',
+  nfcPassWallet: '/nfc-pass-wallet',
   geolocation: '/geolocation',
   share: '/share',
   latestActivityWidget: '/workouts/latest-activity-widget',
