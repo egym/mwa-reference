@@ -45,7 +45,7 @@
     "@capacitor/keyboard": "^7.0.0",
     "@capacitor/share": "^7.0.0",
     "@capacitor/status-bar": "^7.0.0",
-    "@egym/capacitor-nfc-pass-wallet": "^0.2.0",
+    "@egym/capacitor-nfc-pass-wallet": "^0.3.1",
     "@egym/mwa-logger": "^0.2.8",
     "@egym/mwa-utils": "0.7.0",
     "@ionic/portals": "^0.12.0",
