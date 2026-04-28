@@ -1,14 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import viteTsconfigPaths from 'vite-tsconfig-paths';
 import svgrPlugin from 'vite-plugin-svgr';
 import checker from 'vite-plugin-checker';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   plugins: [
     react(),
-    viteTsconfigPaths(),
     svgrPlugin(),
     checker({
       typescript: {
@@ -17,6 +18,7 @@ export default defineConfig({
       },
       eslint: {
         lintCommand: 'eslint --ext js,jsx,ts,tsx src',
+        useFlatConfig: false,
       },
       overlay: false,
       terminal: true,
@@ -26,12 +28,12 @@ export default defineConfig({
     outDir: 'build',
     rollupOptions: {
       output: {
-        manualChunks: {
-          capacitorCore: ['@capacitor/core'],
-          egym: ['@egym/mwa-logger'],
-          ionicPortals: ['@ionic/portals'],
-          ionicReact: ['@ionic/react'],
-          ionicRouter: ['@ionic/react-router'],
+        manualChunks(id) {
+          if (id.includes('@capacitor/core')) return 'capacitorCore';
+          if (id.includes('@egym/mwa-logger')) return 'egym';
+          if (id.includes('@ionic/portals')) return 'ionicPortals';
+          if (id.includes('@ionic/react-router')) return 'ionicRouter';
+          if (id.includes('@ionic/react')) return 'ionicReact';
         },
       },
     },

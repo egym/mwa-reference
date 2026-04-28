@@ -17,7 +17,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src"]
 }
