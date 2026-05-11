@@ -12,6 +12,7 @@ import Share from './Share';
 import TestAuth from './TestAuth';
 import TestCors from './TestCors';
 import TestLogger from './TestLogger';
+import DotLottieDemo from './DotLottieDemo';
 
 export const routesConfigs: RouteConfig[] = [
   {
@@ -78,5 +79,10 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.latestActivityWidgetWidget,
     exact: true,
     component: LatestActivityWidgetPage,
+  },
+  {
+    path: routeUrls.dotLottieDemo,
+    exact: true,
+    component: DotLottieDemo,
   },
 ];

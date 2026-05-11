@@ -14,4 +14,5 @@ export const routeUrls = {
   share: '/share',
   latestActivityWidget: '/workouts/latest-activity-widget',
   latestActivityWidgetWidget: '/workouts/latest-activity-widget-widget',
+  dotLottieDemo: '/dotlottie-demo',
 };

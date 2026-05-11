@@ -1,0 +1,61 @@
+.animationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.animationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--ion-color-light-shade);
+  border-radius: 8px;
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.animationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  background: var(--ion-background-color, #fff);
+  border-radius: 4px;
+}
+
+.controls {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.meta {
+  font-size: 11px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.eventLog {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 8px;
+  background: var(--ion-color-light);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.eventItem {
+  padding: 2px 0;
+  border-bottom: 1px solid var(--ion-color-light-shade);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

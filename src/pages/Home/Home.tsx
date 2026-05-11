@@ -22,6 +22,7 @@ import {
   navigateCircleOutline,
   shareOutline,
   walletOutline,
+  sparklesOutline,
 } from 'ionicons/icons';
 import CommonPageHeader from 'src/components/CommonPageHeader';
 import { routeUrls } from '../../utils/constants';
@@ -72,6 +73,10 @@ const Home: React.FC = () => {
               <IonItem routerLink={routeUrls.share} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={shareOutline} slot="start"></IonIcon>
                 <IonLabel>Test Share Plugin</IonLabel>
+              </IonItem>
+              <IonItem routerLink={routeUrls.dotLottieDemo} button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={sparklesOutline} slot="start"></IonIcon>
+                <IonLabel>dotLottie Demo</IonLabel>
               </IonItem>
             </IonList>
           </IonCardContent>

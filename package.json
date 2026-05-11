@@ -51,6 +51,7 @@
     "@ionic/portals": "^0.12.0",
     "@ionic/react": "^8.4.1",
     "@ionic/react-router": "^8.4.1",
+    "@lottiefiles/dotlottie-react": "^0.19.2",
     "@tanstack/react-query": "^5.28.14",
     "date-fns": "^2.30.0",
     "framer-motion": "^12.23.13",
@@ -75,6 +76,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^7.0.0",
+    "@dotlottie/dotlottie-js": "^1.6.3",
     "@ionic/prettier-config": "^4.0.0",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.19.17",
