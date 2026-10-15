@@ -2,12 +2,12 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Settings } from 'luxon';
 import { createRoot } from 'react-dom/client';
-import { logDebug, logWebWitals } from '@egym/mwa-logger';
+import { logWebWitals } from '@egym/mwa-logger';
 import { getPortalsInitialContext } from '@egym/mwa-utils';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './store';
-import { decodeToken, refreshTokenErrorHandler, retryFunction } from './utils/api/refreshPortalsToken';
+import { refreshTokenErrorHandler, retryFunction } from './utils/api/refreshPortalsToken';
 import { setGlobalPortalsContext, setThemeColors } from './utils/helpers';
 
 const initialContext =
@@ -50,8 +50,6 @@ const queryClient = new QueryClient({
 
 setGlobalPortalsContext(initialContext);
 setThemeColors(window.portalsContext);
-decodeToken(initialContext.authToken);
-logDebug('initialContext', initialContext);
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
