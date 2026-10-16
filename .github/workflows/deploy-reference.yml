@@ -82,7 +82,7 @@ jobs:
           REQUESTED_APPFLOW: ${{ inputs.deploy-appflow }}
           REQUESTED_CAPAWESOME: ${{ inputs.deploy-capawesome }}
           REQUESTED_CHANNEL: ${{ inputs.channel }}
-          PR_CHANNEL: ${{ vars.DEPLOYMENT_TEST_CHANNEL }}
+          PR_CHANNEL: develop
           TARGET_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
           IONIC_TOKEN: ${{ secrets.IONIC_TOKEN }}
           CAPAWESOME_TOKEN: ${{ secrets.CAPAWESOME_TOKEN }}
@@ -111,7 +111,7 @@ jobs:
           if (!/^[a-f0-9]{40}$/.test(env.TARGET_COMMIT || '')) {
             throw new Error('The deployment target must be a full commit SHA.');
           }
-          requireChannel(pr ? 'DEPLOYMENT_TEST_CHANNEL repository variable' : 'channel input', channel);
+          requireChannel(pr ? 'PR test channel' : 'channel input', channel);
           if (appflow) {
             requireValue('IONIC_TOKEN secret', env.IONIC_TOKEN);
           }

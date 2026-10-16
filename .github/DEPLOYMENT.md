@@ -52,9 +52,9 @@ GitHub does not offer a new manual workflow until its file exists on the
 default branch. To test this workflow PR without pushing directly to `main`,
 we use a guarded `pull_request` label trigger:
 
-1. We set repository variable `DEPLOYMENT_TEST_CHANNEL` to the desired existing
-   channel name, shared by both providers. The channel is configuration, not
-   a hardcoded workflow value.
+1. We ensure the `develop` channel exists in both providers and is unprotected
+   in Capawesome. This PR test channel is configured directly in the workflow;
+   no repository variable is required.
 2. A maintainer reviews the exact same-repository PR revision, then applies
    the `test-deployment` label. This starts a real deployment to both providers.
 3. We check both providers for the expected channel and source commit.
@@ -75,7 +75,7 @@ synthetic merge SHA. Runs are serialized.
 We use **Actions > Deploy reference MWA > Run workflow**, select the source
 branch, and enter one free-text `channel` input for all enabled providers.
 Each provider can be enabled independently; at least one is required. Manual
-runs use that input, not the PR-test repository variable.
+runs use that input, not the PR test's configured `develop` channel.
 
 Appflow-only runs skip the local build and do not require Capawesome
 credentials. Capawesome-only runs skip Appflow and do not require Appflow
