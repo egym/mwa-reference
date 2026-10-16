@@ -86,7 +86,6 @@ jobs:
           TARGET_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
           IONIC_TOKEN: ${{ secrets.IONIC_TOKEN }}
           CAPAWESOME_TOKEN: ${{ secrets.CAPAWESOME_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           node <<'NODE'
           const { appendFileSync } = require('node:fs');
@@ -115,7 +114,6 @@ jobs:
           requireChannel(pr ? 'DEPLOYMENT_TEST_CHANNEL repository variable' : 'channel input', channel);
           if (appflow) {
             requireValue('IONIC_TOKEN secret', env.IONIC_TOKEN);
-            requireValue('NPM_TOKEN secret', env.NPM_TOKEN);
           }
           if (capawesome) {
             requireValue('CAPAWESOME_TOKEN secret', env.CAPAWESOME_TOKEN);
@@ -194,7 +192,7 @@ jobs:
         run: test -s build/index.html
 
       - name: Deploy the same commit to the selected providers
-        uses: egym/egym-actions/deploy-mwa@6feb2d6506307eb77888d1c650fc99b8c7a8e99f
+        uses: egym/egym-actions/deploy-mwa@277a70dfe42e260b08d4fd39c2afd753137a6138
         with:
           deploy-appflow: ${{ steps.config.outputs.deploy-appflow }}
           deploy-capawesome: ${{ steps.config.outputs.deploy-capawesome }}

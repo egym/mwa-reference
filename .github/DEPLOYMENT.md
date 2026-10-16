@@ -17,13 +17,18 @@ access to equivalent organization secrets:
 | Secret             | Required for                                       |
 | ------------------ | -------------------------------------------------- |
 | `IONIC_TOKEN`      | Appflow access.                                    |
-| `NPM_TOKEN`        | The existing Appflow build input.                  |
+| `NPM_TOKEN`        | Optional Appflow package-registry authentication.  |
 | `CAPAWESOME_TOKEN` | Capawesome bot/API access to publish live updates. |
 
 We never put token values in source files, workflow inputs, or repository
 variables. Adding the bot to Capawesome does not configure GitHub secrets.
 The workflow uses the repository's existing npmjs.org lockfile without
 redirecting `@egym` packages to a different registry.
+
+We do not require `NPM_TOKEN` for this application's checked-in dependency
+configuration. If supplied, we forward it to Appflow. If omitted, the action
+sends no `NPM_TOKEN` secret override. Builds still fail if their dependencies
+require registry authentication that is unavailable.
 
 Our application IDs are:
 
