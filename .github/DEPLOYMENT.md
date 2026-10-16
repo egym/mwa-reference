@@ -32,7 +32,7 @@ Our application IDs are:
 | Appflow    | `9d727e58`                             |
 | Capawesome | `3f41bc52-b2ee-4f3f-904b-c119c0e28a88` |
 
-Both selected channels must already exist. The Capawesome channel must be
+The selected channel name must exist in each enabled provider. The Capawesome channel must be
 unprotected because this action currently publishes unsigned bundles.
 Creating signing keys, migrating native clients, and verifying updates on a
 device are outside this publishing test.
@@ -47,9 +47,9 @@ GitHub does not offer a new manual workflow until its file exists on the
 default branch. To test this workflow PR without pushing directly to `main`,
 we use a guarded `pull_request` label trigger:
 
-1. We set repository variables `APPFLOW_TEST_CHANNEL` and
-   `CAPAWESOME_TEST_CHANNEL` to the desired existing channels. Channel names
-   are configuration, not hardcoded workflow values.
+1. We set repository variable `DEPLOYMENT_TEST_CHANNEL` to the desired existing
+   channel name, shared by both providers. The channel is configuration, not
+   a hardcoded workflow value.
 2. A maintainer reviews the exact same-repository PR revision, then applies
    the `test-deployment` label. This starts a real deployment to both providers.
 3. We check both providers for the expected channel and source commit.
@@ -68,9 +68,9 @@ synthetic merge SHA. Runs are serialized.
 ## Manual deployment after merging
 
 We use **Actions > Deploy reference MWA > Run workflow**, select the source
-branch, and enter the channel names as free-text inputs. Each provider can be
-enabled independently; at least one is required. Manual runs use those inputs,
-not the PR-test repository variables.
+branch, and enter one free-text `channel` input for all enabled providers.
+Each provider can be enabled independently; at least one is required. Manual
+runs use that input, not the PR-test repository variable.
 
 Appflow-only runs skip the local build and do not require Capawesome
 credentials. Capawesome-only runs skip Appflow and do not require Appflow

@@ -12,14 +12,10 @@ on:
         description: Build on the runner and publish to Capawesome
         type: boolean
         default: true
-      appflow-channel:
-        description: Appflow channel when Appflow is enabled
+      channel:
+        description: Existing channel name shared by the enabled providers
         type: string
-        required: false
-      capawesome-channel:
-        description: Existing unprotected channel when Capawesome is enabled
-        type: string
-        required: false
+        required: true
   pull_request:
     types: [labeled]
 
@@ -85,10 +81,8 @@ jobs:
           IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
           REQUESTED_APPFLOW: ${{ inputs.deploy-appflow }}
           REQUESTED_CAPAWESOME: ${{ inputs.deploy-capawesome }}
-          REQUESTED_APPFLOW_CHANNEL: ${{ inputs.appflow-channel }}
-          REQUESTED_CAPAWESOME_CHANNEL: ${{ inputs.capawesome-channel }}
-          PR_APPFLOW_CHANNEL: ${{ vars.APPFLOW_TEST_CHANNEL }}
-          PR_CAPAWESOME_CHANNEL: ${{ vars.CAPAWESOME_TEST_CHANNEL }}
+          REQUESTED_CHANNEL: ${{ inputs.channel }}
+          PR_CHANNEL: ${{ vars.DEPLOYMENT_TEST_CHANNEL }}
           TARGET_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
           IONIC_TOKEN: ${{ secrets.IONIC_TOKEN }}
           CAPAWESOME_TOKEN: ${{ secrets.CAPAWESOME_TOKEN }}
@@ -100,8 +94,7 @@ jobs:
           const pr = env.IS_PULL_REQUEST === 'true';
           const appflow = pr || env.REQUESTED_APPFLOW === 'true';
           const capawesome = pr || env.REQUESTED_CAPAWESOME === 'true';
-          const appflowChannel = (pr ? env.PR_APPFLOW_CHANNEL : env.REQUESTED_APPFLOW_CHANNEL) || '';
-          const capawesomeChannel = (pr ? env.PR_CAPAWESOME_CHANNEL : env.REQUESTED_CAPAWESOME_CHANNEL) || '';
+          const channel = (pr ? env.PR_CHANNEL : env.REQUESTED_CHANNEL) || '';
           const requireValue = (name, value) => {
             if (!value?.trim()) {
               throw new Error(`Missing ${name}. See .github/DEPLOYMENT.md.`);
@@ -119,21 +112,19 @@ jobs:
           if (!/^[a-f0-9]{40}$/.test(env.TARGET_COMMIT || '')) {
             throw new Error('The deployment target must be a full commit SHA.');
           }
+          requireChannel(pr ? 'DEPLOYMENT_TEST_CHANNEL repository variable' : 'channel input', channel);
           if (appflow) {
             requireValue('IONIC_TOKEN secret', env.IONIC_TOKEN);
             requireValue('NPM_TOKEN secret', env.NPM_TOKEN);
-            requireChannel(pr ? 'APPFLOW_TEST_CHANNEL repository variable' : 'appflow-channel input', appflowChannel);
           }
           if (capawesome) {
             requireValue('CAPAWESOME_TOKEN secret', env.CAPAWESOME_TOKEN);
             requireValue('Capawesome app ID', env.CAPAWESOME_APP_ID);
-            requireChannel(pr ? 'CAPAWESOME_TEST_CHANNEL repository variable' : 'capawesome-channel input', capawesomeChannel);
           }
           const outputs = {
             'deploy-appflow': String(appflow),
             'deploy-capawesome': String(capawesome),
-            'appflow-channel': appflow ? appflowChannel : '',
-            'capawesome-channel': capawesome ? capawesomeChannel : '',
+            channel,
             commit: env.TARGET_COMMIT,
           };
           for (const [name, value] of Object.entries(outputs)) {
@@ -203,17 +194,16 @@ jobs:
         run: test -s build/index.html
 
       - name: Deploy the same commit to the selected providers
-        uses: egym/egym-actions/deploy-mwa@27d57af53384ed3fc9aecb2fda144518b3866c22
+        uses: egym/egym-actions/deploy-mwa@6feb2d6506307eb77888d1c650fc99b8c7a8e99f
         with:
           deploy-appflow: ${{ steps.config.outputs.deploy-appflow }}
           deploy-capawesome: ${{ steps.config.outputs.deploy-capawesome }}
           commit-sha: ${{ steps.config.outputs.commit }}
           production: 'false'
           app-id: ${{ env.APPFLOW_APP_ID }}
-          appflow-channel: ${{ steps.config.outputs.appflow-channel }}
+          channel: ${{ steps.config.outputs.channel }}
           ionic-token: ${{ secrets.IONIC_TOKEN }}
           npm-token: ${{ secrets.NPM_TOKEN }}
           build-dir: build
           capawesome-app-id: ${{ env.CAPAWESOME_APP_ID }}
-          capawesome-channel: ${{ steps.config.outputs.capawesome-channel }}
           capawesome-token: ${{ secrets.CAPAWESOME_TOKEN }}
