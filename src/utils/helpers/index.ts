@@ -5,7 +5,10 @@ export const setGlobalPortalsContext = (context: PortalsContext) => {
   window.portalsContext = context;
 };
 
+// A host that passes no colors keeps the colors of theme/variables.css.
 export const setThemeColors = (context: PortalsContext) => {
+  if (!context.primaryColor || !context.primaryTextColor) return;
+
   const primaryColor = new Color(context.primaryColor);
   const textColor = new Color(context.primaryTextColor);
 
@@ -14,7 +17,9 @@ export const setThemeColors = (context: PortalsContext) => {
   document.body.style.setProperty('--ion-color-primary-contrast', textColor.hex);
   document.body.style.setProperty('--ion-color-primary-contrast-rgb', textColor.rgbString);
   document.body.style.setProperty('--ion-color-primary-shade', primaryColor.shade(0.12).hex);
-  document.body.style.setProperty('--ion-color-primary-tint', context.lightPrimaryColor);
+  if (context.lightPrimaryColor) {
+    document.body.style.setProperty('--ion-color-primary-tint', context.lightPrimaryColor);
+  }
 };
 
 type Cx = (...classNames: (undefined | null | string | boolean)[]) => string;
