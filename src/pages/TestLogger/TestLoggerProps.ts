@@ -1,6 +1,6 @@
 import type { UseMutationResult, UseQueryResult } from '@tanstack/react-query';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type TestLoggerContainerProps = {};
 
 export type UseTestLoggerPropsResult = {
