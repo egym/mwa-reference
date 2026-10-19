@@ -10,7 +10,7 @@ import { setGlobalPortalsContext } from '../../utils/helpers';
 const usePortalsLinkingSubscription = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, set] = useStore(getPortalsContextSelector);
-  const subscription = useRef<PluginListenerHandle>();
+  const subscription = useRef<PluginListenerHandle>(undefined);
 
   const subscribe = useCallback(async () => {
     await portalsSubscribe<string>(SubscribeTopic.linking, ({ data }) => {
