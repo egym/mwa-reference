@@ -18,7 +18,6 @@ export default defineConfig({
       },
       eslint: {
         lintCommand: 'eslint --ext js,jsx,ts,tsx src',
-        useFlatConfig: false,
       },
       overlay: false,
       terminal: true,
