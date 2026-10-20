@@ -20,6 +20,7 @@ import {
   documentLockOutline,
   lockOpenOutline,
   navigateCircleOutline,
+  openOutline,
   shareOutline,
   walletOutline,
 } from 'ionicons/icons';
@@ -64,6 +65,10 @@ const Home: React.FC = () => {
               <IonItem routerLink={routeUrls.nfcPassWallet} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={walletOutline} slot="start"></IonIcon>
                 <IonLabel>Test NFC Pass Wallet</IonLabel>
+              </IonItem>
+              <IonItem routerLink={routeUrls.mwaNavigation} button detail={true} detailIcon={caretForwardOutline}>
+                <IonIcon icon={openOutline} slot="start"></IonIcon>
+                <IonLabel>Test MWA Navigation</IonLabel>
               </IonItem>
               <IonItem routerLink={routeUrls.geolocation} button detail={true} detailIcon={caretForwardOutline}>
                 <IonIcon icon={navigateCircleOutline} slot="start"></IonIcon>

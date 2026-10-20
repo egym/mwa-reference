@@ -7,6 +7,7 @@ import ClassesList from './Classes/ClassesList';
 import ClassesWidget from './Classes/ClassesWidget';
 import Geolocation from './Geolocation';
 import LatestActivityWidgetPage from './LatestActivityWidgetPage';
+import MwaNavigation from './MwaNavigation';
 import NFCPassWallet from './NFCPassWallet';
 import Share from './Share';
 import TestAuth from './TestAuth';
@@ -58,6 +59,11 @@ export const routesConfigs: RouteConfig[] = [
     path: routeUrls.nfcPassWallet,
     exact: true,
     component: NFCPassWallet,
+  },
+  {
+    path: routeUrls.mwaNavigation,
+    exact: true,
+    component: MwaNavigation,
   },
   {
     path: routeUrls.geolocation,
