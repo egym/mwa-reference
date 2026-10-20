@@ -9,7 +9,7 @@ export type UseLatestActivityWidgetPageResultProps = {
   handleLogWorkoutClick: () => void;
   isEmptyState: boolean;
   title: string;
-  contentRef: RefObject<HTMLDivElement>;
+  contentRef: RefObject<HTMLDivElement | null>;
 };
 
 export type LatestActivityWidgetPageProps = UseLatestActivityWidgetPageResultProps;

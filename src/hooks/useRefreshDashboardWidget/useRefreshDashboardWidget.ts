@@ -11,8 +11,8 @@ type Props = {
 };
 
 const useRefreshDashboardWidget = ({ onRefresh }: Props) => {
-  const resumeListener = useRef<PluginListenerHandle>();
-  const refreshListener = useRef<PluginListenerHandle>();
+  const resumeListener = useRef<PluginListenerHandle>(undefined);
+  const refreshListener = useRef<PluginListenerHandle>(undefined);
 
   const callback = useCallback(
     async (refreshEventSource: 'capacitorResume' | 'ionicPortalsRefresh') => {
