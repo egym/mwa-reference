@@ -80,7 +80,7 @@
     "@capacitor/cli": "^7.0.0",
     "@eslint/js": "^10.0.1",
     "@ionic/prettier-config": "^4.0.0",
-    "@types/luxon": "^3.4.2",
+    "@types/luxon": "^3.7.6",
     "@types/node": "^22.19.17",
     "@types/qs": "^6.9.14",
     "@types/react": "^19.3.0",
