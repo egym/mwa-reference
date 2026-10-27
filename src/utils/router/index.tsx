@@ -5,11 +5,7 @@ export const mapRoutes = (routes: RouteConfig[]) => {
   return routes.map((route) => {
     const Component = route.component;
 
-    return (
-      <Route key={route.path} path={route.path} exact={route.exact}>
-        <Component {...route.componentProps} />
-      </Route>
-    );
+    return <Route key={route.path} path={route.path} element={<Component {...route.componentProps} />} />;
   });
 };
 

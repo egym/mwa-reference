@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Navigate, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import usePortalsSubscriptions from './hooks/usePortalsSubscriptions';
@@ -18,13 +18,11 @@ const Layout: FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <Switch>
-          <IonRouterOutlet>
-            {routes}
-            <Route path="/" render={() => <Redirect to={startingRoute || '/home'} />} exact={true} />
-            <Route path="/index.html" render={() => <Redirect to={'/home'} />} exact={true} />
-          </IonRouterOutlet>
-        </Switch>
+        <IonRouterOutlet>
+          {routes}
+          <Route path="/" element={<Navigate to={startingRoute || '/home'} replace />} />
+          <Route path="/index.html" element={<Navigate to="/home" replace />} />
+        </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
   );

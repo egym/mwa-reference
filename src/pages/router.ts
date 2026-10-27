@@ -16,67 +16,54 @@ import TestLogger from './TestLogger';
 export const routesConfigs: RouteConfig[] = [
   {
     path: routeUrls.home,
-    exact: true,
     component: Home,
   },
   {
     path: routeUrls.testCors,
-    exact: true,
     component: TestCors,
   },
   {
     path: routeUrls.testAuth,
-    exact: true,
     component: TestAuth,
   },
   {
     path: routeUrls.classes,
-    exact: true,
     component: ClassesList,
   },
   {
     path: routeUrls.classesWidget,
-    exact: true,
     component: ClassesWidget,
   },
   {
     path: routeUrls.classById(),
-    exact: true,
     component: ClassDetails,
   },
   {
     path: routeUrls.testLogger,
-    exact: true,
     component: TestLogger,
   },
   {
     path: routeUrls.barcodeScanner,
-    exact: true,
     component: BarcodeScanner,
   },
   {
     path: routeUrls.nfcPassWallet,
-    exact: true,
     component: NFCPassWallet,
   },
   {
     path: routeUrls.geolocation,
-    exact: true,
     component: Geolocation,
   },
   {
     path: routeUrls.share,
-    exact: true,
     component: Share,
   },
   {
     path: routeUrls.latestActivityWidget,
-    exact: true,
     component: LatestActivityWidgetPage,
   },
   {
     path: routeUrls.latestActivityWidgetWidget,
-    exact: true,
     component: LatestActivityWidgetPage,
   },
 ];
