@@ -5,9 +5,9 @@ import useClassById from 'src/hooks/useClassById';
 import type { UseClassDetailsResultProps } from '../../ClassDetailsProps';
 
 const useClassDetails = (): UseClassDetailsResultProps => {
-  const params = useParams<{ classId: string }>();
+  const { classId } = useParams<'classId'>();
 
-  const { classByIdQuery } = useClassById({ classId: Number(params.classId) });
+  const { classByIdQuery } = useClassById({ classId: classId ? Number(classId) : 0 });
 
   const weekDayFormatted = useMemo(() => {
     if (!classByIdQuery.isSuccess) return '';

@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import React, { useCallback, useMemo } from 'react';
-import type { IonSegmentCustomEvent } from '@ionic/core/dist/types/components';
-import type { SegmentChangeEventDetail } from '@ionic/react';
+import type { SegmentCustomEvent } from '@ionic/react';
 import {
   IonBackButton,
   IonButton,
@@ -22,7 +21,7 @@ type Props = {
 const CommonPageHeader: FC<Props> = ({ root, title }) => {
   const currentMode = useMemo<string>(() => document.getElementsByTagName('html')[0].getAttribute('mode') || 'ios', []);
 
-  const onModeChange = useCallback((event: IonSegmentCustomEvent<SegmentChangeEventDetail>) => {
+  const onModeChange = useCallback((event: SegmentCustomEvent) => {
     const newMode = event.detail.value;
 
     window.location.replace(`${window.location.origin}${window.location.pathname}?mode=${newMode}`);
