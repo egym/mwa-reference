@@ -5,3 +5,9 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    ignore:
+      # @ionic/react-router 9 supports only React Router 6: https://github.com/ionic-team/ionic-framework/issues/30745
+      - dependency-name: 'react-router'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react-router-dom'
+        update-types: ['version-update:semver-major']
