@@ -100,7 +100,7 @@
     "pretty-quick": "^4.2.2",
     "sass": "^1.74.1",
     "typescript": "^6.0.3",
-    "vite": "^8.0.9",
+    "vite": "^8.3.5",
     "vite-plugin-checker": "^0.14.5",
     "vite-plugin-svgr": "^5.2.0"
   },
