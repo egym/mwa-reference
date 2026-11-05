@@ -12,6 +12,10 @@ const config: CapacitorConfig = {
     CapacitorCookies: {
       enabled: true,
     },
+    SystemBars: {
+      insetsHandling: 'css',
+      initialViewportFitValueHint: 'cover',
+    },
   },
 };
 

@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect, useRef } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import { Capacitor } from '@capacitor/core';
 import { setupIonicReact } from '@ionic/react';
 import qs from 'qs';
 import { EgymMwaDevtools, ErrorBoundary, logDebug } from '@egym/mwa-logger';
@@ -10,6 +11,7 @@ import Layout from './Layout';
 import { useStore } from './store';
 import { getPortalsContextSelector, getShowLoggerSelector } from './store/selectors';
 import { decodeToken } from './utils/api/refreshPortalsToken';
+import { applyIosSafeAreaFallback } from './utils/safeArea';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -59,6 +61,10 @@ const Devtools: React.FC = () => {
 
 const App: React.FC = () => {
   const [showLogger] = useStore(getShowLoggerSelector);
+
+  useEffect(() => {
+    applyIosSafeAreaFallback(Capacitor.getPlatform());
+  }, []);
 
   return (
     <Suspense fallback={<span />}>
