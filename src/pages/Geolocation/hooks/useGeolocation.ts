@@ -1,3 +1,4 @@
+import type { Position } from '@capacitor/geolocation';
 import { Geolocation as GeolocationPlugin } from '@capacitor/geolocation';
 import { useIonAlert } from '@ionic/react';
 import type { UseGeolocationResultProps } from '../GeolocationProps';
@@ -6,7 +7,18 @@ const useGeolocation = (): UseGeolocationResultProps => {
   const [openAlert] = useIonAlert();
 
   const showCurrentCoordinates = async () => {
-    const coordinates = await GeolocationPlugin.getCurrentPosition();
+    let coordinates: Position;
+    try {
+      coordinates = await GeolocationPlugin.getCurrentPosition({ timeout: 12000 });
+    } catch (error) {
+      const message =
+        typeof error === 'object' && error !== null && 'message' in error && typeof error.message === 'string'
+          ? error.message
+          : String(error);
+
+      await openAlert({ header: 'Unable to retrieve location', message, buttons: ['OK'] });
+      return;
+    }
 
     await openAlert(JSON.stringify(coordinates, null, 2));
   };

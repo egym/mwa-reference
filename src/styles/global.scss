@@ -50,7 +50,7 @@ ion-spinner {
   position: fixed;
   height: 64px;
   width: 100%;
-  bottom: var(--safe-area-inset-bottom, var(--ion-safe-area-bottom, 0px));
+  bottom: var(--ion-safe-area-bottom, 0px);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
   opacity: 0.7;
   z-index: 110;
