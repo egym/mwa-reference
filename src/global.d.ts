@@ -10,9 +10,9 @@ interface PortalsContext {
   startingRoute: string;
   language: string;
   authToken: string;
-  lightPrimaryColor: string;
-  primaryColor: string;
-  primaryTextColor: string;
+  lightPrimaryColor?: string;
+  primaryColor?: string;
+  primaryTextColor?: string;
   url: string;
   showLogger: 'true' | 'false';
   preferences: Record<string, any>;
