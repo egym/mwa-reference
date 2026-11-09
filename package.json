@@ -70,7 +70,7 @@
     "qs": "^6.16.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "react-i18next": "^14.1.0",
+    "react-i18next": "^17.1.13",
     "react-router": "^6.30.6",
     "react-router-dom": "^6.30.6",
     "react-use": "^17.6.1",
