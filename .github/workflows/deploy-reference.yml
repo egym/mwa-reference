@@ -1,0 +1,207 @@
+---
+name: Deploy reference MWA
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy-appflow:
+        description: Build and deploy with Appflow
+        type: boolean
+        default: true
+      deploy-capawesome:
+        description: Build on the runner and publish to Capawesome
+        type: boolean
+        default: true
+      channel:
+        description: Existing channel name shared by the enabled providers
+        type: string
+        required: true
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: reference-mwa-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.label.name == 'test-deployment' &&
+       github.event.pull_request.head.repo.full_name == github.repository)
+    name: Build and deploy the selected reference commit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      APPFLOW_APP_ID: 9d727e58
+      CAPAWESOME_APP_ID: 3f41bc52-b2ee-4f3f-904b-c119c0e28a88
+    steps:
+      - name: Authorize the labeled pull request
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { data: access } = await github.rest.repos.getCollaboratorPermissionLevel({
+              ...context.repo,
+              username: context.actor,
+            });
+            if (!['admin', 'maintain', 'write'].includes(access.permission)) {
+              throw new Error('The test-deployment label must be applied by a repository maintainer.');
+            }
+            const { data: pr } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.issue.number,
+            });
+            const repository = `${context.repo.owner}/${context.repo.repo}`;
+            if (pr.state !== 'open' || pr.head.repo?.full_name !== repository ||
+                pr.head.sha !== context.payload.pull_request.head.sha ||
+                !pr.labels.some((label) => label.name === 'test-deployment')) {
+              throw new Error('The PR changed, closed, or lost deployment authorization. Reapply the label to the intended commit.');
+            }
+
+      - name: Check out the exact source commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Resolve and validate deployment configuration
+        id: config
+        env:
+          IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+          REQUESTED_APPFLOW: ${{ inputs.deploy-appflow }}
+          REQUESTED_CAPAWESOME: ${{ inputs.deploy-capawesome }}
+          REQUESTED_CHANNEL: ${{ inputs.channel }}
+          PR_CHANNEL: develop
+          TARGET_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          IONIC_TOKEN: ${{ secrets.IONIC_TOKEN }}
+          CAPAWESOME_TOKEN: ${{ secrets.CAPAWESOME_TOKEN }}
+        run: |
+          node <<'NODE'
+          const { appendFileSync } = require('node:fs');
+          const { env } = process;
+          const pr = env.IS_PULL_REQUEST === 'true';
+          const appflow = pr || env.REQUESTED_APPFLOW === 'true';
+          const capawesome = pr || env.REQUESTED_CAPAWESOME === 'true';
+          const channel = (pr ? env.PR_CHANNEL : env.REQUESTED_CHANNEL) || '';
+          const requireValue = (name, value) => {
+            if (!value?.trim()) {
+              throw new Error(`Missing ${name}. See .github/DEPLOYMENT.md.`);
+            }
+          };
+          const requireChannel = (name, value) => {
+            requireValue(name, value);
+            if (/[\r\n]/.test(value)) {
+              throw new Error(`${name} must be a single-line channel name.`);
+            }
+          };
+          if (!appflow && !capawesome) {
+            throw new Error('Enable at least one deployment provider.');
+          }
+          if (!/^[a-f0-9]{40}$/.test(env.TARGET_COMMIT || '')) {
+            throw new Error('The deployment target must be a full commit SHA.');
+          }
+          requireChannel(pr ? 'PR test channel' : 'channel input', channel);
+          if (appflow) {
+            requireValue('IONIC_TOKEN secret', env.IONIC_TOKEN);
+          }
+          if (capawesome) {
+            requireValue('CAPAWESOME_TOKEN secret', env.CAPAWESOME_TOKEN);
+            requireValue('Capawesome app ID', env.CAPAWESOME_APP_ID);
+          }
+          const outputs = {
+            'deploy-appflow': String(appflow),
+            'deploy-capawesome': String(capawesome),
+            channel,
+            commit: env.TARGET_COMMIT,
+          };
+          for (const [name, value] of Object.entries(outputs)) {
+            appendFileSync(env.GITHUB_OUTPUT, `${name}=${value}\n`);
+          }
+          NODE
+
+      - name: Install dependencies for the Capawesome build
+        if: steps.config.outputs.deploy-capawesome == 'true'
+        run: npm ci
+
+      - name: Generate build metadata
+        if: steps.config.outputs.deploy-capawesome == 'true'
+        env:
+          TARGET_COMMIT: ${{ steps.config.outputs.commit }}
+          SOURCE_REF: ${{ github.head_ref || github.ref_name }}
+          SOURCE_REF_TYPE: ${{ github.event_name == 'pull_request' && 'branch' || github.ref_type }}
+        run: |
+          node <<'NODE'
+          const { readFileSync, writeFileSync } = require('node:fs');
+          const { execFileSync } = require('node:child_process');
+          const { env } = process;
+          const commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+          if (commit !== env.TARGET_COMMIT) {
+            throw new Error('The checkout does not match the authorized deployment commit.');
+          }
+          const metadata = {
+            CI_APP_ID: env.APPFLOW_APP_ID,
+            CI_APP_NAME: 'mwa-reference',
+            CI_GIT_COMMIT_SHA: commit,
+            CI_GIT_COMMIT_MSG: execFileSync('git', ['show', '-s', '--format=%B', 'HEAD'], { encoding: 'utf8' }).trimEnd(),
+            CI_GIT_REF: env.SOURCE_REF,
+            CI_GIT_REF_TYPE: env.SOURCE_REF_TYPE,
+            CI_AUTOMATED_BUILD: '1',
+            CI_AUTOMATION_ID: env.GITHUB_WORKFLOW_REF,
+            CI_AUTOMATION_NAME: env.GITHUB_WORKFLOW,
+            CI_BUILD_ID: env.GITHUB_RUN_ID,
+            CI_BUILD_NUMBER: env.GITHUB_RUN_NUMBER,
+            CI_PLATFORM: 'web',
+          };
+          const template = readFileSync('src/appflow_ci_config_template.ts', 'utf8');
+          const placeholder = /String\(`\$(CI_[A-Z_]+)`\)/g;
+          if (template.replace(placeholder, '').includes('$CI_')) {
+            throw new Error('Unsupported build metadata placeholder in the template.');
+          }
+          const used = new Set();
+          const config = template.replace(placeholder, (_, key) => {
+            if (!Object.hasOwn(metadata, key) || metadata[key] === undefined) {
+              throw new Error(`Missing build metadata: ${key}`);
+            }
+            used.add(key);
+            return `String(${JSON.stringify(metadata[key])})`;
+          });
+          if (used.size !== Object.keys(metadata).length) {
+            throw new Error('The metadata template and generated configuration no longer match.');
+          }
+          writeFileSync('src/appflow_ci_config.ts', config);
+          NODE
+          ./node_modules/.bin/prettier --write src/appflow_ci_config.ts
+
+      - name: Build the reference app for Capawesome
+        if: steps.config.outputs.deploy-capawesome == 'true'
+        run: npm run build-local
+
+      - name: Check the prebuilt web bundle
+        if: steps.config.outputs.deploy-capawesome == 'true'
+        run: test -s build/index.html
+
+      - name: Deploy the same commit to the selected providers
+        uses: egym/egym-actions/deploy-mwa@277a70dfe42e260b08d4fd39c2afd753137a6138
+        with:
+          deploy-appflow: ${{ steps.config.outputs.deploy-appflow }}
+          deploy-capawesome: ${{ steps.config.outputs.deploy-capawesome }}
+          commit-sha: ${{ steps.config.outputs.commit }}
+          production: 'false'
+          app-id: ${{ env.APPFLOW_APP_ID }}
+          channel: ${{ steps.config.outputs.channel }}
+          ionic-token: ${{ secrets.IONIC_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
+          build-dir: build
+          capawesome-app-id: ${{ env.CAPAWESOME_APP_ID }}
+          capawesome-token: ${{ secrets.CAPAWESOME_TOKEN }}
