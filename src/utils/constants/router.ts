@@ -10,6 +10,7 @@ export const routeUrls = {
   testLogger: '/test-logger',
   barcodeScanner: '/barcode-scanner',
   nfcPassWallet: '/nfc-pass-wallet',
+  mwaNavigation: '/mwa-navigation',
   geolocation: '/geolocation',
   share: '/share',
   latestActivityWidget: '/workouts/latest-activity-widget',
