@@ -45,7 +45,7 @@
     "@capacitor/core": "^8.6.0",
     "@capacitor/geolocation": "^8.2.4",
     "@capacitor/haptics": "^8.0.2",
-    "@capacitor/ios": "^8.6.0",
+    "@capacitor/ios": "^8.6.2",
     "@capacitor/keyboard": "^8.0.6",
     "@capacitor/share": "^8.0.3",
     "@capacitor/status-bar": "^8.0.4",
@@ -75,7 +75,7 @@
     "react-router-dom": "^6.30.6",
     "react-use": "^17.6.1",
     "reselect": "^5.3.0",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^6.2.3"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.6.2",
